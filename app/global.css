@@ -1,150 +1,217 @@
-@import 'tailwindcss';
+@font-face {
+  font-family: 'PPEditorialOld-Ultralight';
+  src: url('../public/fonts/PPEditorialOld-Ultralight.woff') format('woff'),
+      url('../public/fonts/PPEditorialOld-Ultralight.woff2') format('woff2');
+}
 
-::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+@font-face {
+  font-family: 'PPEditorialOld-UltralightItalic';
+  src: url('../public/fonts/PPEditorialOld-UltralightItalic.woff') format('woff'),
+  url('../public/fonts/PPEditorialOld-UltralightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'NeueMontreal-Regular';
+  src: url('../public/fonts/NeueMontreal-Regular.woff') format('woff'),
+  url('../public/fonts/NeueMontreal-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DepartureMono-Regular';
+  src: url('../public/fonts/DepartureMono-Regular.woff') format('woff'),
+  url('../public/fonts/DepartureMono-Regular.woff2') format('woff2');
 }
 
 :root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
+  --background-color: #111111;
+  --primary-text-color: white;
+  --secondary-text-color: #ACACAC;
+
+  --spacer-xlg: 80px;
+  --spacer-lg: 40px;
+  --spacer-md: 24px;
+  --spacer-sm: 16px; 
+  --spacer-xsm: 8px;
+  --spacer-xxsm: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
+/* Foundations */
+
+* {
+  margin: 0;
+}
+
+body {
+  overflow-x: none;
+  padding: var(--spacer-lg);
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  max-width: 1440px;
+  margin: auto;
   }
-  html {
-    color-scheme: dark;
+
+h1 {
+    font-family: 'PPEditorialOld-Ultralight', Times, serif;
+    font-weight: 300;
+    letter-spacing: 2%;
+    font-size: 2.3rem;
+    line-height: 140%;
+}
+
+h4 {
+  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-weight: 300;
+  letter-spacing: 4%;
+  font-size: 1.2rem;
+  line-height: 130%;
+  margin: var(--spacer-xxsm);
+}
+
+.italics {
+  font-family: 'PPEditorialOld-UltralightItalic', Times, serif;
+  font-weight: 300;
+  letter-spacing: 4%;
+  font-size: 1.2rem;
+  line-height: 120%;
+}
+
+label {
+  font-family: 'DepartureMono-Regular', monospace;
+  line-height: 100%;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1%;
+  line-height: 160%;
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+}
+
+
+/* Utilities */
+
+.align-right {
+  display: flex;
+  justify-content: end;
+}
+
+/* Clock */
+
+.preheader-right {
+  display: flex;
+  justify-content: start;
+  align-items: baseline;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: var(--spacer-sm);
+}
+
+.clock {
+  display: inline-block;
+  font-family: monospace;
+  line-height: 100%;
+  font-size: 1rem;
+}
+
+/* Video */
+
+.video {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacer-lg);
+  padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
+}
+
+.video-wrapper {
+  grid-column: 1;
+  position: relative;
+  width: 100%;
+  padding-bottom: 61.8%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  background-color: #ACACAC;
+}
+
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hero */
+.preheader {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacer-sm);
+  padding-bottom: var(--spacer-md);
+  width: 100%;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacer-md);
+  padding-top: var(--spacer-md);
+  padding-bottom: var(--spacer-md);
+}
+
+
+/* Nav */
+
+nav {
+  background-color: aqua;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+}
+
+.navitem {
+  background-color: beige;
+  padding: 12px;
+}
+
+/* Media queries */
+
+@media screen and (min-width: 600px) {
+
+  .preheader {
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: var(--spacer-lg);
+  }
+
+  .preheader-right {
+    justify-content: end;
   }
 }
 
-html {
-  min-width: 360px;
+@media screen and (min-width: 800px) {
+
+  .intro {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacer-lg);
+  }
 }
 
-.prose .anchor {
-  @apply absolute invisible no-underline;
+@media screen and (min-width: 1200px) {
 
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
-}
+  .intro {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacer-lg);
+  } 
 
-.anchor:hover {
-  @apply visible;
-}
-
-.prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-}
-
-.prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
-}
-
-.prose *:hover > .anchor {
-  @apply visible;
-}
-
-.prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
-}
-
-.prose code {
-  @apply px-1 py-0.5 rounded-lg;
-}
-
-.prose pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
-}
-
-.prose code span {
-  @apply font-medium;
-}
-
-.prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
-
-.prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
-}
-
-.prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
-}
-
-.prose strong {
-  @apply font-medium;
-}
-
-.prose ul {
-  @apply list-disc pl-6;
-}
-
-.prose ol {
-  @apply list-decimal pl-6;
-}
-
-.prose > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.title {
-  text-wrap: balance;
+  .video {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .video-wrapper {
+    grid-column: 2;
+  }
 }
