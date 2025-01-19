@@ -111,10 +111,12 @@ p {
 }
 
 .clock {
-  display: inline-block;
-  font-family: monospace;
-  line-height: 100%;
-  font-size: 1rem;
+font-family: 'DepartureMono-Regular', monospace;
+line-height: 100%;
+font-size: 1rem;
+text-transform: uppercase;
+color: var(--primary-text-color);
+display: inline-block;
 }
 
 /* Video */

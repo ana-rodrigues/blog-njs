@@ -13,7 +13,7 @@ const Clock: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  return <div><label className="clock">{time}</label></div>;
+  return <div><p className="clock">{time}</p></div>;
 };
 
 export default Clock;
