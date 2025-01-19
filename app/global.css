@@ -43,7 +43,10 @@
 
 body {
   overflow-x: none;
-  padding: var(--spacer-lg);
+  padding-left: var(--spacer-md);
+  padding-right: var(--spacer-md);
+  padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
   background-color: var(--background-color);
   color: var(--primary-text-color);
   max-width: 1440px;
@@ -53,7 +56,7 @@ body {
 h1 {
     font-family: 'PPEditorialOld-Ultralight', Times, serif;
     font-weight: 300;
-    letter-spacing: 2%;
+    letter-spacing: 4%;
     font-size: 2.3rem;
     line-height: 140%;
 }
@@ -167,7 +170,6 @@ display: inline-block;
 
 
 /* Nav */
-
 nav {
   background-color: aqua;
   position: fixed;
@@ -180,10 +182,13 @@ nav {
   padding: 12px;
 }
 
-/* Media queries */
 
+/* Media queries */
 @media screen and (min-width: 600px) {
 
+  .body {
+    padding: var(--spacer-lg);
+  }
   .preheader {
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: var(--spacer-lg);
