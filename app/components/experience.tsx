@@ -8,7 +8,7 @@ const Experience = () => {
         <div>
             <h3>Navro</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div><a href='https://navro.com'>Website</a><ArrowUpRight strokeWidth={1} /></div>
+            <div className="link"><a href='https://navro.com'>Website</a><ArrowUpRight strokeWidth={1} /></div>
         </div>
 
         <div>
@@ -18,12 +18,15 @@ const Experience = () => {
         <div></div>
 
         <div>
+            <img src="/media/thumbnail.png" alt="" />
         </div>
     </main>
 
     <aside>
-        <p>2023-today</p>
         <p>Product Designer</p>
+        <p></p>
+        <p></p>
+        <p>2023-today</p>
     </aside>
 
     </article>
