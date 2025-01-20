@@ -1,11 +1,11 @@
 import Hero from './components/hero';
-import Experience from './components/experience';
+import ExperienceList from './components/experiencelist';
 
 export default function Page() {
   return (
     <>
       <Hero />
-      <Experience />
+      <ExperienceList />
     </>
   );
 }
