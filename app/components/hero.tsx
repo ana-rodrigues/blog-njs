@@ -5,21 +5,22 @@ const Hero = () => (
     <section id="hero">
 
     <div className="preheader">
+      <h1 className="visually-hidden">The digital bureau of Ana F. Rodrigues, Digital Experience Designer</h1>
       <div className="preheader-left">
-        <label>The digital bureau</label>
-        <h4><span className="italics">of </span>Ana F. Rodrigues</h4>
+        <p className='mono-md'>The digital bureau</p>
+        <p className='heading-sm'><span className="italics">of </span>Ana F. Rodrigues</p>
       </div>
       <div className="preheader-right">
-        <label>Lisbon</label>
+        <p className='mono-md'>Lisbon</p>
         <Clock/>
       </div>
     </div>
 
     <div className="intro">
-      <h1>Digital Experience Designer based in Lisbon, working worldwide.</h1>
+      <p className='heading-xl'>Digital Experience Designer based in Lisbon, working worldwide.</p>
       <p></p>
-      <p>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
-      <p>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
+      <p className='paragraph-sm'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
+      <p className='paragraph-sm'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
     </div>
 
     <div className="video">

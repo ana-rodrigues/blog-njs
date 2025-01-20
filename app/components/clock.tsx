@@ -18,7 +18,7 @@ const Clock: React.FC = () => {
     return null; // or a loading spinner
   }
 
-  return <div><p className="clock">{time}</p></div>;
+  return <div><p className="clock mono-md">{time}</p></div>;
 };
 
 export default Clock;
