@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowUpRight } from 'lucide-react';
 
-const Experience = () => {
+const ExperienceCard = () => {
   return (
     <article className='experience-card'>
     <main>
@@ -33,4 +33,4 @@ const Experience = () => {
   )
 }
 
-export default Experience
+export default ExperienceCard
