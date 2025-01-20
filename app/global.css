@@ -88,7 +88,6 @@ body {
   letter-spacing: 4%;
   font-size: 1.2rem;
   line-height: 130%;
-  margin: var(--spacer-xxsm);
   color: var(--primary-text-color);
 }
 
@@ -182,6 +181,12 @@ a {
   gap: var(--spacer-sm);
   padding-bottom: var(--spacer-md);
   width: 100%;
+}
+
+.preheader-left {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacer-xxsm);
 }
 
 .intro {
