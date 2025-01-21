@@ -5,7 +5,7 @@ const Hero = () => (
     <section id="hero">
 
     <div className="preheader">
-      <h1 className="visually-hidden">The digital bureau of Ana F. Rodrigues, Digital Experience Designer</h1>
+      <h1 className="visually-hidden">The digital bureau of Ana F. Rodrigues, Product Experience Designer</h1>
       <div className="preheader-left">
         <p className='mono-md'>The digital bureau</p>
         <p className='heading-sm'><span className="italics">of </span>Ana F. Rodrigues</p>
@@ -17,10 +17,10 @@ const Hero = () => (
     </div>
 
     <div className="intro">
-      <p className='heading-xl'>Digital Experience Designer based in Lisbon, working worldwide.</p>
+      <p className='heading-xl'>{'Product Experience Designer based in Lisbon, working worldwide.'}</p>
       <p></p>
-      <p className='paragraph-md'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
-      <p className='paragraph-md'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
+      <p className='paragraph-sm'>{`I am a Product Experience Designer with over 8 years of expertise in crafting digital solutions for the e-commerce and fintech industries. My background spans roles as individual contributor, Lead Product Designer, and Product Manager, allowing me to bring a user-centric mindset to all my contributions.`}</p>
+      <p className='paragraph-sm'>{`A builder at heart, I combine strong UX foundations and visual culture with technical and business savvy. With hands-on familiarity with the complexities of B2B and API-first products, I thrive in collaborative, high-impact roles where thoughtful, well-crafted product experiences drive real business value.`}</p>
     </div>
 
     <div className="video">
