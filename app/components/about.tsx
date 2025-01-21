@@ -10,7 +10,7 @@ const About = () => {
 
             <div className='about-col col-2'>
                 <h3 className='heading-md'>About me</h3>
-                <p className='paragraph-sm'>{'My first contact with digital experiences was an old Olivetti machine, where I quickly learned to run my favourite games as a kid, through obsessive trial and error. It was the entry point to becoming passionately interested about technology, culture and design.'}</p>
+                <p className='paragraph-sm'>{'My first contact with digital experiences was with an old Olivetti machine, where I quickly learned to run my favourite games through obsessive trial and error. It was the entry point to becoming passionately interested about technology, culture and design.'}</p>
             </div>
 
             <div className='about-col col-3'>
