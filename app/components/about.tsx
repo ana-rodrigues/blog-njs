@@ -10,17 +10,17 @@ const About = () => {
 
             <div className='about-col col-2'>
                 <h3 className='heading-md'>About me</h3>
-                <p className='paragraph-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className='paragraph-sm'>{'My first contact with digital experiences was an old Olivetti machine, where I quickly learned to run my favourite games as a kid, through obsessive trial and error. It was the entry point to becoming passionately interested about technology, culture and design.'}</p>
             </div>
 
             <div className='about-col col-3'>
                 <h3 className='heading-md'>As a designer</h3>
-                <p className='paragraph-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className='paragraph-sm'>{'I have guided multiple early-stage companies in shaping their product experiences to find market-fit in dynamic, highly competitive markets. This required exceptional craft, rapid execution, strong collaboration and navigating ambiguity to deliver impactful results.'}</p>
             </div>
 
             <div className='about-col col-4'>
                 <h3 className='heading-md'>As a team leader</h3>
-                <p className='paragraph-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className='paragraph-sm'>{'I had the opportunity to build and lead high-performing teams, fostering design cultures that transformed companies from emerging players to innovators. These teams nurtured young designers, who have since built successful careers of their own.'}</p>
             </div>
 
         </div>
