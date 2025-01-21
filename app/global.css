@@ -375,7 +375,25 @@ a {
 }
 }
 
+/* Footer */
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(1, fr);
+  justify-content: center;
+  padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
+}
+
+footer img {
+  max-height: 200px;
+  min-height: 80px;
+  height: 70%;
+  width: auto;
+}
+
 /* Utilities */
+
 .align-right {
   display: flex;
   justify-content: end;
