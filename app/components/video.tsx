@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const Video: React.FC = () => {
+const Video = () => {
   return (
     <div className="video-wrapper">
       <video autoPlay muted controls={false} loop={true} poster="/media/thumbnail.png">
