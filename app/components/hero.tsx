@@ -11,7 +11,7 @@ const Hero = () => (
         <p className='heading-sm'><span className="italics">of </span>Ana F. Rodrigues</p>
       </div>
       <div className="preheader-right">
-        <p className='mono-md'>Lisbon</p>
+        <p className='mono-md'>Lisbon UTC+0</p>
         <Clock/>
       </div>
     </div>
@@ -19,8 +19,8 @@ const Hero = () => (
     <div className="intro">
       <p className='heading-xl'>Digital Experience Designer based in Lisbon, working worldwide.</p>
       <p></p>
-      <p className='paragraph-sm'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
-      <p className='paragraph-sm'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
+      <p className='paragraph-md'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
+      <p className='paragraph-md'>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}</p>
     </div>
 
     <div className="video">
