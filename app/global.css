@@ -195,8 +195,7 @@ a {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-lg);
-  padding-top: var(--spacer-sm);
-  padding-bottom: var(--spacer-md);
+  padding-bottom: var(--spacer-xlg);
 }
 
 .video-wrapper {
@@ -222,7 +221,6 @@ a {
 
   .video {
     padding-top: var(--spacer-lg);
-    padding-bottom: var(--spacer-lg);
   }
 }
 
@@ -246,7 +244,7 @@ a {
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-sm);
   padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-md);
+  padding-bottom: var(--spacer-lg);
 }
 
 @media screen and (min-width: 600px) {
@@ -267,6 +265,7 @@ a {
   .intro {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacer-lg);
+    padding-bottom: var(--spacer-sm);
   }
 }
 
