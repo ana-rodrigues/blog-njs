@@ -53,14 +53,22 @@ html {
 
 body {
   overflow-x: none;
-  padding-left: var(--spacer-lg);
-  padding-right: var(--spacer-lg);
+  padding-left: var(--spacer-md);
+  padding-right: var(--spacer-md);
   padding-top: var(--spacer-lg);
-  padding-bottom: var(--spacer-lg);
+  padding-bottom: var(--spacer-);
   background-color: var(--background-color);
   color: var(--primary-text-color);
   max-width: 1440px;
   margin: auto;
+  }
+
+  @media screen and (min-width: 600px) {
+
+  body {
+    padding-left: var(--spacer-lg);
+    padding-right: var(--spacer-lg);
+   }
   }
 
 .heading-xl {
@@ -172,7 +180,6 @@ a {
   margin-top: 0;
   margin-bottom: 3px;
 }
-
 }
 
 /* Video */
@@ -207,7 +214,7 @@ a {
 .preheader {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-sm);
+  gap: var(--spacer-md);
   padding-bottom: var(--spacer-md);
   width: 100%;
 }
@@ -227,10 +234,6 @@ a {
 }
 
 @media screen and (min-width: 600px) {
-
-  .body {
-    padding: var(--spacer-lg);
-  }
 
   .preheader {
     grid-template-columns: repeat(2, 1fr);
