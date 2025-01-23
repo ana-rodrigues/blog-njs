@@ -75,10 +75,18 @@ body {
     font-family: 'PPEditorialOld-Ultralight', Times, serif;
     font-weight: 300;
     letter-spacing: 2%;
-    font-size: 2.0rem;
+    font-size: 2.4rem;
     line-height: 140%;
     color: var(--primary-text-color);
 }
+
+@media screen and (min-width: 800px) {
+
+  .heading-xl {
+    font-size: 2.0rem;
+  }
+}
+
 
 .heading-l {
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
@@ -187,8 +195,8 @@ a {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-lg);
-  padding-top: var(--spacer-lg);
-  padding-bottom: var(--spacer-lg);
+  padding-top: var(--spacer-sm);
+  padding-bottom: var(--spacer-md);
 }
 
 .video-wrapper {
@@ -210,12 +218,20 @@ a {
   object-fit: cover;
 }
 
+@media screen and (min-width: 800px) {
+
+  .video {
+    padding-top: var(--spacer-lg);
+    padding-bottom: var(--spacer-lg);
+  }
+}
+
 /* Hero */
 .preheader {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-md);
-  padding-bottom: var(--spacer-md);
+  padding-bottom: var(--spacer-lg);
   width: 100%;
 }
 
@@ -228,7 +244,7 @@ a {
 .intro {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-md);
+  gap: var(--spacer-sm);
   padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-md);
 }
