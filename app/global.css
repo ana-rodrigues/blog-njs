@@ -56,7 +56,7 @@ body {
   padding-left: var(--spacer-md);
   padding-right: var(--spacer-md);
   padding-top: var(--spacer-lg);
-  padding-bottom: var(--spacer-);
+  padding-bottom: var(--spacer-md);
   background-color: var(--background-color);
   color: var(--primary-text-color);
   max-width: 1440px;
