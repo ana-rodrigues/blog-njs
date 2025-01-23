@@ -3,8 +3,9 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer>
-        <img src='/media/wire.png' alt='Entangled metallic wire 3D graphic'></img>
-        <p className='mono-sm'>All rights reserved 2025</p>
+        <p className='mono-sm'>All rights reserved</p>
+        <img className='inline' src='/media/computer.png' alt='Globe pixel art icon'></img>
+        <p className='mono-sm'>2025</p>
     </footer>
   )
 }
