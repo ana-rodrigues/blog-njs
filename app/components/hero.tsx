@@ -12,6 +12,7 @@ const Hero = () => (
       </div>
       <div className="preheader-right">
         <p className='mono-md'>Lisbon UTC+0</p>
+        <img className='inline' src='/media/world.png' alt='Globe pixel art icon'></img>
         <Clock/>
       </div>
     </div>
@@ -19,8 +20,8 @@ const Hero = () => (
     <div className="intro">
       <p className='heading-xl'>{'Product Experience Designer based in Lisbon, working worldwide.'}</p>
       <p></p>
-      <p className='paragraph-sm'>{`I am a Product Experience Designer with over 8 years of expertise in crafting digital solutions for the e-commerce and fintech industries. My background spans roles as individual contributor, Lead Product Designer, and Product Manager, allowing me to bring a user-centric mindset to all my contributions.`}</p>
-      <p className='paragraph-sm'>{`A builder at heart, I combine strong UX foundations and visual culture with technical and business savvy. With hands-on familiarity with the complexities of B2B and API-first products, I thrive in collaborative, high-impact roles where thoughtful, well-crafted product experiences drive real business value.`}</p>
+      <p className='paragraph-md'>{`I am a Product Experience Designer with over 8 years of experience in crafting digital solutions for the e-commerce and fintech industries. My experience spans roles as Product Designer, Team Lead, and Product Manager, putting me in a unique position to help businesses shape products zero to one.`}</p>
+      <p className='paragraph-md'>{`I am a builder at heart, combining usability expertise, visual culture, strategic and technical skills. With hands-on familiarity with the complexities of B2B and API-first products, I thrive in collaborative, high-impact roles where thoughtful, well-crafted product experiences drive real business value.`}</p>
     </div>
 
     <div className="video">

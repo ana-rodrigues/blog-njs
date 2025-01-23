@@ -25,7 +25,7 @@
 :root {
   --background-color: #111111;
   --primary-text-color: white;
-  --secondary-text-color: #ACACAC;
+  --secondary-text-color: #b0b0b0;
   --border-color: rgba(172, 172, 172, 0.25);
 
   --spacer-xlg: 80px;
@@ -39,6 +39,11 @@
 }
 
 /* Foundations */
+
+html {
+  cursor: url('/media/arrow.png'), auto;
+}
+
 * {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -111,7 +116,7 @@ body {
 
 .mono-sm {
   font-family: 'DepartureMono-Regular', monospace;
-  line-height: 100%;
+  line-height: 140%;
   font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--secondary-text-color);
@@ -122,7 +127,7 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 160%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--secondary-text-color);
 }
 
@@ -131,7 +136,7 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 160%;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--secondary-text-color);
 }
 
@@ -141,16 +146,19 @@ a {
   letter-spacing: 1%;
   line-height: 160%;
   font-size: 0.9rem;
-  color: var(--secondary-text-color);
+  color: var(--primary-text-color);
+  text-decoration: none;
+  cursor: url('/media/pointer.png'), pointer;
 }
+
 
 /* Clock */
 .preheader-right {
   display: flex;
   justify-content: start;
-  align-items: baseline;
+  align-items: center;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
   gap: var(--spacer-sm);
 }
 
@@ -231,6 +239,7 @@ a {
 
   .preheader-right {
     justify-content: end;
+    gap: var(--spacer-xsm);
   }
 }
 
@@ -280,18 +289,47 @@ a {
 }
 
 .experience-card h3 {
-  padding-bottom: var(--spacer-xxsm);
+  padding-bottom: var(--spacer-sm);
 }
 
 .experience-card .link {
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  justify-content: baseline;
+  display: flex;
+  grid-template-columns: repeat(2, fit-content);
+  gap: var(--spacer-xxsm);
+  align-items: center;
   margin-top: var(--spacer-sm);
+  width: fit-content;
 }
+
+.experience-card .link img {
+  height: 20px;
+  width: auto;
+  margin-top: 0;
+  margin-bottom: var(--spacer-xsm);
+}
+
+.link a::after {
+  content: '';
+  width: 0;
+  height: 1px;
+  display: block;
+  right: 0;
+  background: var(--primary-text-color);
+  transition: width 0.5s ease, right 0.5s ease;
+}
+
+.link a:hover::after {
+  width: 100%;
+  right: 0;
+}
+
 
 .experience-card .description {
   margin-top: 0;
+}
+
+.experience-card .highlight {
+  color: var(--primary-text-color);
 }
 
 .experience-card aside {
@@ -318,12 +356,12 @@ a {
   }
   
   .experience-card img {
-    margin-top: 42px;
+    margin-top: 52px;
     grid-column: 3 / span 2;
   }
 
   .experience-card .description {
-    margin-top: 42px;
+    margin-top: 52px;
   }
 
   .experience-card aside {
@@ -356,14 +394,14 @@ a {
   display: grid;
   grid-template-columns: repeat(1fr);
   gap: var(--spacer-lg);
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
+  padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-xlg);
 }
 
 .about-col {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacer-xsm);
+  gap: var(--spacer-sm);
   align-self: flex-start;
 }
 
@@ -401,20 +439,20 @@ a {
 
 footer {
   display: grid;
-  grid-template-columns: repeat(1, fr);
+  grid-template-columns: repeat(3, max-content);
   justify-content: center;
-  padding-top: var(--spacer-lg);
+  gap: var(--spacer-xsm);
+  align-items: center;
+  padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-lg);
 }
 
-footer img {
-  max-height: 200px;
-  min-height: 80px;
-  height: 70%;
-  width: auto;
-}
-
 /* Utilities */
+
+.inline {
+  width: auto;
+  height: 24px;
+}
 
 .align-right {
   display: flex;
