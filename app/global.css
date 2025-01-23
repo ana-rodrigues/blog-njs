@@ -116,7 +116,7 @@ body {
 
 .mono-sm {
   font-family: 'DepartureMono-Regular', monospace;
-  line-height: 140%;
+  line-height: 150%;
   font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--secondary-text-color);
@@ -163,7 +163,6 @@ a {
 }
 
 .clock {
-  margin-top: var(--spacer-sm);
   display: inline-block;
 }
 
@@ -171,6 +170,7 @@ a {
 
 .clock {
   margin-top: 0;
+  margin-bottom: 3px;
 }
 
 }
