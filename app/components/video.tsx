@@ -6,7 +6,7 @@ const Video = () => {
   return (
     <div className="video-wrapper">
       <video autoPlay muted controls={false} loop={true} poster="/media/thumbnail.png">
-        <source src="/media/video.mp4" type="video/mp4" />
+        <source src="/media/reel.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
