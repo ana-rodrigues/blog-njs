@@ -175,7 +175,7 @@ a {
   align-items: center;
   display: grid;
   grid-template-columns: repeat(3, auto);
-  gap: var(--spacer-sm);
+  gap: var(--spacer-xsm);
 }
 
 .clock {
@@ -199,7 +199,7 @@ a {
 }
 
 .video-wrapper {
-  grid-column: 1;
+  grid-column: 1 / 4;
   position: relative;
   width: 100%;
   padding-bottom: 61.8%; /* 16:9 aspect ratio */
@@ -221,6 +221,18 @@ a {
 
   .video {
     padding-top: var(--spacer-lg);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .video {
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: var(--spacer-xlg);
+  }
+  
+  .video-wrapper {
+    grid-column: 3 / 5;
   }
 }
 
@@ -275,15 +287,6 @@ a {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacer-lg);
   } 
-  
-  .video {
-    grid-template-columns: repeat(2, 1fr);
-    padding-bottom: var(--spacer-xlg);
-  }
-  
-  .video-wrapper {
-    grid-column: 2;
-  }
 }
 
 /* Experience card */
