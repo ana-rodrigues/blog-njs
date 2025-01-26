@@ -9,7 +9,7 @@ const ExperienceCard = () => {
         <div>
             <h3 className='heading-md'>Navro</h3>
             <p className='paragraph-md'>Navro simplifies global payments for businesses by offering access to premier payment services worldwide through a single contract and API.</p>
-            <div className="link"><a href='https://navro.com'>Website</a><ArrowUpRight strokeWidth={1} color='#ACACAC' /></div>
+            <div className="link"><a href='https://navro.com'>Website</a><img className='inline' src='/media/url.png' alt='External link pixel icon'></img></div>
         </div>
 
         <div className='description'>

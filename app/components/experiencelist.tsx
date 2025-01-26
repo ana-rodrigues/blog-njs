@@ -18,7 +18,7 @@ const ExperienceList = () => {
         </div>
         <div></div>
         <div>
-            <img src="/media/thumbnail.png" alt="" />
+            <img src="/media/navro-thumb.png" alt="" />
         </div>
     </main>
     <aside>
@@ -40,7 +40,7 @@ const ExperienceList = () => {
         </div>
         <div></div>
         <div>
-            <img src="/media/thumbnail.png" alt="" />
+            <img src="/media/swell-thumb.png" alt="" />
         </div>
     </main>
     <aside>
@@ -61,7 +61,7 @@ const ExperienceList = () => {
         </div>
         <div></div>
         <div>
-            <img src="/media/thumbnail.png" alt="" />
+            <img src="/media/offwhite-thumb.png" alt="" />
         </div>
     </main>
     <aside>
