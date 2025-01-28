@@ -39,8 +39,9 @@
 
 .carouselContainer {
   position: relative;
-  width: 80%;
-  max-width: 95vw;
+  width: 100vw;
+  margin-left: var(--spacer-sm);
+  margin-right: var(--spacer-sm);
   height: auto;
   background: none;
   animation: fadeIn 250ms ease-in-out;
