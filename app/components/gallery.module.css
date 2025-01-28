@@ -1,0 +1,109 @@
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  cursor: url('/media/pointer.png'), pointer;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.carouselContainer {
+  position: relative;
+  width: 80%;
+  max-width: 95vw;
+  height: auto;
+  background: none;
+  animation: fadeIn 250ms ease-in-out;
+}
+
+.carouselContainer.exit {
+  animation: fadeOut 250ms ease-in-out;
+}
+
+.carouselImage {
+  width: 100%;
+  height: auto;
+}
+
+.customArrow {
+  font-family: 'DepartureMono-Regular', monospace;
+  line-height: 150%;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  z-index: 1000;
+}
+
+.customArrow:hover {
+  color: var(--secondary-text-color);
+  cursor: url('/media/pointer.png'), pointer;
+}
+
+.customArrowPrev {
+  left: 8px;
+}
+
+.customArrowNext {
+  right: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+
+  .carouselContainer {
+    max-width: 60vw;
+  }
+}
