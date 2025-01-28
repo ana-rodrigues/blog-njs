@@ -25,6 +25,7 @@
 :root {
   --background-color: #111111;
   --primary-text-color: white;
+  --inverse-primary-color: #111111;
   --secondary-text-color: #b0b0b0;
   --border-color: rgba(172, 172, 172, 0.25);
 

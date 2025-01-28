@@ -5,17 +5,14 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from './gallery.module.css';
 
-const Gallery: React.FC = () => {
+interface GalleryProps {
+  thumbnails: string[];
+}
+
+const Gallery: React.FC<GalleryProps> = ({ thumbnails }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isExiting, setIsExiting] = useState<boolean>(false);
-
-  const thumbnails = [
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-  ];
 
   const renderArrowPrev = (onClickHandler: () => void, hasPrev: boolean, label: string) => (
     hasPrev && (
@@ -46,9 +43,7 @@ const Gallery: React.FC = () => {
   );
 
   const handleKeyDown = (e: React.KeyboardEvent, onClickHandler: () => void) => {
-    if (e.key === 'ArrowLeft') {
-      onClickHandler();
-    } else if (e.key === 'ArrowRight') {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
       onClickHandler();
     }
   };
@@ -63,7 +58,7 @@ const Gallery: React.FC = () => {
     setTimeout(() => {
       setSelectedImage(null);
       setIsExiting(false);
-    }, 250); // Match the duration of the fadeOut animation
+    }, 100);
   };
 
   return (
