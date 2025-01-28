@@ -57,6 +57,11 @@
 
 @media screen and (min-width: 800px) {
 
+  .preheader {
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: var(--spacer-lg);
+  }
+
   .intro {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacer-lg);
