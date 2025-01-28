@@ -6,9 +6,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/material": "^5.16.14",
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "20.11.17",
