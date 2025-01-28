@@ -72,7 +72,7 @@
 }
 
 .customArrow:hover {
-  color: var(--secondary-text-color);
+  color: var(--inverse-primary-color);
   cursor: url('/media/pointer.png'), pointer;
 }
 
@@ -106,5 +106,9 @@
 
   .carouselContainer {
     max-width: 60vw;
+  }
+
+  .thumbnailGrid {
+    justify-content: end;  
   }
 }
