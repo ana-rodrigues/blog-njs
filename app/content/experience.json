@@ -1,0 +1,15 @@
+{
+    "title": "Professional experience",
+    "experiences": [
+      {
+        "company": "Navro",
+        "description": "Navro simplifies global payments for businesses by offering access to premier payment services worldwide through a single contract and API.",
+        "website": "https://navro.com",
+        "websiteLabel": "Website",
+        "roleDescription": "I joined as the first in-house designer, responsible for transitioning the design function from consultancy to a permanent team. Collaborating closely with Product and Engineering leadership, I established foundational processes, implemented continuous discovery practices and promoted accessibility standards. As a result, in less than two years, our team built a full payment suite featuring complex payment workflows that comply with regulatory requirements across various regions.",
+        "thumbnails": ["/media/navro-thumb.png","/media/navro-thumb.png"],
+        "role": "Product Designer",
+        "date": "2023 - today"
+      }
+    ]
+  }

@@ -7,7 +7,9 @@ export default function Page () {
   return (
     <>
       <Hero />
-      <ExperienceCard />
+    <div>
+      <ExperienceCard index={0} />
+    </div>
       <About />
       <Footer />
     </>
