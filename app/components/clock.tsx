@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import styles from './clock.module.css';
 
 const Clock: React.FC = () => {
   const [time, setTime] = useState<string | null>(null);
@@ -15,10 +16,12 @@ const Clock: React.FC = () => {
   }, []);
 
   if (time === null) {
-    return null; // or a loading spinner
+    return null;
   }
 
-  return <div><p className="clock mono-md">{time}</p></div>;
+  return <div className={styles.clock}>
+    <p className="monoMd">{time}</p>
+  </div>;
 };
 
 export default Clock;
