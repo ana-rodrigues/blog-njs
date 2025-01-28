@@ -10,6 +10,26 @@
         "thumbnails": ["/media/navro-thumb.png","/media/navro-thumb.png"],
         "role": "Product Designer",
         "date": "2023 - today"
+      },
+      {
+        "company": "Swell Commerce",
+        "description": "Swell is a customizable, API-first e-commerce platform. It's headless architecture offers businesses the flexibility to operate multiple storefronts across various tech stacks.",
+        "website": "https://www.swell.is",
+        "websiteLabel": "Website",
+        "roleDescription": "I embraced a new challenge as a Product Manager, applying my e-commerce and product design expertise to develop a hosted storefronts solution featuring a no-code builder - a product aiming to unlock the full potential of the SMB customer segment for the business. I also contributed to increased conversions through the optimisation of the product onboarding.",
+        "thumbnails": ["/media/swell-thumb.png","/media/swell-thumb.png","/media/swell-thumb.png"],
+        "role": "Product Manager",
+        "date": "2022"
+      },
+      {
+        "company": "Gaspard+Bruno",
+        "description": "Gaspard+Bruno is an independent creative company with offices in London and Lisbon, specializing in strategy, design, and engineering.",
+        "website": "https://gaspardbruno.com",
+        "websiteLabel": "Website",
+        "roleDescription": "I helped shaping their product approach and played a key role in collaborations with high-profile clients such as Public.com, Off-White, and Browns Fashion (for Farfetch), helping transform the organisation from a small studio into the creative powerhouse it is today.",
+        "thumbnails": ["/media/offwhite-thumb.png","/media/offwhite-thumb.png","/media/offwhite-thumb.png","/media/offwhite-thumb.png"],
+        "role": "Product Manager",
+        "date": "2022"
       }
     ]
   }

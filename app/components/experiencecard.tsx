@@ -1,9 +1,13 @@
 import React from 'react';
 import Gallery from './gallery';
 import styles from './experiencecard.module.css';
-import experienceData from 'app/content/experience.json';
+import experienceData from '../content/experience.json';
 
-const ExperienceCard = ({ index }) => {
+interface ExperienceCardProps {
+  index: number;
+}
+
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
   const experience = experienceData.experiences[index];
 
   return (
@@ -25,7 +29,7 @@ const ExperienceCard = ({ index }) => {
         <div></div>
 
         <div>
-          <Gallery />
+        <Gallery thumbnails={experience.thumbnails} />
         </div>
 
       </main>

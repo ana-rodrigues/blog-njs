@@ -9,6 +9,8 @@ export default function Page () {
       <Hero />
     <div>
       <ExperienceCard index={0} />
+      <ExperienceCard index={1} />
+      <ExperienceCard index={2} />
     </div>
       <About />
       <Footer />
