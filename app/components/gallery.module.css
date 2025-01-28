@@ -1,0 +1,69 @@
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 500ms linear, visibility 500ms linear;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.carouselContainer {
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.largeImageContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: auto;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 500ms linear, visibility 500ms linear;
+}
+
+.largeImageContainer img {
+  width: 100%;
+  height: auto;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
