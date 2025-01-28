@@ -1,0 +1,6 @@
+.aside {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--spacer-xxsm);
+    border-top: 1px solid var(--border-color);
+  }

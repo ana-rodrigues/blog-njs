@@ -1,11 +1,14 @@
 import React from 'react'
 import ExperienceCard from './experiencecard';
 import experienceData from '../content/experience.json';
+import styles from './experience.module.css';
 
 const Experience = () => {
     return (
-      <section id='Experience'>
+      <section>
+        <aside className={styles.aside}>
         <h2 className="visuallyHidden">{experienceData.title}</h2>
+        </aside>
         {experienceData.experiences.map((_, index) => (
           <ExperienceCard key={index} index={index} />
         ))}

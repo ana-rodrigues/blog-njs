@@ -56,7 +56,7 @@ body {
   overflow-x: none;
   padding-left: var(--spacer-md);
   padding-right: var(--spacer-md);
-  padding-top: var(--spacer-lg);
+  padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-md);
   background-color: var(--background-color);
   color: var(--primary-text-color);
@@ -67,8 +67,10 @@ body {
   @media screen and (min-width: 600px) {
 
   body {
-    padding-left: var(--spacer-lg);
-    padding-right: var(--spacer-lg);
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    margin-left: var(--spacer-xlg);
+    margin-right: var(--spacer-xlg);
    }
   }
 
@@ -129,6 +131,7 @@ body {
   line-height: 100%;
   font-size: 0.9rem;
   text-transform: uppercase;
+  font-weight: normal;
 }
 
 .monoSm {
@@ -137,6 +140,7 @@ body {
   font-size: 0.8rem;
   text-transform: uppercase;
   color: var(--secondary-text-color);
+  font-weight: normal;
 }
 
 .paragraphMd {
@@ -166,29 +170,6 @@ a {
   color: var(--primary-text-color);
   text-decoration: none;
   cursor: url('/media/pointer.png'), pointer;
-}
-
-
-/* Clock */
-.preheaderRight {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: var(--spacer-xsm);
-}
-
-.clock {
-  display: inline-block;
-}
-
-@media screen and (min-width: 800px) {
-
-.clock {
-  margin-top: 0;
-  margin-bottom: 3px;
-}
 }
 
 /* Video */
@@ -235,59 +216,6 @@ a {
   .videoWrapper {
     grid-column: 3 / 5;
   }
-}
-
-/* Hero */
-.preheader {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
-  width: 100%;
-}
-
-.preheaderLeft {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacer-xsm);
-}
-
-.intro {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-sm);
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
-}
-
-@media screen and (min-width: 600px) {
-
-  .preheader {
-    grid-template-columns: repeat(2, 1fr);
-    padding-bottom: var(--spacer-lg);
-  }
-
-  .preheaderRight {
-    justify-content: end;
-    gap: var(--spacer-xsm);
-  }
-}
-
-@media screen and (min-width: 800px) {
-
-  .intro {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacer-lg);
-    padding-bottom: var(--spacer-sm);
-  }
-}
-
-@media screen and (min-width: 1200px) {
-
-  .intro {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacer-lg);
-  } 
 }
 
 /* About */
