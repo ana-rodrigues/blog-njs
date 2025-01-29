@@ -1,5 +1,4 @@
 .thumbnailGrid {
-  padding-top: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
@@ -73,7 +72,7 @@
 }
 
 .customArrow:hover {
-  color: var(--inverse-primary-color);
+  color: var(--secondary-text-color);
   cursor: url('/media/pointer.png'), pointer;
 }
 
@@ -107,10 +106,5 @@
 
   .carouselContainer {
     max-width: 60vw;
-  }
-
-  .thumbnailGrid {
-    padding-top: 56px;
-    justify-content: end;  
   }
 }

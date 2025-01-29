@@ -28,6 +28,7 @@
   --inverse-primary-color: #111111;
   --secondary-text-color: #b0b0b0;
   --border-color: rgba(172, 172, 172, 0.25);
+  --surface-color: rgba(46, 46, 46, 0.75);
 
   --spacer-xlg: 80px;
   --spacer-lg: 40px;
@@ -53,26 +54,26 @@ html {
 }
 
 body {
-  overflow-x: none;
-  padding-left: var(--spacer-md);
-  padding-right: var(--spacer-md);
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-md);
   background-color: var(--background-color);
   color: var(--primary-text-color);
+  }
+
+.container {
+  padding-bottom: var(--spacer-md);
+  padding-top: var(--spacer-lg);
   max-width: 1440px;
   margin: auto;
-  }
+  padding-left: var(--spacer-lg);
+  padding-right: var(--spacer-lg);
+}
 
-  @media screen and (min-width: 600px) {
+@media screen and (min-width: 600px) {
 
-  body {
-    border-right: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    margin-left: var(--spacer-xlg);
-    margin-right: var(--spacer-xlg);
+  .container {
+    padding-left: var(--spacer-lg);
+    padding-right: var(--spacer-lg);
    }
-  }
+}
 
 .headingXl {
     font-family: 'PPEditorialOld-Ultralight', Times, serif;
@@ -129,7 +130,7 @@ body {
 .monoMd {
   font-family: 'DepartureMono-Regular', monospace;
   line-height: 100%;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   font-weight: normal;
 }

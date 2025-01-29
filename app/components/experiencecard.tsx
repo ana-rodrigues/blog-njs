@@ -29,7 +29,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
         <div></div>
 
         <div>
-        <Gallery thumbnails={experience.thumbnails} />
+        <Gallery />
         </div>
 
       </main>

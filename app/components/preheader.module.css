@@ -1,0 +1,35 @@
+.preheader {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacer-md);
+  padding-bottom: var(--spacer-xxsm);
+  padding-top: var(--spacer-xxsm);
+  padding-left: var(--spacer-lg);
+  padding-right: var(--spacer-lg);
+  background-color: var(--surface-color);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.preheaderLeft {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacer-xsm);
+  align-items: center;
+}
+
+.preheaderRight {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: var(--spacer-xsm);
+  height: min-content;
+}
