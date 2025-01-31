@@ -4,7 +4,7 @@ import Clock from './clock';
 
 const Preheader = () => {
   return (
-    <div className={styles.preheader}>
+    <div className={`container ${styles.preheader}`}>
         <h1 className="visuallyHidden">The digital bureau of Ana Rodrigues, Product Experience Designer</h1>
 
     <div className={styles.preheaderLeft}>

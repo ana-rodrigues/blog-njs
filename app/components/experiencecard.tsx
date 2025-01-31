@@ -26,8 +26,6 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
           <p className={`${styles.paragraphMd} paragraphMd`}>{experience.roleDescription}</p>
         </div>
 
-        <div></div>
-
         <div>
         <Gallery />
         </div>

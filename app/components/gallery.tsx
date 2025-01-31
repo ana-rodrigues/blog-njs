@@ -13,8 +13,6 @@ const Gallery: React.FC = () => {
   const thumbnails = [
     '/media/swell-thumb.png',
     '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
   ];
 
   const renderArrowPrev = (onClickHandler: () => void, hasPrev: boolean, label: string) => (
@@ -63,7 +61,7 @@ const Gallery: React.FC = () => {
     setTimeout(() => {
       setSelectedImage(null);
       setIsExiting(false);
-    }, 250); // Match the duration of the fadeOut animation
+    },0); // Match the duration of the fadeOut animation
   };
 
   return (

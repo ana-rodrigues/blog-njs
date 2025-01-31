@@ -8,11 +8,9 @@ export default function Page () {
   return (
     <>
       <Preheader />
-      <section className='container'>
-          <Hero />
-          <Experience />
-          <About />
-      </section>
+      <Hero />
+      <Experience />
+      <About />
       <Nav />
     </>
   );

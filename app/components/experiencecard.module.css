@@ -5,7 +5,7 @@
 .experienceCard main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-md);
+  gap: var(--spacer-lg);
   padding-bottom: var(--spacer-md);
   padding-top: var(--spacer-lg);
 }
@@ -92,12 +92,13 @@
 @media screen and (min-width: 1200px) {
 
   .experienceCard main {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacer-lg);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacer-xlg);
   }
 
   .experienceCard aside {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacer-xlg);
   }
 }
