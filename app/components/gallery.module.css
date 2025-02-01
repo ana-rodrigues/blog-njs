@@ -1,19 +1,20 @@
 .thumbnailGrid {
-  padding-top: 0;
+  padding-top: 58px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
 .thumbnail {
   width: 100%;
   height: auto;
-  cursor: pointer;
+  cursor: url('/media/pointer.png'), pointer;
 }
 
 .thumbnail img {
   width: 100%;
   height: auto;
+  border-radius: var(--border-sm);
 }
 
 .overlay {
@@ -30,12 +31,16 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  cursor: url('/media/pointer.png'), pointer;
+  transition: opacity 300ms ease-out;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .overlay.show {
   opacity: 1;
   visibility: visible;
+  cursor: url('/media/pointer.png'), pointer;
+  transition: opacity 300ms ease-out;
 }
 
 .carouselContainer {
@@ -55,6 +60,7 @@
 .carouselImage {
   width: 100%;
   height: auto;
+  border-radius: var(--border-md);
 }
 
 .customArrow {
@@ -73,7 +79,7 @@
 }
 
 .customArrow:hover {
-  color: var(--inverse-primary-color);
+  color: var(--secondary-text-color);
   cursor: url('/media/pointer.png'), pointer;
 }
 
@@ -107,10 +113,5 @@
 
   .carouselContainer {
     max-width: 60vw;
-  }
-
-  .thumbnailGrid {
-    padding-top: 56px;
-    justify-content: end;  
   }
 }

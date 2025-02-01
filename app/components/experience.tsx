@@ -5,7 +5,7 @@ import styles from './experience.module.css';
 
 const Experience = () => {
     return (
-      <section>
+      <section className='container'>
         <aside className={styles.aside}>
         <h2 className="visuallyHidden">{experienceData.title}</h2>
         </aside>
