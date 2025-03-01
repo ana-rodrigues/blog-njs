@@ -1,11 +1,21 @@
 import React from 'react'
+import styles from './footer.module.css';
 
 const Footer = () => {
   return (
-    <footer>
-        <p className='mono-sm'>All rights reserved</p>
-        <img className='inline' src='/media/computer.png' alt='Globe pixel art icon'></img>
-        <p className='mono-sm'>2025</p>
+    <footer className={`container ${styles.footer}`}>
+
+        <div className={`${styles.preFooter}`}>
+            <div className='link'>
+              <a href="https://www.linkedin.com/in/ana-fernandes-rodrigues">Linkedin</a>
+              <img className={`inline`} src='/media/url.png' alt='Square company logotype ' />
+            </div>
+            <div className='link'>
+              <a href="mailto:hello@anarodrigues.design">hello@anarodrigues.design</a>
+              <img className={`inline`} src='/media/url.png' alt='Square company logotype ' />
+            </div>
+        </div>
+
     </footer>
   )
 }

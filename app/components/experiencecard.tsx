@@ -19,7 +19,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
 
           <div className={styles.detail}>
             <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>
-                <div className={`${styles.link} link`}>
+                <div className='link'>
                   <a href={experience.website}>{experience.websiteLabel}</a>
                   <img className={`inline`} src='/media/url.png' alt='Square company logotype ' />
                 </div>

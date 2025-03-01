@@ -55,12 +55,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--primary-text-color);
-  }
+}
 
 .container {
   padding-top: var(--spacer-lg);
@@ -170,7 +171,7 @@ body {
   letter-spacing: 1%;
   line-height: 160%;
   font-size: 0.75rem;
-  color: var (--secondary-text-color);
+  color: var(--secondary-text-color);
 }
 
 a {
@@ -184,6 +185,36 @@ a {
   cursor: url('/media/pointer.png'), pointer;
 }
 
+a::after {
+  content: '';
+  width: 0;
+  height: 1px;
+  display: block;
+  right: 0;
+  background: var(--primary-text-color);
+  transition: width 0.5s ease, right 0.5s ease;
+}
+
+a:hover::after {
+  width: 100%;
+  right: 0;
+}
+
+.link {
+  display: flex;
+  grid-template-columns: repeat(2, fit-content);
+  gap: var(--spacer-xxsm);
+  align-items: center;
+  width: fit-content;
+}
+
+.link img {
+  height: 20px;
+  width: auto;
+  margin-top: 0;
+  margin-bottom: var(--spacer-xsm);
+}
+
 /* Section header */
 
 .sectionHeader {
@@ -191,18 +222,6 @@ a {
   padding-top: var(--spacer-sm);
   padding-bottom: var(--spacer-sm);
   border-bottom: solid 1px var(--border-color);
-}
-
-/* Footer */
-
-footer {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  justify-content: center;
-  gap: var(--spacer-xsm);
-  align-items: center;
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
 }
 
 /* Utilities */

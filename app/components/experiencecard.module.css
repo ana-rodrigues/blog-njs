@@ -23,36 +23,6 @@
   grid-template-columns: repeat(1, max-content);
 }
 
-.experienceCard .link {
-  display: flex;
-  grid-template-columns: repeat(2, fit-content);
-  gap: var(--spacer-xxsm);
-  align-items: center;
-  width: fit-content;
-}
-
-.experienceCard .link img {
-  height: 20px;
-  width: auto;
-  margin-top: 0;
-  margin-bottom: var(--spacer-xsm);
-}
-
-.link a::after {
-  content: '';
-  width: 0;
-  height: 1px;
-  display: block;
-  right: 0;
-  background: var(--primary-text-color);
-  transition: width 0.5s ease, right 0.5s ease;
-}
-
-.link a:hover::after {
-  width: 100%;
-  right: 0;
-}
-
 .experienceCard .description {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
