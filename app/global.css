@@ -65,15 +65,15 @@ body {
 .container {
   padding-top: var(--spacer-lg);
   padding-bottom: var(--spacer-lg);
-  max-width: 720px;
+  max-width: 680px;
   margin: auto;
   padding-left: var(--spacer-md);
   padding-right: var(--spacer-md);
 }
 
 .full {
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-md);
+  padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
   max-width: 1600px;
   margin: auto;
 }
@@ -188,7 +188,6 @@ a {
 
 .sectionHeader {
   color: var(--secondary-text-color);
-  margin-top: var(--spacer-md);
   padding-top: var(--spacer-sm);
   padding-bottom: var(--spacer-sm);
   border-bottom: solid 1px var(--border-color);
