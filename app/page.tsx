@@ -18,7 +18,7 @@ const AnimatedSection = ({ children }) => {
       ref={ref}
       initial={{ opacity: 0, y: 8 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.1 }}
+      transition={{ duration: 0.8 }}
     >
       {children}
     </motion.div>
