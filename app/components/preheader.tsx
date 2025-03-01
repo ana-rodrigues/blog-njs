@@ -8,7 +8,8 @@ const Preheader = () => {
         <h1 className="visuallyHidden">The digital bureau of Ana Rodrigues, Product Experience Designer</h1>
 
     <div className={styles.preheaderLeft}>
-        <p className='monoMd'>The digital bureau of Ana Rodrigues</p>
+        <p className='monoMd'>Ana Fernandes Rodrigues</p>
+        <p className='monoMd'>Product experience designer</p>
     </div>
 
     <div className={styles.preheaderRight}>
