@@ -1,7 +1,7 @@
 .about {
     display: grid;
     grid-template-columns: repeat(1fr);
-    gap: var(--spacer-lg);
+    gap: var(--spacer-md);
     padding-top: var(--spacer-lg);
     padding-bottom: var(--spacer-xlg);
   }

@@ -13,7 +13,6 @@ export default function Page () {
       <Carousel />
       <Experience />
       <About />
-      <Nav />
     </>
   );
 }

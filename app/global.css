@@ -64,6 +64,7 @@ body {
 
 .container {
   padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
   max-width: 720px;
   margin: auto;
   padding-left: var(--spacer-md);
@@ -71,15 +72,17 @@ body {
 }
 
 .full {
+  padding-top: var(--spacer-md);
+  padding-bottom: var(--spacer-md);
   max-width: 1600px;
   margin: auto;
 }
 
 @media screen and (min-width: 600px) {
 
-  .container {
-    padding-left: var(--spacer-lg);
-    padding-right: var(--spacer-lg);
+  .container, .full {
+    padding-left: var(--spacer-md);
+    padding-right: var(--spacer-md);
    }
 }
 
