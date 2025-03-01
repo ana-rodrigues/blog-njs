@@ -3,15 +3,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './carousel.module.css';
 
-interface CarouselProps {
-  images: string[];
-}
+const Carousel: React.FC = () => {
+  const images = [
+    '/media/swell-thumb.png',
+    '/media/swell-thumb.png',
+    '/media/swell-thumb.png',
+    '/media/swell-thumb.png',
+    '/media/swell-thumb.png',
+    '/media/swell-thumb.png',
+  ];
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -22,7 +26,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
   const handleMouseLeave = () => {
     setIsDragging(false);
-    setIsHovered(false);
   };
 
   const handleMouseUp = () => {
@@ -37,10 +40,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = scrollLeft - walk;
     }
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
   };
 
   useEffect(() => {
@@ -61,13 +60,11 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   }, []);
 
   return (
-    <div
-      className={styles.carouselContainer}
+    <div className={`full ${styles.carouselContainer}`}
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       ref={carouselRef}
     >
       <div className={styles.carousel}>

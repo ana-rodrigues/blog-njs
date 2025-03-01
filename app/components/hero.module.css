@@ -1,12 +1,12 @@
 .hero {
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
+  padding-top: var(--spacer-sm);
+  padding-bottom: var(--spacer-md);
 }
 
 .introTop {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacer-lg);
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacer-md);
   padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-md);
 }
@@ -15,7 +15,7 @@
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
   font-weight: 300;
   letter-spacing: 2%;
-  font-size: 3.6rem;
+  font-size: 2.2rem;
   line-height: 120%;
   color: var(--primary-text-color);
   grid-column: 1 / span 2;
@@ -23,23 +23,39 @@
 
 .introBottom {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacer-lg);
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacer-md);
   padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
+  padding-bottom: var(--spacer-md);
 }
 
 
 
 @media screen and (min-width: 600px) {
 
+  .introHeading {
+    font-size: 2.8rem;
+  }
+.introTop {
+    grid-template-columns: repeat(2, 1fr);
 }
 
+.introBottom {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
 
 @media screen and (min-width: 800px) {
 
+.introHeading {
+  font-size: 3.4rem;
 }
 
+.hero {
+  padding-top: var(--spacer-md);
+  padding-bottom: var(--spacer-lg);
+}
+}
 
 @media screen and (min-width: 1200px) {
 

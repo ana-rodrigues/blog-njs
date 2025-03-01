@@ -64,10 +64,15 @@ body {
 .container {
   padding-bottom: var(--spacer-md);
   padding-top: var(--spacer-lg);
-  max-width: 800px;
+  max-width: 720px;
   margin: auto;
-  padding-left: var(--spacer-lg);
-  padding-right: var(--spacer-lg);
+  padding-left: var(--spacer-md);
+  padding-right: var(--spacer-md);
+}
+
+.full {
+  max-width: 1600px;
+  margin: auto;
 }
 
 @media screen and (min-width: 600px) {
@@ -152,7 +157,7 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 160%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--secondary-text-color);
 }
 
@@ -161,7 +166,7 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 160%;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var (--secondary-text-color);
 }
 
