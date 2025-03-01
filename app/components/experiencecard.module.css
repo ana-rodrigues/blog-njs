@@ -1,13 +1,7 @@
-.experienceCard {
-  margin-top: var(--spacer-md);
-  margin-bottom: var(--spacer-xlg);
-}
-
 .experienceCard .header {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-md);
-  padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-md);
 }
 

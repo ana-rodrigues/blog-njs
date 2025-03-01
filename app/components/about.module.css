@@ -1,0 +1,31 @@
+.about {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    gap: var(--spacer-lg);
+    padding-top: var(--spacer-lg);
+    padding-bottom: var(--spacer-xlg);
+  }
+  
+  .aboutCol {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacer-sm);
+    align-self: flex-start;
+  }
+  
+  
+  @media screen and (min-width: 800px) {
+  
+    .about {
+      gap: var(--spacer-lg);
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+  
+  .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacer-xlg);
+  }
+  }

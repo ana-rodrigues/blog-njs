@@ -1,0 +1,11 @@
+.experience {
+    display: grid;
+    grid-template-columns: 1;
+    gap: var(--spacer-lg);
+}
+
+.experienceList {
+    display: grid;
+    grid-template-columns: 1, max-content;
+    gap: var(--spacer-xlg);
+}
