@@ -182,7 +182,11 @@ a {
 }
 
 /* Section header */
-
+.sectionHeader {
+  padding-top: var(--spacer-sm);
+  padding-bottom: var(--spacer-sm);
+  border-bottom: solid 1px var(--border-color);
+}
 
 /* About */
 
