@@ -48,14 +48,14 @@ const Carousel: React.FC = () => {
     if (!carousel) return;
 
     const scroll = () => {
-      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-        carousel.scrollLeft = 0;
+      if (carousel.scrollLeft <= 0) {
+        carousel.scrollLeft = carousel.scrollWidth / 2;
       } else {
-        carousel.scrollLeft += 1;
+        carousel.scrollLeft -= 1;
       }
     };
 
-    const interval = setInterval(scroll, 20); // Adjust the scroll speed
+    const interval = setInterval(scroll, 20);
 
     return () => clearInterval(interval);
   }, []);
