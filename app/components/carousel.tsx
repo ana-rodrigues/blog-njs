@@ -5,13 +5,13 @@ import styles from './carousel.module.css';
 
 const Carousel: React.FC = () => {
   const images = [
-    '/media/thumb-offwhite1.png',
-    '/media/thumb-pour.png',
-    '/media/thumb-navro.png',
-    '/media/thumb-defiance.png',
-    '/media/thumb-offwhite2.png',
-    '/media/thumb-swell.png',
-    '/media/thumb-browns.png',
+    '/media/thumb-offwhite1.webp',
+    '/media/thumb-pour.webp',
+    '/media/thumb-navro.webp',
+    '/media/thumb-defiance.webp',
+    '/media/thumb-offwhite2.webp',
+    '/media/thumb-swell.webp',
+    '/media/thumb-browns.webp',
   ];
 
   const [isDragging, setIsDragging] = useState(false);
