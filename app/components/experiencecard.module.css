@@ -1,17 +1,32 @@
 .experienceCard {
-  margin-bottom: var(--spacer-lg);
+  margin-top: var(--spacer-md);
+  margin-bottom: var(--spacer-xlg);
 }
 
-.experienceCard main {
+.experienceCard .header {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-lg);
+  gap: var(--spacer-md);
+  padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-md);
-  padding-top: var(--spacer-lg);
 }
 
-.experienceCard h3 {
-  padding-bottom: var(--spacer-sm);
+.experienceCard .logo {
+  width: 54px;
+  height: auto;
+  border-radius: var(--border-md);
+}
+
+.experienceCard .company {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  gap: var(--spacer-sm);
+}
+
+.experienceCard .detail {
+  display: grid;
+  grid-template-columns: repeat(1, max-content);
 }
 
 .experienceCard .link {
@@ -19,7 +34,6 @@
   grid-template-columns: repeat(2, fit-content);
   gap: var(--spacer-xxsm);
   align-items: center;
-  margin-top: var(--spacer-sm);
   width: fit-content;
 }
 
@@ -46,59 +60,30 @@
 }
 
 .experienceCard .description {
-  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacer-sm);
+}
+
+.experienceCard .info {
+  margin-top: var(--spacer-xxsm);
+  
 }
 
 .experienceCard .highlight {
   color: var(--primary-text-color);
 }
 
-.experienceCard aside {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-xxsm);
-  padding-bottom: var(--spacer-sm);  
-  padding-top: var(--spacer-sm); 
-  border-bottom: 1px solid var(--border-color);
+
+
+@media screen and (min-width: 600px) {
+
+.experienceCard .header {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacer-md);
 }
 
-.experienceCard aside .role {
-  grid-column: 1 / 2;
+.experienceCard .info {
+  text-align: end;
 }
-
-.experienceCard aside .year {
-  grid-column: 2 / 2;
-}
-
-@media screen and (min-width: 800px) {
-
-  .experienceCard main {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacer-lg);
-    min-height: 240px;
-  }
-
-  .experienceCard .description {
-    margin-top: 52px;
-  }
-
-  .experienceCard aside {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacer-lg);
-  }
-}
-
-@media screen and (min-width: 1200px) {
-
-  .experienceCard main {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacer-xlg);
-  }
-
-  .experienceCard aside {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacer-xlg);
-  }
 }

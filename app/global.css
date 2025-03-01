@@ -41,6 +41,7 @@
 
   --border-sm: 2px;
   --border-md: 8px;
+  --border-lg: 12px;
 }
 
 /* Foundations */
@@ -138,15 +139,15 @@ body {
 .monoMd {
   font-family: 'DepartureMono-Regular', monospace;
   line-height: 100%;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   font-weight: normal;
 }
 
 .monoSm {
   font-family: 'DepartureMono-Regular', monospace;
-  line-height: 150%;
-  font-size: 0.8rem;
+  line-height: 180%;
+  font-size: 0.75rem;
   text-transform: uppercase;
   color: var(--secondary-text-color);
   font-weight: normal;
@@ -157,7 +158,7 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 160%;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--secondary-text-color);
 }
 
@@ -182,7 +183,10 @@ a {
 }
 
 /* Section header */
+
 .sectionHeader {
+  color: var(--secondary-text-color);
+  margin-top: var(--spacer-md);
   padding-top: var(--spacer-sm);
   padding-bottom: var(--spacer-sm);
   border-bottom: solid 1px var(--border-color);

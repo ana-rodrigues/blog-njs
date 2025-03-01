@@ -7,7 +7,7 @@ const Experience = () => {
     return (
       <section className='container'>
         <aside className={styles.aside}>
-        <h2 className="sectionHeader monoSm">{experienceData.title}</h2>
+        <h2 className="sectionHeader monoMd">{experienceData.title}</h2>
         </aside>
         {experienceData.experiences.map((_, index) => (
           <ExperienceCard key={index} index={index} />

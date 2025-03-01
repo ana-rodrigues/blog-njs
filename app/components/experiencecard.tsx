@@ -11,25 +11,37 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
 
   return (
     <article className={styles.experienceCard}>
-      <main className={styles.main}>
-        <div>
-          <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>
-          <p className={`${styles.paragraphMd} paragraphMd`}>{experience.description}</p>
-          <div className={`${styles.link} link`}>
-            <a href={experience.website}>{experience.websiteLabel}</a>
-            <img className={`${styles.inline} inline`} src='/media/url.png' alt='External link pixel icon' />
+
+      <div className={styles.header}>
+
+        <div className={styles.company}>
+          <img className={`${styles.logo} inline`} src={experience.logo} alt='Square company logotype ' />
+
+          <div className={styles.detail}>
+            <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>
+                <div className={`${styles.link} link`}>
+                  <a href={experience.website}>{experience.websiteLabel}</a>
+                  <img className={`inline`} src='/media/url.png' alt='Square company logotype ' />
+                </div>
           </div>
         </div>
 
-        <div className={`${styles.description} description`}>
-          <p className={`${styles.paragraphMd} paragraphMd`}>{experience.roleDescription}</p>
+        <div className={styles.info}>
+         <p className={`${styles.monoSm} monoSm`}>{experience.role}</p>
+         <p className={`${styles.monoSm} monoSm`}>{experience.date}</p>
         </div>
 
-      </main>
-      <aside className={styles.aside}>
-        <p className={`${styles.monoSm} monoSm`}>{experience.role}</p>
-        <p className={`${styles.monoSm} monoSm`}>{experience.date}</p>
-      </aside>
+      </div>
+
+      <div className={styles.main}>
+
+          <div className={styles.description}>
+            <p className={`${styles.paragraphMd} paragraphMd`}>{experience.description}</p>
+            <p className={`${styles.paragraphMd} paragraphMd`}>{experience.roleDescription}</p>
+          </div>
+
+      </div>
+
     </article>
   );
 };
