@@ -1,5 +1,4 @@
 import React from 'react';
-import Gallery from './gallery';
 import styles from './experiencecard.module.css';
 import experienceData from '../content/experience.json';
 
@@ -24,10 +23,6 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
 
         <div className={`${styles.description} description`}>
           <p className={`${styles.paragraphMd} paragraphMd`}>{experience.roleDescription}</p>
-        </div>
-
-        <div>
-        <Gallery />
         </div>
 
       </main>

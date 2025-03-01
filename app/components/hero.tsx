@@ -1,5 +1,4 @@
 import styles from './hero.module.css';
-import Slider from './slider'
 
 const Hero: React.FC = () => {
   const thumbnails = [
@@ -23,8 +22,6 @@ return (
 
       <p className={`paragraphMd ${styles.introDescription}`}>{`I am a builder at heart, combining usability expertise, visual culture, strategic and technical skills. With hands-on familiarity with the complexities of B2B and API-first products, I thrive in collaborative, high-impact roles where thoughtful, well-crafted product experiences drive real business value.`}</p>
     </div>
-
-    <Slider thumbnails={thumbnails} />
 
     </section>
 )
