@@ -64,7 +64,7 @@ body {
 .container {
   padding-bottom: var(--spacer-md);
   padding-top: var(--spacer-lg);
-  max-width: 1280px;
+  max-width: 800px;
   margin: auto;
   padding-left: var(--spacer-lg);
   padding-right: var(--spacer-lg);

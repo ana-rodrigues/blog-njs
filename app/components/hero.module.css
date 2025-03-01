@@ -1,14 +1,14 @@
 .hero {
   padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-xlg);
+  padding-bottom: var(--spacer-lg);
 }
 
 .introTop {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacer-lg);
   padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
+  padding-bottom: var(--spacer-md);
 }
 
 .introHeading {
@@ -19,12 +19,11 @@
   line-height: 120%;
   color: var(--primary-text-color);
   grid-column: 1 / span 2;
-  padding-bottom: var(--spacer-md);
 }
 
 .introBottom {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacer-lg);
   padding-top: var(--spacer-md);
   padding-bottom: var(--spacer-lg);
