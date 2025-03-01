@@ -5,12 +5,13 @@ import styles from './carousel.module.css';
 
 const Carousel: React.FC = () => {
   const images = [
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
-    '/media/swell-thumb.png',
+    '/media/thumb-offwhite1.png',
+    '/media/thumb-pour.png',
+    '/media/thumb-navro.png',
+    '/media/thumb-defiance.png',
+    '/media/thumb-offwhite2.png',
+    '/media/thumb-swell.png',
+    '/media/thumb-browns.png',
   ];
 
   const [isDragging, setIsDragging] = useState(false);
@@ -47,14 +48,14 @@ const Carousel: React.FC = () => {
     if (!carousel) return;
 
     const scroll = () => {
-      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-        carousel.scrollLeft = 0;
+      if (carousel.scrollLeft <= 0) {
+        carousel.scrollLeft = carousel.scrollWidth / 2;
       } else {
-        carousel.scrollLeft += 1;
+        carousel.scrollLeft -= 1;
       }
     };
 
-    const interval = setInterval(scroll, 20); // Adjust the scroll speed
+    const interval = setInterval(scroll, 20);
 
     return () => clearInterval(interval);
   }, []);

@@ -5,13 +5,13 @@ import styles from './experience.module.css';
 
 const Experience = () => {
     return (
-      <section className='container'>
-        <aside className={styles.aside}>
+      <section className={`container ${styles.experience}`}>
         <h2 className="sectionHeader monoMd">{experienceData.title}</h2>
-        </aside>
-        {experienceData.experiences.map((_, index) => (
-          <ExperienceCard key={index} index={index} />
-        ))}
+          <div className={`${styles.experienceList}`}>
+            {experienceData.experiences.map((_, index) => (
+              <ExperienceCard key={index} index={index} />
+            ))}
+        </div>
       </section>
     );
   };

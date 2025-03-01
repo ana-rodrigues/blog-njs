@@ -55,32 +55,35 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--background-color);
   color: var(--primary-text-color);
-  }
+}
 
 .container {
-  padding-bottom: var(--spacer-md);
   padding-top: var(--spacer-lg);
-  max-width: 720px;
+  padding-bottom: var(--spacer-lg);
+  max-width: 680px;
   margin: auto;
   padding-left: var(--spacer-md);
   padding-right: var(--spacer-md);
 }
 
 .full {
+  padding-top: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
   max-width: 1600px;
   margin: auto;
 }
 
 @media screen and (min-width: 600px) {
 
-  .container {
-    padding-left: var(--spacer-lg);
-    padding-right: var(--spacer-lg);
+  .container, .full {
+    padding-left: var(--spacer-md);
+    padding-right: var(--spacer-md);
    }
 }
 
@@ -168,7 +171,7 @@ body {
   letter-spacing: 1%;
   line-height: 160%;
   font-size: 0.75rem;
-  color: var (--secondary-text-color);
+  color: var(--secondary-text-color);
 }
 
 a {
@@ -182,61 +185,43 @@ a {
   cursor: url('/media/pointer.png'), pointer;
 }
 
+a::after {
+  content: '';
+  width: 0;
+  height: 1px;
+  display: block;
+  right: 0;
+  background: var(--primary-text-color);
+  transition: width 0.5s ease, right 0.5s ease;
+}
+
+a:hover::after {
+  width: 100%;
+  right: 0;
+}
+
+.link {
+  display: flex;
+  grid-template-columns: repeat(2, fit-content);
+  gap: var(--spacer-xxsm);
+  align-items: center;
+  width: fit-content;
+}
+
+.link img {
+  height: 20px;
+  width: auto;
+  margin-top: 0;
+  margin-bottom: var(--spacer-xsm);
+}
+
 /* Section header */
 
 .sectionHeader {
   color: var(--secondary-text-color);
-  margin-top: var(--spacer-md);
   padding-top: var(--spacer-sm);
   padding-bottom: var(--spacer-sm);
   border-bottom: solid 1px var(--border-color);
-}
-
-/* About */
-
-.about {
-  display: grid;
-  grid-template-columns: repeat(1fr);
-  gap: var(--spacer-lg);
-  padding-top: var(--spacer-lg);
-  padding-bottom: var(--spacer-xlg);
-}
-
-.aboutCol {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacer-sm);
-  align-self: flex-start;
-}
-
-
-@media screen and (min-width: 800px) {
-
-  .about {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacer-lg);
-  }
-}
-
-@media screen and (min-width: 1200px) {
-
-.about {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacer-xlg);
-}
-}
-
-/* Footer */
-
-footer {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  justify-content: center;
-  gap: var(--spacer-xsm);
-  align-items: center;
-  padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-lg);
 }
 
 /* Utilities */

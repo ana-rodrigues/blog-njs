@@ -23,7 +23,7 @@
   user-select: none;
   pointer-events: none;
   border-radius: var(--border-lg);
-  margin-right: var(--spacer-sm)
+  margin-right: var(--spacer-xsm)
 }
 
 .carousel img:last-child {
@@ -41,6 +41,6 @@
 @media screen and (min-width: 800px) {
 
   .carouselContainer, .carousel img {
-    height: 80vh;
+    height: 90vh;
   }
   }
