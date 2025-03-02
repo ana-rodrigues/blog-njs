@@ -13,7 +13,7 @@ export default function Page() {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.2 }}
+      transition={{ duration: 1.2, delay: 0.4 }}
       style={{ overflow: 'hidden' }}
     >
       <Preheader />
