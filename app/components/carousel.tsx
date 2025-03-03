@@ -5,13 +5,13 @@ import styles from './carousel.module.css';
 
 const Carousel: React.FC = () => {
   const images = [
-    '/media/thumb-offwhite1.webp',
-    '/media/thumb-pour.webp',
-    '/media/thumb-navro.webp',
-    '/media/thumb-defiance.webp',
-    '/media/thumb-offwhite2.webp',
-    '/media/thumb-swell.webp',
-    '/media/thumb-browns.webp',
+    '/media/thumb-offwhite1.png',
+    '/media/thumb-pour.png',
+    '/media/thumb-navro.png',
+    '/media/thumb-defiance.png',
+    '/media/thumb-offwhite2.png',
+    '/media/thumb-swell.png',
+    '/media/thumb-browns.png', 
   ];
 
   const [isDragging, setIsDragging] = useState(false);
@@ -23,6 +23,8 @@ const Carousel: React.FC = () => {
     setIsDragging(true);
     setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
     setScrollLeft(carouselRef.current?.scrollLeft || 0);
+    // Stop autoscroll on MouseDown
+
   };
 
   const handleMouseLeave = () => {
@@ -37,7 +39,7 @@ const Carousel: React.FC = () => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2; // Adjust the scroll speed
+    const walk = (x - startX) * 2; // Adjusts the scroll speed
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = scrollLeft - walk;
     }
@@ -54,6 +56,7 @@ const Carousel: React.FC = () => {
         carousel.scrollLeft -= 1;
       }
     };
+      // Invert scroll direction
 
     const interval = setInterval(scroll, 20);
 

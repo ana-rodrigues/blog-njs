@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "optimize-images": "node optimize-images.js"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.5",
