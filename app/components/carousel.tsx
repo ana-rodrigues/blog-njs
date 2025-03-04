@@ -31,6 +31,7 @@ const Carousel: React.FC = () => {
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
     setIsDragging(true);
     setStartX(e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0));
     setScrollLeft(carouselRef.current?.scrollLeft || 0);

@@ -47,7 +47,7 @@
 /* Foundations */
 
 html {
-  cursor: url('/media/arrow.png'), auto;
+  cursor: auto;
 }
 
 * {
@@ -64,8 +64,8 @@ body {
 }
 
 .container {
-  padding-top: var(--spacer-lg);
-  padding-bottom: var(--spacer-lg);
+  padding-top: var(--spacer-md);
+  padding-bottom: var(--spacer-md);
   max-width: 680px;
   margin: auto;
   padding-left: var(--spacer-md);
@@ -73,8 +73,8 @@ body {
 }
 
 .full {
-  padding-top: var(--spacer-lg);
-  padding-bottom: var(--spacer-lg);
+  padding-top: var(--spacer-md);
+  padding-bottom: var(--spacer-md);
   max-width: 1600px;
   margin: auto;
 }
@@ -182,7 +182,7 @@ a {
   font-size: 0.9rem;
   color: var(--primary-text-color);
   text-decoration: none;
-  cursor: url('/media/pointer.png'), pointer;
+  cursor: pointer;
 }
 
 a::after {
