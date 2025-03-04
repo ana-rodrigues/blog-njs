@@ -1,34 +1,40 @@
-import Link from 'next/link';
+"use client"
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from './nav.module.css';
 
-const navItems = {
-  '/': {
-    name: 'home',
-  },
-  '/blog': {
-    name: 'blog',
-  },
-}
-
 export function Nav() {
+  const pathname = usePathname();
+
+  const routes = [
+    {
+      href: "/",
+      label: "Home",
+      active: pathname === "/",
+    },
+    {
+      href: "/blog",
+      label: "Blog",
+      active: pathname === "/blog",
+    },
+  ];
+
   return (
-        <nav
-          id="nav">
-          <div className={`${styles.navbar}`}>
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  className={`monoMd ${styles.navitem}`}
-                  key={path}
-                  href={path}
-                >
-                  {name}
-                </Link>
-              )
-            })}
-          </div>
-        </nav>
-  )
+    <nav id="nav">
+      <div className={`${styles.navbar}`}>
+        {routes.map((route) => (
+          <Link
+            className={`monoSm ${styles.navitem} ${route.active ? styles.active : ''}`}
+            key={route.href}
+            href={route.href}
+          >
+            {route.label}
+          </Link>
+        ))}
+      </div>
+    </nav>
+  );
 }
 
-export default Nav
+export default Nav;

@@ -32,7 +32,6 @@ files.forEach(file => {
   if (['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext)) {
     const filename = path.basename(file, ext);
     
-    // Create webp version
     const pngOutput = path.join(outputDir, `${filename}.png`);
     const tinyOutput = path.join(outputDir, `${filename}-tiny.webp`);
 
