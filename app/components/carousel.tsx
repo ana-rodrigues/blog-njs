@@ -19,7 +19,6 @@ const Carousel: React.FC = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollInterval, setScrollInterval] = useState<NodeJS.Timeout | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [autoScrollSpeed] = useState(0.5); // Lower value for smoother animation
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -53,11 +52,10 @@ const Carousel: React.FC = () => {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
-    e.preventDefault();
     const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 1.5; // Adjusts the scroll speed
+    const walk = (x - startX) * 2; // Adjusts the scroll speed
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk;
+      carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
     }
   };
 
@@ -65,12 +63,13 @@ const Carousel: React.FC = () => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 1.5; // Adjusts the scroll speed
+    const walk = (x - startX) * 2; // Adjusts the scroll speed
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
     }
   };
 
+  // Add a dedicated function to stop autoscroll
   const stopAutoScroll = () => {
     if (scrollInterval) {
       clearInterval(scrollInterval);
@@ -82,32 +81,26 @@ const Carousel: React.FC = () => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
+    // Always make sure to clear any existing interval first
     stopAutoScroll();
 
     const scroll = () => {
       if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-        // Smooth reset by stepping back instead of jumping
         carousel.scrollLeft = 0;
       } else {
-        carousel.scrollLeft += autoScrollSpeed;
+        carousel.scrollLeft += 1;
       }
     };
 
-    // Using requestAnimationFrame for smoother scrolling
-    const animateScroll = () => {
-      scroll();
-      const id = requestAnimationFrame(animateScroll);
-      setScrollInterval(id as unknown as NodeJS.Timeout);
-    };
-
-    const id = requestAnimationFrame(animateScroll);
-    setScrollInterval(id as unknown as NodeJS.Timeout);
+    const interval = setInterval(scroll,30);
+    setScrollInterval(interval);
   };
 
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
+    // Initialize auto-scroll
     restartAutoScroll();
 
     const touchMoveHandler = (e: TouchEvent) => {
@@ -119,12 +112,10 @@ const Carousel: React.FC = () => {
     carousel.addEventListener('touchmove', touchMoveHandler, { passive: false });
 
     return () => {
-      if (scrollInterval) {
-        cancelAnimationFrame(scrollInterval as unknown as number);
-      }
+      stopAutoScroll();
       carousel.removeEventListener('touchmove', touchMoveHandler);
     };
-  }, []);
+  }, []);  // Remove isDragging from dependencies to avoid re-initializing
 
   return (
     <div 
@@ -137,16 +128,11 @@ const Carousel: React.FC = () => {
       onTouchEnd={handleTouchEnd}
       onTouchMove={handleTouchMove}
       ref={carouselRef}
-      style={{ touchAction: 'pan-x' }}
+      style={{ touchAction: 'pan-x' }} // Change to pan-x to only allow horizontal movement
     >
       <div className={styles.carousel}>
         {images.concat(images).map((src, index) => (
-          <img 
-            key={index} 
-            src={src} 
-            alt={`Carousel image ${index + 1}`}
-            loading="eager" // Ensure images load quickly
-          />
+          <img key={index} src={src} alt={`Carousel image ${index + 1}`} />
         ))}
       </div>
     </div>

@@ -7,8 +7,6 @@
   overflow-y: hidden; /* Prevent vertical scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   user-select: none; /* Prevent text selection during drag */
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
 }
 
 .carouselContainer::-webkit-scrollbar {
