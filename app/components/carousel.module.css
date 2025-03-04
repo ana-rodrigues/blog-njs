@@ -1,8 +1,8 @@
 .carouselContainer {
   position: relative;
   width: 100%;
-  height: 50vh;
   overflow: hidden;
+  display: inline-block;
 }
 
 .carousel {
@@ -18,7 +18,6 @@
 
 .carousel img {
   height: 50vh;
-  width: auto;
   object-fit: cover;
   user-select: none;
   pointer-events: none;
@@ -33,14 +32,14 @@
 
 @media screen and (min-width: 600px) {
 
-.carouselContainer, .carousel img {
+  .carousel img {
   height: 60vh;
 }
 }
 
 @media screen and (min-width: 800px) {
 
-  .carouselContainer, .carousel img {
-    height: 85vh;
+  .carousel img {
+    height: 80vh;
   }
   }
