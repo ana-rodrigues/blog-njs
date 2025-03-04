@@ -7,6 +7,7 @@ import Experience from './components/experience';
 import About from './components/about';
 import Carousel from './components/carousel';
 import Footer from './components/footer';
+import Nav from './components/nav';
 
 export default function Page() {
   return (
@@ -16,6 +17,7 @@ export default function Page() {
       transition={{ duration: 1.2, delay: 0.4 }}
       style={{ overflow: 'hidden' }}
     >
+      <Nav />
       <Preheader />
       <Hero />
       <Carousel />
