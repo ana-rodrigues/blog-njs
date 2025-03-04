@@ -27,7 +27,8 @@
   --primary-text-color: white;
   --inverse-primary-color: #111111;
   --secondary-text-color: #b0b0b0;
-  --border-color: rgba(172, 172, 172, 0.25);
+  --border-color-light: rgba(172, 172, 172, 0.25);
+  --border-color-dark: rgba(119, 118, 118, 0.25);
   --surface-color: rgba(46, 46, 46, 0.75);
 
   --spacer-xlg: 64px;
@@ -221,7 +222,7 @@ a:hover::after {
   color: var(--secondary-text-color);
   padding-top: var(--spacer-sm);
   padding-bottom: var(--spacer-sm);
-  border-bottom: solid 1px var(--border-color);
+  border-bottom: solid 1px var(--border-color-light);
 }
 
 /* Utilities */
