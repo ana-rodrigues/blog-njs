@@ -14,9 +14,9 @@ export function Nav() {
       active: pathname === "/",
     },
     {
-      href: "/writing",
-      label: "Writing",
-      active: pathname === "/writing",
+      href: "/blog",
+      label: "Blog",
+      active: pathname === "/blog",
     },
   ];
 
