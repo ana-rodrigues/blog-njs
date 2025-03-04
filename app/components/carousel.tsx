@@ -51,10 +51,10 @@ const Carousel: React.FC = () => {
     if (!carousel) return;
 
     const scroll = () => {
-      if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = carousel.scrollWidth / 2;
+      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+        carousel.scrollLeft = 0;
       } else {
-        carousel.scrollLeft -= 1;
+        carousel.scrollLeft += 1;
       }
     };
 
@@ -69,10 +69,10 @@ const Carousel: React.FC = () => {
     if (!carousel) return;
 
     const scroll = () => {
-      if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = carousel.scrollWidth / 2;
+      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+        carousel.scrollLeft = 0;
       } else {
-        carousel.scrollLeft -= 1;
+        carousel.scrollLeft += 1;
       }
     };
 
@@ -86,7 +86,7 @@ const Carousel: React.FC = () => {
     const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
     const walk = (x - startX) * 2; // Adjusts the scroll speed
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk;
+      carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
     }
   };
 
@@ -96,7 +96,7 @@ const Carousel: React.FC = () => {
     const x = e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0);
     const walk = (x - startX) * 2; // Adjusts the scroll speed
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk;
+      carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
     }
   };
 
@@ -105,10 +105,10 @@ const Carousel: React.FC = () => {
     if (!carousel) return;
 
     const scroll = () => {
-      if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = carousel.scrollWidth / 2;
+      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+        carousel.scrollLeft = 0;
       } else {
-        carousel.scrollLeft -= 1;
+        carousel.scrollLeft += 1;
       }
     };
 
