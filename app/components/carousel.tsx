@@ -19,26 +19,22 @@ const Carousel: React.FC = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollInterval, setScrollInterval] = useState<NodeJS.Timeout | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [autoScrollSpeed] = useState(0.5); // Lower value for smoother animation
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
     setScrollLeft(carouselRef.current?.scrollLeft || 0);
     // Stop autoscroll on MouseDown
-    if (scrollInterval) {
-      clearInterval(scrollInterval);
-    }
+    stopAutoScroll();
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault();
     setIsDragging(true);
     setStartX(e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0));
     setScrollLeft(carouselRef.current?.scrollLeft || 0);
     // Stop autoscroll on TouchStart
-    if (scrollInterval) {
-      clearInterval(scrollInterval);
-    }
+    stopAutoScroll();
   };
 
   const handleMouseLeave = () => {
@@ -47,47 +43,21 @@ const Carousel: React.FC = () => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    // Restart autoscroll on MouseUp
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const scroll = () => {
-      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-        carousel.scrollLeft = 0;
-      } else {
-        carousel.scrollLeft += 1;
-      }
-    };
-
-    const interval = setInterval(scroll, 20);
-    setScrollInterval(interval);
+    restartAutoScroll();
   };
 
   const handleTouchEnd = () => {
     setIsDragging(false);
-    // Restart autoscroll on TouchEnd
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const scroll = () => {
-      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-        carousel.scrollLeft = 0;
-      } else {
-        carousel.scrollLeft += 1;
-      }
-    };
-
-    const interval = setInterval(scroll, 20);
-    setScrollInterval(interval);
+    restartAutoScroll();
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2; // Adjusts the scroll speed
+    const walk = (x - startX) * 1.5; // Adjusts the scroll speed
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
+      carouselRef.current.scrollLeft = scrollLeft - walk;
     }
   };
 
@@ -95,32 +65,70 @@ const Carousel: React.FC = () => {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2; // Adjusts the scroll speed
+    const walk = (x - startX) * 1.5; // Adjusts the scroll speed
     if (carouselRef.current) {
       carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
     }
+  };
+
+  const stopAutoScroll = () => {
+    if (scrollInterval) {
+      clearInterval(scrollInterval);
+      setScrollInterval(null);
+    }
+  };
+
+  const restartAutoScroll = () => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    stopAutoScroll();
+
+    const scroll = () => {
+      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+        // Smooth reset by stepping back instead of jumping
+        carousel.scrollLeft = 0;
+      } else {
+        carousel.scrollLeft += autoScrollSpeed;
+      }
+    };
+
+    // Using requestAnimationFrame for smoother scrolling
+    const animateScroll = () => {
+      scroll();
+      const id = requestAnimationFrame(animateScroll);
+      setScrollInterval(id as unknown as NodeJS.Timeout);
+    };
+
+    const id = requestAnimationFrame(animateScroll);
+    setScrollInterval(id as unknown as NodeJS.Timeout);
   };
 
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
-    const scroll = () => {
-      if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
-        carousel.scrollLeft = 0;
-      } else {
-        carousel.scrollLeft += 1;
+    restartAutoScroll();
+
+    const touchMoveHandler = (e: TouchEvent) => {
+      if (isDragging) {
+        e.preventDefault();
       }
     };
+    
+    carousel.addEventListener('touchmove', touchMoveHandler, { passive: false });
 
-    const interval = setInterval(scroll, 20);
-    setScrollInterval(interval);
-
-    return () => clearInterval(interval);
+    return () => {
+      if (scrollInterval) {
+        cancelAnimationFrame(scrollInterval as unknown as number);
+      }
+      carousel.removeEventListener('touchmove', touchMoveHandler);
+    };
   }, []);
 
   return (
-    <div className={`full ${styles.carouselContainer}`}
+    <div 
+      className={`full ${styles.carouselContainer}`}
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
@@ -129,10 +137,16 @@ const Carousel: React.FC = () => {
       onTouchEnd={handleTouchEnd}
       onTouchMove={handleTouchMove}
       ref={carouselRef}
+      style={{ touchAction: 'pan-x' }}
     >
       <div className={styles.carousel}>
         {images.concat(images).map((src, index) => (
-          <img key={index} src={src} alt={`Carousel image ${index + 1}`} />
+          <img 
+            key={index} 
+            src={src} 
+            alt={`Carousel image ${index + 1}`}
+            loading="eager" // Ensure images load quickly
+          />
         ))}
       </div>
     </div>

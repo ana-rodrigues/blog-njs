@@ -3,13 +3,27 @@
   width: 100%;
   overflow: hidden;
   display: inline-block;
+  touch-action: pan-x; /* Only allow horizontal panning */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  user-select: none; /* Prevent text selection during drag */
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+}
+
+.carouselContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel {
   display: flex;
   width: max-content;
   cursor: grab;
-  will-change: transform;
+  will-change: transform, scroll-position;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+  transition: all 0.2s ease-out;
 }
 
 .carousel:active {
@@ -22,7 +36,10 @@
   user-select: none;
   pointer-events: none;
   border-radius: var(--border-lg);
-  margin-right: var(--spacer-xsm)
+  margin-right: var(--spacer-xsm);
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .carousel img:last-child {
@@ -34,7 +51,7 @@
 
   .carousel img {
   height: 60vh;
-}
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -42,4 +59,4 @@
   .carousel img {
     height: 80vh;
   }
-  }
+}
