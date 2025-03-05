@@ -31,6 +31,7 @@
   --border-color-dark: rgba(119, 118, 118, 0.25);
   --surface-color: rgba(46, 46, 46, 0.75);
 
+  --spacer-xxlg: 80px;
   --spacer-xlg: 64px;
   --spacer-lg: 40px;
   --spacer-md: 24px;
@@ -92,7 +93,7 @@ body {
     font-family: 'PPEditorialOld-Ultralight', Times, serif;
     font-weight: 300;
     letter-spacing: 2%;
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     line-height: 140%;
     color: var(--primary-text-color);
 }
@@ -100,12 +101,12 @@ body {
 @media screen and (min-width: 800px) {
 
   .headingXl {
-    font-size: 2.0rem;
+    font-size: 3.8rem;
   }
 }
 
 
-.headingL {
+.headingLg {
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
   font-weight: 300;
   letter-spacing: 2%;
