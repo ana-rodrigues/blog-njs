@@ -4,14 +4,13 @@ import styles from './posts.module.css'
 import HighlightedPost from './highlightedpost'
 import Post from './post'
 
-// Define the type for a single blog post
+// Type definition
 interface BlogPost {
   slug: string;
   metadata: {
-    publishedAt: string; // or Date if you are storing Date objects
+    publishedAt: string; // or Date?
     title: string;
   };
-  // other properties of BlogPost
 }
 
 export function BlogPosts() {
