@@ -18,8 +18,8 @@
 }
 
 .navitem {
-    padding-right: var(--spacer-lg);
-    padding-left: var(--spacer-lg);
+    padding-right: var(--spacer-md);
+    padding-left: var(--spacer-md);
     padding-top: var(--spacer-xsm);
     padding-bottom: var(--spacer-xsm);
     border-radius: 8px;
