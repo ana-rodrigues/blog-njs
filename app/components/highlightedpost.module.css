@@ -1,0 +1,99 @@
+.post::after {
+    display: none;
+}
+
+.post:hover .postTitle {
+    color: var(--secondary-text-color);
+    transition: color 250ms linear;
+}
+
+.post:hover .postImage {
+    opacity: 0.5;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    transition: opacity 250ms ease-out;
+}
+
+.postContent {
+    display: flex;
+    flex-direction: column;
+    align-content: baseline;
+    padding: var(--spacer-md) 0;
+    border-bottom: 1px solid var(--border-color-light);
+    margin-bottom: var(--spacer-lg);
+}
+
+.postTitle {
+    width: 100%;
+    transition: color 250ms linear;
+    margin-bottom: var(--spacer-md);
+    margin-top: var(--spacer-md);
+}
+
+.postDate {
+    margin-bottom: var(--spacer-xxsm);
+    min-width: 120px;
+}
+
+.postImageContainer {
+    position: relative;
+    display: inline-block;
+    border-radius: var(--border-lg);
+    overflow: hidden;
+}
+
+.postImage {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+    transition: opacity 250ms ease-out;
+    margin: -5px;
+}
+
+.post:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltipText {
+    visibility: hidden;
+    background-color: var(--surface-color);
+    color: var(--primary-text-color);
+    text-align: center;
+    border-radius: var(--border-md);
+    padding: var(--border-md) var(--spacer-sm);
+    position: absolute;
+    z-index: 1;
+    backdrop-filter: 12px;
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--border-color-light);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 250ms;
+}
+
+@media screen and (min-width: 600px) {
+
+}
+  
+@media screen and (min-width: 800px) {
+
+.postTitle {
+    width: 100%;
+    margin-right: var(--spacer-sm);
+}
+
+.postDate {
+    margin-top: var(--spacer-xxsm);
+    margin-right: var(--spacer-sm);
+}
+}
+  
+@media screen and (min-width: 1200px) {
+  
+}

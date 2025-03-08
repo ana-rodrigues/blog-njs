@@ -8,10 +8,8 @@ export const metadata = {
 export default function Page() {
   return (
     <AnimatedWrapper>
-      <section>
-        <h1 className='container headingXl'>Blog</h1>
+        <h1 className='container visuallyHidden'>Blog</h1>
         <BlogPosts />
-      </section>
     </AnimatedWrapper>
   );
 }
