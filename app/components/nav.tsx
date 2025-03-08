@@ -21,7 +21,7 @@ export function Nav() {
   ];
 
   return (
-    <nav id="nav">
+    <nav id="nav" className={`${styles.navwrapper}`}>
       <div className={`${styles.navbar}`}>
         {routes.map((route) => (
           <Link
