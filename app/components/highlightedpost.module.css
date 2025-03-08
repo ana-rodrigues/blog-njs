@@ -30,6 +30,7 @@
     width: 100%;
     transition: color 250ms linear;
     margin-bottom: var(--spacer-md);
+    margin-top: var(--spacer-md);
 }
 
 .postDate {
