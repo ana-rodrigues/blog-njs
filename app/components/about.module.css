@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: repeat(1fr);
     padding-top: var(--spacer-lg);
-    padding-bottom: var(--spacer-xxlg);
     gap: var(--spacer-sm);
   }
   

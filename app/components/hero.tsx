@@ -5,7 +5,7 @@ const Hero: React.FC = () => {
   return (
     <section className={`container ${styles.hero}`}>
       <div className={styles.introTop}>
-        <p className={styles.introHeading}>{'Full-stack product experience designer for fintech, e-commerce, and everything in between.'}</p>
+        <h1 className={`headingXl ${styles.introHeading}`}>{'Full-stack product experience designer for fintech, e-commerce, and everything in between.'}</h1>
       </div>
 
       <div className={styles.introBottom}>

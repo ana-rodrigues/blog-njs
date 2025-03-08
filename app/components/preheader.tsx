@@ -3,7 +3,7 @@
 import styles from './preheader.module.css';
 import React from 'react';
 import Clock from './clock';
-import { Typewriter } from 'react-simple-typewriter';
+import ClientSideTypewriter from './clientsidetypewriter'
 
 const Preheader = () => {
   return (
@@ -12,15 +12,7 @@ const Preheader = () => {
 
       <div className={styles.preheaderLeft}>
         <p className='monoMd'>
-          <Typewriter
-            words={['Ana Fernandes Rodrigues', 'Product experience designer']}
-            loop={0}
-            cursor
-            cursorStyle='_'
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
+          <ClientSideTypewriter words={['Ana Fernandes Rodrigues', 'Product experience designer']}/>
         </p>
       </div>
 
