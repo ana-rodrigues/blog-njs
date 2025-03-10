@@ -1,15 +1,12 @@
 .preheader {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-xxsm);
-  padding-top: var(--spacer-lg);
+  gap: var(--spacer-xs);
+  margin-top: var(--spacer-md);
 }
 
 .preheaderLeft {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacer-xsm);
-  align-items: center;
+align-items: center;
 }
 
 .preheaderRight {
@@ -18,7 +15,8 @@
   align-items: center;
   display: grid;
   grid-template-columns: repeat(3, auto);
-  gap: var(--spacer-xsm);
+  gap: var(--spacer-xxsm);
+  margin-top: 2px;
 }
 
 
