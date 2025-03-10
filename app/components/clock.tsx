@@ -20,7 +20,7 @@ const Clock: React.FC = () => {
   }
 
   return <div className={styles.clock}>
-    <p className="monoMd">{time}</p>
+    <p className="monoSm">{time}</p>
   </div>;
 };
 
