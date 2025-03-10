@@ -24,7 +24,6 @@
 
 .introTop {
     grid-template-columns: repeat(2, 1fr);
-    padding-top: var(--spacer-md);
     padding-bottom: var(--spacer-md);
 }
 
@@ -37,10 +36,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-
-  .introTop {
-    gap: var(--spacer-lg);
-  }
   
   .introBottom {
     gap: var(--spacer-lg);
