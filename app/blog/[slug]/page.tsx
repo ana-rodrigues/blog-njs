@@ -62,7 +62,7 @@ export default function Blog({ params }) {
 
   return (
       <AnimatedWrapper>
-        <section className="container paragraphMd">
+        <section className="container">
           <script
             type="application/ld+json"
             suppressHydrationWarning
@@ -88,11 +88,12 @@ export default function Blog({ params }) {
           <h1 className="headingXl">
             {post.metadata.title}
           </h1>
-          <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <div>
+            <p className="monoSm">
               {formatDate(post.metadata.publishedAt)}
             </p>
           </div>
+          <img src={`${baseUrl}${post.metadata.image}`}/>
           <article className="prose">
             <CustomMDX source={post.content} />
           </article>
