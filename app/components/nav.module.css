@@ -12,7 +12,7 @@
 .navbar {
     display: grid;  
     grid-template-columns: repeat(2, max-content);
-    width: max-content;
+    width: auto;
     gap: var(--spacer-xxsm);
     padding: var(--spacer-xxsm);
     background-color: var(--surface-color);
