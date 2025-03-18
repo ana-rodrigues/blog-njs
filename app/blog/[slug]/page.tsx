@@ -3,7 +3,11 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
-import styles from './page.module.css'
+import Image from 'next/image'
+import styles from 'app/components/mdx.module.css'
+import Breadcrumb from 'app/components/breadcrumb'
+ 
+
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -80,23 +84,26 @@ export default function Blog({ params }) {
                 url: `${baseUrl}/blog/${post.slug}`,
                 author: {
                   '@type': 'Person',
-                  name: 'My Portfolio',
+                  name: 'Ana Fernandes Rodrigues',
                 },
               }),
             }}
           />
-          <h1 className="headingXl">
-            {post.metadata.title}
-          </h1>
+          <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
+          <h1 className='headingXl'>{post.metadata.title}</h1>
+          <p className={`paragraphLg ${styles.postSummary}`}>{post.metadata.summary}</p>
+
+          <div className={styles.imgWrapper}>
+          <Image 
+              src={`${baseUrl}${post.metadata.image}`} 
+              alt={post.metadata.title} 
+              fill
+              style={{ objectFit: 'cover' }} 
+          />
+        </div>
           <div>
-            <p className="monoSm">
-              {formatDate(post.metadata.publishedAt)}
-            </p>
+          <CustomMDX source={post.content} />
           </div>
-          <img src={`${baseUrl}${post.metadata.image}`}/>
-          <article className="prose">
-            <CustomMDX source={post.content} />
-          </article>
         </section>
       </AnimatedWrapper>
   )

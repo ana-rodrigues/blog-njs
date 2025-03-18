@@ -15,7 +15,7 @@
   font-size: 2rem;
   line-height: 140%;
   color: var(--primary-text-color);
-  margin-bottom: var(--spacer-xsm);
+  margin-bottom: var(--spacer-sm);
   margin-top: var(--spacer-lg);
 }
 
@@ -26,7 +26,7 @@
   font-size: 1.6rem;
   line-height: 140%;
   color: var(--primary-text-color);
-  margin-bottom: var(--spacer-xsm);
+  margin-bottom: var(--spacer-sm);
   margin-top: var(--spacer-lg);
 }
 
@@ -34,10 +34,10 @@
   font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
   font-weight: 300;
   letter-spacing: 1%;
-  line-height: 160%;
+  line-height: 180%;
   font-size: 0.95rem;
   color: var(--secondary-text-color);
-  margin-bottom: var(--spacer-sm);
+  margin-bottom: var(--spacer-md);
 }
 
 .a {
@@ -69,11 +69,26 @@
 .ul {
   list-style-type: disc;
   padding-left: 1.5rem;
+  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1%;
+  line-height: 180%;
+  font-size: 0.95rem;
 }
 
 .ol {
   list-style-type: decimal;
   padding-left: 1.5rem;
+  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1%;
+  line-height: 180%;
+  font-size: 0.95rem;
+  color: var(--secondary-text-color);
+}
+
+.li {
+  margin-bottom: var(--spacer-sm);
 }
 
 .blockquote {
@@ -96,8 +111,22 @@
   overflow-x: auto;
 }
 
-.img {
-  max-width: 100%;
-  border-radius: 0.5rem;
-  margin: 1rem 0;
+.imgWrapper {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  border-radius: var(--border-md);
+  margin: var(--spacer-md) 0 var(--spacer-lg) 0;
+  overflow: hidden;
+}
+
+.postDate {
+  margin-top: var(--spacer-md);
+  margin-bottom: var(--spacer-sm);
+}
+
+.postSummary {
+  margin-top: var(--spacer-sm);
+  margin-bottom: var(--spacer-sm);
+  color: var(--primary-text-color);
 }

@@ -1,0 +1,19 @@
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-right: var(--spacer-md);
+}
+
+.breadcrumbList {
+    display: flex;
+    padding: 0;
+}
+
+.breadcrumbList li {
+    list-style: none;
+    margin-right: var(--spacer-xsm);
+}
+
+.separator {
+    margin-right: var(--spacer-xxsm);
+}
