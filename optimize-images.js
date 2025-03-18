@@ -41,11 +41,5 @@ files.forEach(file => {
       if (error) console.error(`Error processing ${file} to PNG:`, error);
       else console.log(`Successfully converted ${file} to PNG`);
     });
-
-    // Create tiny placeholder version for progressive loading
-    exec(`magick "${inputPath}" -resize "1200^" -quality 30 -blur 0x8 -strip "${tinyOutput}"`, (error) => {
-      if (error) console.error(`Error creating tiny placeholder for ${file}:`, error);
-      else console.log(`Successfully created tiny placeholder for ${file}`);
-    });
   }
 });
