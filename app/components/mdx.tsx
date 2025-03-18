@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './mdx.module.css'
 
-// Define custom components for each MDX element
 const components = {
   h1: ({ children }) => <h1 className={styles.h1}>{children}</h1>,
   h2: ({ children }) => <h2 className={styles.h2}>{children}</h2>,
@@ -16,6 +15,8 @@ const components = {
   ),
   ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
   ol: ({ children }) => <ol className={styles.ol}>{children}</ol>,
+  li: ({ children }) => <li className={styles.li}>{children}</li>,
+  
   blockquote: ({ children }) => (
     <blockquote className={styles.blockquote}>
       {children}
@@ -31,13 +32,14 @@ const components = {
       {children}
     </pre>
   ),
+
   img: ({ src, alt }) => (
-    <div className={styles.img}>
+    <div className={styles.imgWrapper}>
       <Image 
-        src={src} 
-        alt={alt || ''} 
-        width={800} 
-        height={500} 
+          src={src} 
+          alt={alt || ''} 
+          fill
+          style={{ objectFit: 'cover' }} 
       />
     </div>
   ),

@@ -101,7 +101,7 @@ body {
 @media screen and (min-width: 800px) {
 
   .headingXl {
-    font-size: 3.2rem;
+    font-size: 3.1rem;
   }
 }
 
@@ -156,6 +156,15 @@ body {
   text-transform: uppercase;
   color: var(--secondary-text-color);
   font-weight: normal;
+}
+
+.paragraphLg {
+  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1%;
+  line-height: 160%;
+  font-size: 0.95rem;
+  color: var(--primary-text-color);
 }
 
 .paragraphMd {

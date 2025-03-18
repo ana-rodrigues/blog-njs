@@ -1,6 +1,14 @@
 import { getBlogPosts } from 'app/blog/utils'
 
-export const baseUrl = 'https://portfolio-blog-starter.vercel.app'
+let baseUrl;
+
+if (process.env.NODE_ENV === 'production') {
+  baseUrl = process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION; // For production
+} else {
+  baseUrl = process.env.NEXT_PUBLIC_BASE_URL_STAGING; // For staging or development
+}
+
+export { baseUrl };
 
 export default async function sitemap() {
   let blogs = getBlogPosts().map((post) => ({
