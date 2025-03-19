@@ -3,7 +3,6 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
-import ReadingUtils from 'app/components/readingutils'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
 
@@ -65,7 +64,6 @@ export default function Blog({ params }) {
 
   return (
       <AnimatedWrapper>
-        <ReadingUtils postLength={post.content.split(' ').length} />
         <section className="container">
           <script
             type="application/ld+json"

@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './experiencecard.module.css'
 import experienceData from '../content/experience.json'
 import Image from 'next/image'
