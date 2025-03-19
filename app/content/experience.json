@@ -3,7 +3,7 @@
     "experiences": [
       {
         "company": "Navro",
-        "logo": "./media/navro-logo.png",
+        "logo": "/media/navro-logo.png",
         "description": "Navro simplifies global payments for businesses by offering access to premier payment services worldwide through a single contract and API.",
         "website": "https://navro.com",
         "websiteLabel": "Website",
@@ -13,7 +13,7 @@
       },
       {
         "company": "Swell Commerce",
-        "logo": "./media/swell-logo.png",
+        "logo": "/media/swell-logo.png",
         "description": "Swell is a customizable, API-first e-commerce platform. It's headless architecture offers businesses the flexibility to operate multiple storefronts across various tech stacks.",
         "website": "https://www.swell.is",
         "websiteLabel": "Website",
@@ -23,7 +23,7 @@
       },
       {
         "company": "Gaspard+Bruno",
-        "logo": "./media/gaspardbruno-logo.png",
+        "logo": "/media/gaspardbruno-logo.png",
         "description": "Gaspard+Bruno is an independent creative company with offices in London and Lisbon, specializing in strategy, design, and engineering.",
         "website": "https://gaspardbruno.com",
         "websiteLabel": "Website",

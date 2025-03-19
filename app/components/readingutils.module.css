@@ -1,0 +1,61 @@
+.readingUtilsWrapper {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+    z-index: 10;
+    width: 100%;
+    background: linear-gradient(var(--background-color), rgba(255, 0, 0, 0));
+    height: 120px;
+}
+
+.readingUtilsBar {
+    display: flex;
+    align-items: center;
+    width: auto;
+    padding: var(--spacer-xxsm);
+    background-color: var(--surface-color);
+    position: fixed;
+    top: var(--spacer-sm);
+    left: 50%;
+    translate: -50%;
+    z-index: 10;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color-dark);
+}
+
+.backLink, .readingTime {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-xxsm);
+    padding-right: var(--spacer-md);
+    padding-left: var(--spacer-md);
+    padding-top: var(--spacer-xsm);
+    padding-bottom: var(--spacer-xsm);
+    border-radius: 8px;
+    transition: background-color 250ms linear, color 250ms linear;
+}
+
+.backLink:hover {
+    text-decoration: none;
+    background-color: var(--surface-color);
+    color: var(--primary-text-color);
+    transition: background-color 250ms linear, color 250ms linear;
+}
+
+.backLink::after {
+    display: none;
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background-color: var(--border-color-dark);
+    margin: 0 var(--spacer-xxsm);
+}
+
+.icon {
+    display: inline-block;
+}

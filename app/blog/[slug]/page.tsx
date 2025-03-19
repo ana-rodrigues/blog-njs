@@ -3,9 +3,9 @@ import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
+import ReadingUtils from 'app/components/readingutils'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
- 
 
 
 export async function generateStaticParams() {
@@ -65,6 +65,7 @@ export default function Blog({ params }) {
 
   return (
       <AnimatedWrapper>
+        <ReadingUtils postLength={post.content.split(' ').length} />
         <section className="container">
           <script
             type="application/ld+json"
@@ -90,16 +91,18 @@ export default function Blog({ params }) {
           />
           <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
           <h1 className='headingXl'>{post.metadata.title}</h1>
-          <p className={`paragraphLg ${styles.postSummary}`}>{post.metadata.summary}</p>
+          <p className={`paragraphMd ${styles.postSummary}`}>{post.metadata.summary}</p>
 
+          {post.metadata.image ? (
           <div className={styles.imgWrapper}>
-          <Image 
-              src={`${baseUrl}${post.metadata.image}`} 
+            <Image 
+              src={post.metadata.image}
               alt={post.metadata.title} 
               fill
               style={{ objectFit: 'cover' }} 
-          />
-        </div>
+            />
+          </div>
+        ) : null}
           <div>
           <CustomMDX source={post.content} />
           </div>
