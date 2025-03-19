@@ -5,7 +5,6 @@ import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
-import Breadcrumb from 'app/components/breadcrumb'
  
 
 
