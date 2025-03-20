@@ -18,9 +18,10 @@ class Carousel extends React.Component {
   // Class properties instead of useState
   isDragging = false;
   startX = 0;
+  startY?: number;
   scrollLeft = 0;
-  scrollInterval = null;
-  carouselRef = React.createRef();
+  scrollInterval: NodeJS.Timeout | null = null;
+  carouselRef = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
     const carousel = this.carouselRef.current;
