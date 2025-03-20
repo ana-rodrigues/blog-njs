@@ -2,12 +2,22 @@
     display: flex;
     align-items: center;
     margin-right: var(--spacer-md);
+    margin-top: var(--spacer-md);
 }
 
 .breadcrumbList {
     display: flex;
     padding: 0;
 }
+
+.breadcrumbLink {
+    font-family: 'DepartureMono-Regular', monospace;
+    line-height: 180%;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--primary-text-color);
+    font-weight: normal;
+    }
 
 .breadcrumbList li {
     list-style: none;

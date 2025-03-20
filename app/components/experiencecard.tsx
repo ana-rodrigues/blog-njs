@@ -1,7 +1,6 @@
 import styles from './experiencecard.module.css'
 import experienceData from '../content/experience.json'
 import Image from 'next/image'
-
 interface ExperienceCardProps {
   index: number;
 } 
@@ -41,8 +40,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
       <div className={styles.main}>
 
           <div className={styles.description}>
-            <p className={`${styles.paragraphMd} paragraphMd`}>{experience.description}</p>
-            <p className={`${styles.paragraphMd} paragraphMd`}>{experience.roleDescription}</p>
+            <p className='paragraphMd'>{experience.description}</p>
+            <p className='paragraphMd'>{experience.roleDescription}</p>
           </div>
 
       </div>
