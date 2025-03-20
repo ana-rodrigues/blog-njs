@@ -2,21 +2,6 @@
     display: none;
 }
 
-.post:hover .postTitle {
-    color: var(--secondary-text-color);
-    transition: color 250ms linear;
-}
-
-.post:hover .postImage {
-    opacity: 0.3;
-    filter: blur(1px);
-    -webkit-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    transition: opacity 250ms ease-in, filter 250ms ease-in;
-}
-
 .postContent {
     display: flex;
     flex-direction: column;
@@ -50,11 +35,8 @@
     object-fit: cover;
     transition: opacity 250ms ease-in, filter 250ms ease-in;
     margin: -5px;
-}
-
-.post:hover .tooltipText {
-    visibility: visible;
-    opacity: 1;
+    border-radius: var(--border-lg);
+    overflow: hidden;
 }
 
 .tooltipText {
@@ -76,9 +58,28 @@
     transition: opacity 250ms;
 }
 
-@media screen and (min-width: 600px) {
-
+@media (hover: hover) {
+    .post:hover .postTitle {
+        color: var(--secondary-text-color);
+        transition: color 250ms linear;
+    }
+    
+    .post:hover .postImage {
+        opacity: 0.3;
+        filter: blur(1px);
+        -webkit-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -o-filter: blur(1px);
+        -ms-filter: blur(1px);
+        transition: opacity 250ms ease-in, filter 250ms ease-in;
+    }
+    
+    .post:hover .tooltipText {
+        visibility: visible;
+        opacity: 1;
+    }
 }
+
   
 @media screen and (min-width: 800px) {
 
@@ -93,6 +94,3 @@
 }
 }
   
-@media screen and (min-width: 1200px) {
-  
-}
