@@ -3,8 +3,8 @@
   width: 100%;
   overflow: hidden;
   display: inline-block;
-  touch-action: pan-x; /* Only allow horizontal panning */
-  overflow-y: hidden; /* Prevent vertical scrolling */
+  touch-action: pan-x; /* Allow both horizontal and vertical panning */
+  overflow-y: visible; /* Allow vertical scrolling */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   user-select: none; /* Prevent text selection during drag */
   scroll-behavior: smooth;
@@ -33,13 +33,21 @@
   cursor: grabbing;
 }
 
-.carousel img {
+.imageWrapper {
+  position: relative;
   height: 50vh;
-  object-fit: cover;
+  width:50vw;
+  margin-right: var(--spacer-xsm);
+}
+
+.imageWrapper:last-child {
+  margin-right: 0;
+}
+
+.carouselImage {
+  border-radius: var(--border-lg);
   user-select: none;
   pointer-events: none;
-  border-radius: var(--border-lg);
-  margin-right: var(--spacer-xsm);
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -51,15 +59,13 @@
 
 
 @media screen and (min-width: 600px) {
-
-  .carousel img {
-  height: 60vh;
+  .imageWrapper {
+    height: 50vh;
   }
 }
 
 @media screen and (min-width: 800px) {
-
-  .carousel img {
-    height: 80vh;
+  .imageWrapper {
+    height: 75vh;
   }
 }

@@ -1,10 +1,9 @@
-"use client";
-
-import React from 'react';
-import styles from './carousel.module.css';
+import React from 'react'
+import styles from './carousel.module.css'
+import Image from 'next/image'
 
 class Carousel extends React.Component {
-  // Images array
+
   images = [
     '/media/thumb-offwhite1.png',
     '/media/thumb-pour.png',
@@ -57,7 +56,12 @@ class Carousel extends React.Component {
     this.stopAutoScroll();
     this.isDragging = true;
     this.startX = e.pageX - (this.carouselRef.current?.offsetLeft || 0);
+    this.startY = e.pageY; 
     this.scrollLeft = this.carouselRef.current?.scrollLeft || 0;
+    
+    // Reset scroll direction detection for new mouse interaction
+    this.isScrollDirectionDetermined = false;
+    this.isHorizontalScroll = false;
   };
 
   handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -93,26 +97,51 @@ class Carousel extends React.Component {
     if (!this.isDragging) return;
     
     const x = e.pageX - (this.carouselRef.current?.offsetLeft || 0);
-    const dragDistance = x - this.startX;
+    const y = e.pageY;
     
-    // Apply resistance to the drag distance
-    const resistedDistance = this.applyDragResistance(dragDistance);
+    // Calculate movement in both directions
+    const xDiff = Math.abs(x - this.startX);
+    const yDiff = Math.abs(y - this.startY);
     
-    if (this.carouselRef.current) {
-      this.carouselRef.current.scrollLeft = this.scrollLeft - resistedDistance; // Invert direction
-      
-      // Ensure smooth looping during manual scroll
-      const carousel = this.carouselRef.current;
-      const contentWidth = carousel.scrollWidth;
-      const containerWidth = carousel.clientWidth;
-      const maxScroll = contentWidth - containerWidth;
-      
-      // If we're at the beginning or end, handle looping
-      if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = contentWidth / 3;
-      } else if (carousel.scrollLeft >= maxScroll) {
-        carousel.scrollLeft = maxScroll / 2;
+    // Determine scroll direction if not already determined
+    if (!this.isScrollDirectionDetermined) {
+      if (xDiff > 10 || yDiff > 10) {
+        this.isHorizontalScroll = xDiff > yDiff;
+        this.isScrollDirectionDetermined = true;
       }
+    }
+    
+    // Only handle carousel movement if horizontal scrolling
+    if (this.isHorizontalScroll) {
+      // Prevent default only for horizontal scrolling
+      e.preventDefault();
+      
+      const dragDistance = x - this.startX;
+      
+      // Apply resistance to the drag distance
+      const resistedDistance = this.applyDragResistance(dragDistance);
+      
+      if (this.carouselRef.current) {
+        this.carouselRef.current.scrollLeft = this.scrollLeft - resistedDistance; // Invert direction
+        
+        // Ensure smooth looping during manual scroll
+        const carousel = this.carouselRef.current;
+        const contentWidth = carousel.scrollWidth;
+        const containerWidth = carousel.clientWidth;
+        const maxScroll = contentWidth - containerWidth;
+        
+        // If we're at the beginning or end, handle looping
+        if (carousel.scrollLeft <= 0) {
+          carousel.scrollLeft = contentWidth / 3;
+        } else if (carousel.scrollLeft >= maxScroll) {
+          carousel.scrollLeft = maxScroll / 2;
+        }
+      }
+    } else if (yDiff > 10) {
+      // For vertical scrolling, manually scroll the window
+      window.scrollBy(0, this.startY - y);
+      // Update startY to the current position for smooth continuous scrolling
+      this.startY = y;
     }
   };
 
@@ -128,9 +157,7 @@ class Carousel extends React.Component {
     
     // Determine scroll direction if not already determined
     if (!this.isScrollDirectionDetermined) {
-      // Require a minimum movement threshold before determining direction (8px)
-      // Increased from 5px to make it easier to scroll vertically
-      if (xDiff > 8 || yDiff > 8) {
+      if (xDiff > 5 || yDiff > 5) {
         this.isHorizontalScroll = xDiff > yDiff;
         this.isScrollDirectionDetermined = true;
       }
@@ -171,7 +198,7 @@ class Carousel extends React.Component {
   applyDragResistance = (distance: number): number => {
     // The resistance factor determines how much resistance to apply
     // Lower values = more resistance
-    const resistanceFactor = 0.8;
+    const resistanceFactor = 0.9;
     
     // Apply a non-linear resistance that increases with distance
     // This creates a natural feeling of increasing resistance
@@ -221,12 +248,26 @@ class Carousel extends React.Component {
         <div className={styles.carousel}>
           {/* Triple the images for smoother infinite scrolling */}
           {[...this.images, ...this.images, ...this.images].map((src, index) => (
-            <img 
-              key={index} 
-              src={src} 
-              alt={`Carousel image ${(index % this.images.length) + 1}`}
-              draggable="false"
-            />
+            <div key={index} className={styles.imageWrapper}>
+              <Image 
+                src={src} 
+                alt={`Carousel image ${(index % this.images.length) + 1}`}
+                fill
+                sizes="75vh"
+                priority={index < this.images.length}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEtAI8V7yQCgAAAABJRU5ErkJggg=="
+                quality={85}
+                className={styles.carouselImage}
+                draggable="false"
+                style={{objectFit: 'cover'}}
+                
+                onError={(e) => {
+                  console.error(`Failed to load image: ${src}`);
+                  (e.target as HTMLImageElement).src = '/media/fallback-image.png';
+                }}
+              />
+            </div>
           ))}
         </div>
       </div>

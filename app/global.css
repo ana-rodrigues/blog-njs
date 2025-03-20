@@ -26,7 +26,7 @@
   --background-color: #111111;
   --primary-text-color: white;
   --inverse-primary-color: #111111;
-  --secondary-text-color: #b0b0b0;
+  --secondary-text-color: #cfcfcf;
   --border-color-light: rgba(172, 172, 172, 0.25);
   --border-color-dark: rgba(119, 118, 118, 0.25);
   --surface-color: rgba(46, 46, 46, 0.75);
@@ -163,8 +163,15 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 170%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--secondary-text-color);
+}
+
+@media screen and (min-width: 600px) {
+
+  .paragraphMd {
+    font-size: 1rem;
+   }
 }
 
 .paragraphSm {

@@ -5,6 +5,7 @@ import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
+import Breadcrumb from 'app/components/breadcrumb'
 
 
 export async function generateStaticParams() {
@@ -87,9 +88,7 @@ export default function Blog({ params }) {
               }),
             }}
           />
-          <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
-          <h1 className='headingXl'>{post.metadata.title}</h1>
-          <p className={`paragraphMd ${styles.postSummary}`}>{post.metadata.summary}</p>
+          <Breadcrumb title={post.metadata.title} />
 
           {post.metadata.image ? (
           <div className={styles.imgWrapper}>
@@ -101,7 +100,11 @@ export default function Blog({ params }) {
             />
           </div>
         ) : null}
+
           <div>
+          <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
+          <h1 className={styles.h1}>{post.metadata.title}</h1>
+
           <CustomMDX source={post.content} />
           </div>
         </section>
