@@ -18,10 +18,13 @@ class Carousel extends React.Component {
   // Class properties instead of useState
   isDragging = false;
   startX = 0;
-  startY?: number;
+  startY = 0;
   scrollLeft = 0;
   scrollInterval: NodeJS.Timeout | null = null;
   carouselRef = React.createRef<HTMLDivElement>();
+  isScrollDirectionDetermined = false;
+  isHorizontalScroll = false;
+  initialDragDistance = 0;
 
   componentDidMount() {
     const carousel = this.carouselRef.current;
@@ -74,11 +77,16 @@ class Carousel extends React.Component {
     this.scrollLeft = this.carouselRef.current?.scrollLeft || 0;
   };
 
-  handleTouchStart = (e) => {
+  handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     this.stopAutoScroll(); 
     this.isDragging = true;
     this.startX = e.touches[0].pageX - (this.carouselRef.current?.offsetLeft || 0);
+    this.startY = e.touches[0].pageY;
     this.scrollLeft = this.carouselRef.current?.scrollLeft || 0;
+    
+    // Reset scroll direction detection for new touch
+    this.isScrollDirectionDetermined = false;
+    this.isHorizontalScroll = false;
   };
 
   handleMouseLeave = () => {
@@ -98,14 +106,17 @@ class Carousel extends React.Component {
     this.restartAutoScroll();
   };
 
-  handleMouseMove = (e) => {
+  handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!this.isDragging) return;
     
     const x = e.pageX - (this.carouselRef.current?.offsetLeft || 0);
-    const walk = (x - this.startX) * 2; // Adjusts the scroll speed
+    const dragDistance = x - this.startX;
+    
+    // Apply resistance to the drag distance
+    const resistedDistance = this.applyDragResistance(dragDistance);
     
     if (this.carouselRef.current) {
-      this.carouselRef.current.scrollLeft = this.scrollLeft - walk; // Invert direction
+      this.carouselRef.current.scrollLeft = this.scrollLeft - resistedDistance; // Invert direction
       
       // Ensure smooth looping during manual scroll
       const carousel = this.carouselRef.current;
@@ -122,33 +133,37 @@ class Carousel extends React.Component {
     }
   };
 
-  handleTouchMove = (e) => {
+  handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!this.isDragging) return;
     
-    // Only prevent default if it's a horizontal drag
-    // This allows vertical scrolling on mobile
     const touchY = e.touches[0].pageY;
     const touchX = e.touches[0].pageX;
     
-    // If the user is primarily moving horizontally, prevent default to enable carousel drag
-    // Otherwise, allow the page to scroll vertically
+    // Calculate movement in both directions
     const xDiff = Math.abs(touchX - this.startX);
-    const yDiff = Math.abs(touchY - (this.startY || touchY));
+    const yDiff = Math.abs(touchY - this.startY);
     
-    // Store startY if not already set
-    if (!this.startY) {
-      this.startY = touchY;
+    // Determine scroll direction if not already determined
+    if (!this.isScrollDirectionDetermined) {
+      // Require a minimum movement threshold before determining direction (5px)
+      if (xDiff > 5 || yDiff > 5) {
+        this.isHorizontalScroll = xDiff > yDiff;
+        this.isScrollDirectionDetermined = true;
+      }
     }
     
-    // If horizontal movement is greater than vertical, prevent default
-    if (xDiff > yDiff) {
-      e.preventDefault();
+    // If horizontal scrolling, handle carousel movement
+    if (this.isHorizontalScroll) {
+      e.preventDefault(); // Prevent page scrolling
       
       const x = touchX - (this.carouselRef.current?.offsetLeft || 0);
-      const walk = (x - this.startX) * 2; // Adjusts the scroll speed
+      const dragDistance = x - this.startX;
+      
+      // Apply resistance to the drag distance
+      const resistedDistance = this.applyDragResistance(dragDistance);
       
       if (this.carouselRef.current) {
-        this.carouselRef.current.scrollLeft = this.scrollLeft - walk; // Invert direction
+        this.carouselRef.current.scrollLeft = this.scrollLeft - resistedDistance; // Invert direction
         
         // Same looping logic for touch
         const carousel = this.carouselRef.current;
@@ -163,6 +178,19 @@ class Carousel extends React.Component {
         }
       }
     }
+    // If vertical scrolling, let the browser handle it naturally
+    // (no preventDefault, so the page will scroll)
+  };
+
+  // Helper method to apply resistance to dragging
+  applyDragResistance = (distance: number): number => {
+    // The resistance factor determines how much resistance to apply
+    // Lower values = more resistance
+    const resistanceFactor = 0.7;
+    
+    // Apply a non-linear resistance that increases with distance
+    // This creates a natural feeling of increasing resistance
+    return distance * resistanceFactor;
   };
 
   // Improved auto-scroll with seamless looping
