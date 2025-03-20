@@ -158,7 +158,7 @@ class Carousel extends React.Component {
     
     // Determine scroll direction if not already determined
     if (!this.isScrollDirectionDetermined) {
-      if (xDiff > 2 || yDiff > 2) {
+      if (xDiff > 5 || yDiff > 5) {
         this.isHorizontalScroll = xDiff > yDiff;
         this.isScrollDirectionDetermined = true;
       }
@@ -199,7 +199,7 @@ class Carousel extends React.Component {
   applyDragResistance = (distance: number): number => {
     // The resistance factor determines how much resistance to apply
     // Lower values = more resistance
-    const resistanceFactor = 0.6;
+    const resistanceFactor = 0.9;
     
     // Apply a non-linear resistance that increases with distance
     // This creates a natural feeling of increasing resistance
