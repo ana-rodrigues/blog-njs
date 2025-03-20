@@ -130,7 +130,7 @@ class Carousel extends React.Component {
     if (!this.isScrollDirectionDetermined) {
       // Require a minimum movement threshold before determining direction (8px)
       // Increased from 5px to make it easier to scroll vertically
-      if (xDiff > 8 || yDiff > 8) {
+      if (xDiff > 24 || yDiff > 24) {
         this.isHorizontalScroll = xDiff > yDiff;
         this.isScrollDirectionDetermined = true;
       }
@@ -202,7 +202,7 @@ class Carousel extends React.Component {
       }
     };
 
-    this.scrollInterval = setInterval(scroll, 30);
+    this.scrollInterval = setInterval(scroll, 45);
   };
 
   render() {
