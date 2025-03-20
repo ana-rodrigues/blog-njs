@@ -1,3 +1,22 @@
+.skipLink {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: var(--background-color);
+    padding: var(--spacer-xsm) var(--spacer-sm);
+    z-index: 100;
+    transition: top 0.2s ease;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+}
+
+.skipLink:focus {
+    top: 0;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
 .navwrapper {
     position: fixed;
     bottom: 0;
@@ -10,9 +29,13 @@
 }
 
 .navbar {
-    display: grid;  
-    grid-template-columns: repeat(2, max-content);
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
     width: auto;
+    min-width: max-content;
     gap: var(--spacer-xxsm);
     padding: var(--spacer-xxsm);
     background-color: var(--surface-color);
@@ -28,13 +51,59 @@
     border: 1px solid var(--border-color-dark);
 }
 
+.socialLinks {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--spacer-xxsm);
+    border-left: 1px solid var(--border-color-dark);
+    padding: 0 var(--spacer-sm);
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: var(--secondary-text-color);
+    transition: color 250ms ease;
+}
+
+.socialLink:hover, 
+.socialLink:focus {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    outline: none;
+}
+
+.socialLink::after {
+    display: none;
+}
+
+.socialLink:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .navitem {
-    padding-right: var(--spacer-md);
-    padding-left: var(--spacer-md);
-    padding-top: var(--spacer-xsm);
-    padding-bottom: var(--spacer-xsm);
+    padding: var(--spacer-xsm) var(--spacer-sm);
     border-radius: 8px;
     transition: background-color 250ms linear, color 250ms linear;
+    white-space: nowrap;
 }
 
 .navitem:hover {

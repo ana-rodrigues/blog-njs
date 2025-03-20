@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from './nav.module.css';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 export function Nav() {
   const pathname = usePathname();
@@ -20,6 +21,27 @@ export function Nav() {
     },
   ];
 
+  const socialLinks = [
+    {
+      href: "https://www.linkedin.com/in/ana-fernandes-rodrigues/",
+      label: "LinkedIn",
+      icon: FaLinkedin,
+      ariaLabel: "Visit my LinkedIn profile"
+    },
+    {
+      href: "https://github.com/ana-rodrigues",
+      label: "GitHub",
+      icon: FaGithub,
+      ariaLabel: "Visit my GitHub profile"
+    },
+    {
+      href: "mailto:hello@anarodrigues.design",
+      label: "Email",
+      icon: FaEnvelope,
+      ariaLabel: "Send me an email"
+    }
+  ];
+
   return (
     <nav id="nav" className={`${styles.navwrapper}`}>
       <div className={`${styles.navbar}`}>
@@ -32,6 +54,24 @@ export function Nav() {
             {route.label}
           </Link>
         ))}
+        <div className={styles.socialLinks}>
+          {socialLinks.map((social) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                className={styles.socialLink}
+                aria-label={social.ariaLabel}
+                target={social.href.startsWith("mailto") ? "_self" : "_blank"}
+                rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+              >
+                <Icon aria-hidden="true" />
+                <span className={styles.srOnly}>{social.label}</span>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );

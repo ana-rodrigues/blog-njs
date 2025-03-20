@@ -52,7 +52,7 @@ export default function RootLayout({
       )}
     >
       <body>
-        <main>
+        <main id="main-content">
           <header>
             <Nav/>
           </header>
