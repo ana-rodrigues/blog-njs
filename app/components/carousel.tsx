@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import styles from './carousel.module.css';
 
-const Carousel: React.FC = () => {
-  const images = [
+class Carousel extends React.Component {
+  // Images array
+  images = [
     '/media/thumb-offwhite1.png',
     '/media/thumb-pour.png',
     '/media/thumb-navro.png',
@@ -14,62 +15,99 @@ const Carousel: React.FC = () => {
     '/media/thumb-browns.png', 
   ];
 
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [scrollInterval, setScrollInterval] = useState<NodeJS.Timeout | null>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  // Class properties instead of useState
+  isDragging = false;
+  startX = 0;
+  scrollLeft = 0;
+  scrollInterval = null;
+  carouselRef = React.createRef();
+
+  componentDidMount() {
+    const carousel = this.carouselRef.current;
+    if (!carousel) return;
+
+    // Position at the start of middle set for seamless scrolling
+    setTimeout(() => {
+      if (carousel) {
+        carousel.scrollLeft = carousel.scrollWidth / 3;
+      }
+    }, 100);
+
+    // Initialize auto-scroll
+    this.restartAutoScroll();
+
+    // Add direct event listeners to ensure they're captured properly
+    carousel.addEventListener('mousedown', () => this.stopAutoScroll(), { passive: false });
+    carousel.addEventListener('touchstart', () => this.stopAutoScroll(), { passive: false });
+    carousel.addEventListener('touchmove', this.touchMoveHandler, { passive: false });
+  }
+
+  componentWillUnmount() {
+    const carousel = this.carouselRef.current;
+    if (!carousel) return;
+    
+    this.stopAutoScroll();
+    carousel.removeEventListener('mousedown', () => this.stopAutoScroll());
+    carousel.removeEventListener('touchstart', () => this.stopAutoScroll());
+    carousel.removeEventListener('touchmove', this.touchMoveHandler);
+  }
+
+  touchMoveHandler = (e) => {
+    if (this.isDragging) {
+      e.preventDefault();
+    }
+  };
 
   // Enhanced stop auto-scroll function
-  const stopAutoScroll = () => {
-    if (scrollInterval) {
-      clearInterval(scrollInterval);
-      setScrollInterval(null);
+  stopAutoScroll = () => {
+    if (this.scrollInterval) {
+      clearInterval(this.scrollInterval);
+      this.scrollInterval = null;
     }
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    stopAutoScroll();
-    setIsDragging(true);
-    setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
-    setScrollLeft(carouselRef.current?.scrollLeft || 0);
+  handleMouseDown = (e) => {
+    this.stopAutoScroll();
+    this.isDragging = true;
+    this.startX = e.pageX - (this.carouselRef.current?.offsetLeft || 0);
+    this.scrollLeft = this.carouselRef.current?.scrollLeft || 0;
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    stopAutoScroll(); 
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0));
-    setScrollLeft(carouselRef.current?.scrollLeft || 0);
+  handleTouchStart = (e) => {
+    this.stopAutoScroll(); 
+    this.isDragging = true;
+    this.startX = e.touches[0].pageX - (this.carouselRef.current?.offsetLeft || 0);
+    this.scrollLeft = this.carouselRef.current?.scrollLeft || 0;
   };
 
-  const handleMouseLeave = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      restartAutoScroll();
+  handleMouseLeave = () => {
+    if (this.isDragging) {
+      this.isDragging = false;
+      this.restartAutoScroll();
     }
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    restartAutoScroll();
+  handleMouseUp = () => {
+    this.isDragging = false;
+    this.restartAutoScroll();
   };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    restartAutoScroll();
+  handleTouchEnd = () => {
+    this.isDragging = false;
+    this.restartAutoScroll();
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+  handleMouseMove = (e) => {
+    if (!this.isDragging) return;
     
-    const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2; // Adjusts the scroll speed
+    const x = e.pageX - (this.carouselRef.current?.offsetLeft || 0);
+    const walk = (x - this.startX) * 2; // Adjusts the scroll speed
     
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
+    if (this.carouselRef.current) {
+      this.carouselRef.current.scrollLeft = this.scrollLeft - walk; // Invert direction
       
       // Ensure smooth looping during manual scroll
-      const carousel = carouselRef.current;
+      const carousel = this.carouselRef.current;
       const contentWidth = carousel.scrollWidth;
       const containerWidth = carousel.clientWidth;
       const maxScroll = contentWidth - containerWidth;
@@ -83,37 +121,56 @@ const Carousel: React.FC = () => {
     }
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
+  handleTouchMove = (e) => {
+    if (!this.isDragging) return;
     
-    const x = e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = (x - startX) * 2; // Adjusts the scroll speed
+    // Only prevent default if it's a horizontal drag
+    // This allows vertical scrolling on mobile
+    const touchY = e.touches[0].pageY;
+    const touchX = e.touches[0].pageX;
     
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk; // Invert direction
+    // If the user is primarily moving horizontally, prevent default to enable carousel drag
+    // Otherwise, allow the page to scroll vertically
+    const xDiff = Math.abs(touchX - this.startX);
+    const yDiff = Math.abs(touchY - (this.startY || touchY));
+    
+    // Store startY if not already set
+    if (!this.startY) {
+      this.startY = touchY;
+    }
+    
+    // If horizontal movement is greater than vertical, prevent default
+    if (xDiff > yDiff) {
+      e.preventDefault();
       
-      // Same looping logic for touch
-      const carousel = carouselRef.current;
-      const contentWidth = carousel.scrollWidth;
-      const containerWidth = carousel.clientWidth;
-      const maxScroll = contentWidth - containerWidth;
+      const x = touchX - (this.carouselRef.current?.offsetLeft || 0);
+      const walk = (x - this.startX) * 2; // Adjusts the scroll speed
       
-      if (carousel.scrollLeft <= 0) {
-        carousel.scrollLeft = contentWidth / 3;
-      } else if (carousel.scrollLeft >= maxScroll) {
-        carousel.scrollLeft = maxScroll / 2;
+      if (this.carouselRef.current) {
+        this.carouselRef.current.scrollLeft = this.scrollLeft - walk; // Invert direction
+        
+        // Same looping logic for touch
+        const carousel = this.carouselRef.current;
+        const contentWidth = carousel.scrollWidth;
+        const containerWidth = carousel.clientWidth;
+        const maxScroll = contentWidth - containerWidth;
+        
+        if (carousel.scrollLeft <= 0) {
+          carousel.scrollLeft = contentWidth / 3;
+        } else if (carousel.scrollLeft >= maxScroll) {
+          carousel.scrollLeft = maxScroll / 2;
+        }
       }
     }
   };
 
   // Improved auto-scroll with seamless looping
-  const restartAutoScroll = () => {
-    const carousel = carouselRef.current;
+  restartAutoScroll = () => {
+    const carousel = this.carouselRef.current;
     if (!carousel) return;
 
     // Always clear any existing interval first
-    stopAutoScroll();
+    this.stopAutoScroll();
 
     const scroll = () => {
       if (!carousel) return;
@@ -131,68 +188,36 @@ const Carousel: React.FC = () => {
       }
     };
 
-    const interval = setInterval(scroll, 30);
-    setScrollInterval(interval);
+    this.scrollInterval = setInterval(scroll, 30);
   };
 
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    // Position at the start of middle set for seamless scrolling
-    setTimeout(() => {
-      if (carousel) {
-        carousel.scrollLeft = carousel.scrollWidth / 3;
-      }
-    }, 100);
-
-    // Initialize auto-scroll
-    restartAutoScroll();
-
-    const touchMoveHandler = (e: TouchEvent) => {
-      if (isDragging) {
-        e.preventDefault();
-      }
-    };
-    
-    // Add direct event listeners to ensure they're captured properly
-    carousel.addEventListener('mousedown', () => stopAutoScroll(), { passive: false });
-    carousel.addEventListener('touchstart', () => stopAutoScroll(), { passive: false });
-    carousel.addEventListener('touchmove', touchMoveHandler, { passive: false });
-
-    return () => {
-      stopAutoScroll();
-      carousel.removeEventListener('mousedown', () => stopAutoScroll());
-      carousel.removeEventListener('touchstart', () => stopAutoScroll());
-      carousel.removeEventListener('touchmove', touchMoveHandler);
-    };
-  }, []);  // Empty dependency array
-
-  return (
-    <div 
-      className={`full ${styles.carouselContainer}`}
-      onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseLeave}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onTouchMove={handleTouchMove}
-      ref={carouselRef}
-    >
-      <div className={styles.carousel}>
-        {/* Triple the images for smoother infinite scrolling */}
-        {[...images, ...images, ...images].map((src, index) => (
-          <img 
-            key={index} 
-            src={src} 
-            alt={`Carousel image ${(index % images.length) + 1}`}
-            draggable="false"
-          />
-        ))}
+  render() {
+    return (
+      <div 
+        className={`full ${styles.carouselContainer}`}
+        onMouseDown={this.handleMouseDown}
+        onMouseLeave={this.handleMouseLeave}
+        onMouseUp={this.handleMouseUp}
+        onMouseMove={this.handleMouseMove}
+        onTouchStart={this.handleTouchStart}
+        onTouchEnd={this.handleTouchEnd}
+        onTouchMove={this.handleTouchMove}
+        ref={this.carouselRef}
+      >
+        <div className={styles.carousel}>
+          {/* Triple the images for smoother infinite scrolling */}
+          {[...this.images, ...this.images, ...this.images].map((src, index) => (
+            <img 
+              key={index} 
+              src={src} 
+              alt={`Carousel image ${(index % this.images.length) + 1}`}
+              draggable="false"
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Carousel;
