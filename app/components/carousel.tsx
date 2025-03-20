@@ -39,28 +39,11 @@ class Carousel extends React.Component {
 
     // Initialize auto-scroll
     this.restartAutoScroll();
-
-    // Add direct event listeners to ensure they're captured properly
-    carousel.addEventListener('mousedown', () => this.stopAutoScroll(), { passive: false });
-    carousel.addEventListener('touchstart', () => this.stopAutoScroll(), { passive: false });
-    carousel.addEventListener('touchmove', this.touchMoveHandler, { passive: false });
   }
 
   componentWillUnmount() {
-    const carousel = this.carouselRef.current;
-    if (!carousel) return;
-    
     this.stopAutoScroll();
-    carousel.removeEventListener('mousedown', () => this.stopAutoScroll());
-    carousel.removeEventListener('touchstart', () => this.stopAutoScroll());
-    carousel.removeEventListener('touchmove', this.touchMoveHandler);
   }
-
-  touchMoveHandler = (e) => {
-    if (this.isDragging) {
-      e.preventDefault();
-    }
-  };
 
   // Enhanced stop auto-scroll function
   stopAutoScroll = () => {
@@ -70,7 +53,7 @@ class Carousel extends React.Component {
     }
   };
 
-  handleMouseDown = (e) => {
+  handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     this.stopAutoScroll();
     this.isDragging = true;
     this.startX = e.pageX - (this.carouselRef.current?.offsetLeft || 0);
@@ -145,8 +128,9 @@ class Carousel extends React.Component {
     
     // Determine scroll direction if not already determined
     if (!this.isScrollDirectionDetermined) {
-      // Require a minimum movement threshold before determining direction (5px)
-      if (xDiff > 5 || yDiff > 5) {
+      // Require a minimum movement threshold before determining direction (8px)
+      // Increased from 5px to make it easier to scroll vertically
+      if (xDiff > 8 || yDiff > 8) {
         this.isHorizontalScroll = xDiff > yDiff;
         this.isScrollDirectionDetermined = true;
       }
@@ -154,7 +138,8 @@ class Carousel extends React.Component {
     
     // If horizontal scrolling, handle carousel movement
     if (this.isHorizontalScroll) {
-      e.preventDefault(); // Prevent page scrolling
+      // Only prevent default for horizontal scrolling to allow vertical scrolling
+      e.preventDefault(); 
       
       const x = touchX - (this.carouselRef.current?.offsetLeft || 0);
       const dragDistance = x - this.startX;
@@ -178,15 +163,15 @@ class Carousel extends React.Component {
         }
       }
     }
-    // If vertical scrolling, let the browser handle it naturally
-    // (no preventDefault, so the page will scroll)
+    // For vertical scrolling, we don't call preventDefault()
+    // This allows the browser to handle vertical scrolling naturally
   };
 
   // Helper method to apply resistance to dragging
   applyDragResistance = (distance: number): number => {
     // The resistance factor determines how much resistance to apply
     // Lower values = more resistance
-    const resistanceFactor = 0.7;
+    const resistanceFactor = 0.8;
     
     // Apply a non-linear resistance that increases with distance
     // This creates a natural feeling of increasing resistance
@@ -230,7 +215,7 @@ class Carousel extends React.Component {
         onMouseMove={this.handleMouseMove}
         onTouchStart={this.handleTouchStart}
         onTouchEnd={this.handleTouchEnd}
-        onTouchMove={this.handleTouchMove}
+        onTouchMove={(e) => this.handleTouchMove(e)}
         ref={this.carouselRef}
       >
         <div className={styles.carousel}>
