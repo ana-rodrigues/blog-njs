@@ -1,7 +1,6 @@
 "use client";
 
 import styles from './preheader.module.css';
-import React from 'react';
 import Clock from './clock';
 import ClientSideTypewriter from './clientsidetypewriter'
 

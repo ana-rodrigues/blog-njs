@@ -18,17 +18,3 @@ align-items: center;
   gap: var(--spacer-xxsm);
   margin-top: 2px;
 }
-
-
-
-@media screen and (min-width: 600px) {
-
-.preheader {
-grid-template-columns: repeat(2, 1fr);
-gap: var(--spacer-md);
-}
-
-.preheaderRight {
-justify-content: end;
-}
-}

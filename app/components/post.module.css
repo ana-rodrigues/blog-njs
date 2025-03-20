@@ -22,7 +22,7 @@
 }
 
 .postDate {
-    margin-bottom: var(--spacer-xxsm);
+    margin-bottom: var(--spacer-sm);
     min-width: 120px;
 }
 

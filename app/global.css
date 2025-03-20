@@ -158,21 +158,12 @@ body {
   font-weight: normal;
 }
 
-.paragraphLg {
-  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
-  font-weight: 300;
-  letter-spacing: 1%;
-  line-height: 160%;
-  font-size: 0.95rem;
-  color: var(--primary-text-color);
-}
-
 .paragraphMd {
   font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
   font-weight: 300;
   letter-spacing: 1%;
-  line-height: 160%;
-  font-size: 0.95rem;
+  line-height: 170%;
+  font-size: 1rem;
   color: var(--secondary-text-color);
 }
 

@@ -11,17 +11,3 @@
     gap: var(--spacer-sm);
     align-self: flex-start;
   }
-  
-  
-  @media screen and (min-width: 800px) {
-
-  }
-  
-  @media screen and (min-width: 1200px) {
-  
-  .about {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacer-lg);
-  }
-  }
