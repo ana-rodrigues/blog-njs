@@ -39,9 +39,16 @@
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 180%;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--secondary-text-color);
   margin-bottom: var(--spacer-md);
+}
+
+@media screen and (min-width: 600px) {
+
+  .p {
+    font-size: 1rem;
+   }
 }
 
 .a {

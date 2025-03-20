@@ -1,8 +1,9 @@
-import React from 'react';
-import styles from './carousel.module.css';
+import React from 'react'
+import styles from './carousel.module.css'
+import Image from 'next/image'
 
 class Carousel extends React.Component {
-  // Images array
+
   images = [
     '/media/thumb-offwhite1.png',
     '/media/thumb-pour.png',
@@ -247,12 +248,26 @@ class Carousel extends React.Component {
         <div className={styles.carousel}>
           {/* Triple the images for smoother infinite scrolling */}
           {[...this.images, ...this.images, ...this.images].map((src, index) => (
-            <img 
-              key={index} 
-              src={src} 
-              alt={`Carousel image ${(index % this.images.length) + 1}`}
-              draggable="false"
-            />
+            <div key={index} className={styles.imageWrapper}>
+              <Image 
+                src={src} 
+                alt={`Carousel image ${(index % this.images.length) + 1}`}
+                fill
+                sizes="75vh"
+                priority={index < this.images.length}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEtAI8V7yQCgAAAABJRU5ErkJggg=="
+                quality={85}
+                className={styles.carouselImage}
+                draggable="false"
+                style={{objectFit: 'cover'}}
+                
+                onError={(e) => {
+                  console.error(`Failed to load image: ${src}`);
+                  (e.target as HTMLImageElement).src = '/media/fallback-image.png';
+                }}
+              />
+            </div>
           ))}
         </div>
       </div>

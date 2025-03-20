@@ -163,8 +163,15 @@ body {
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 170%;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--secondary-text-color);
+}
+
+@media screen and (min-width: 600px) {
+
+  .paragraphMd {
+    font-size: 1rem;
+   }
 }
 
 .paragraphSm {
