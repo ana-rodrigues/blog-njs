@@ -33,7 +33,7 @@
     width: 100%;
     max-height: 50vh;
     object-fit: cover;
-    transition: opacity 250ms ease-in, filter 250ms ease-in;
+    transition: opacity 150ms ease-in, filter 150ms ease-in;
     margin: -5px;
     border-radius: var(--border-lg);
     overflow: hidden;
@@ -61,7 +61,7 @@
 @media (hover: hover) {
     .post:hover .postTitle {
         color: var(--secondary-text-color);
-        transition: color 250ms linear;
+        transition: color 150ms linear;
     }
     
     .post:hover .postImage {
@@ -71,7 +71,7 @@
         -moz-filter: blur(1px);
         -o-filter: blur(1px);
         -ms-filter: blur(1px);
-        transition: opacity 250ms ease-in, filter 250ms ease-in;
+        transition: opacity 250ms ease-in, filter 150ms ease-in;
     }
     
     .post:hover .tooltipText {
