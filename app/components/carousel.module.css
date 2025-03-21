@@ -35,8 +35,8 @@
 
 .imageWrapper {
   position: relative;
-  width: 70vw;
-  aspect-ratio: 1.19/1;
+  width: 85vw;
+  aspect-ratio: 1/1;
   margin-right: var(--spacer-xsm);
 }
 
@@ -51,6 +51,15 @@
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  transition: opacity 250ms ease-in-out; /* Add transition for opacity */
+}
+
+.imageLoading {
+  opacity: 0;
+}
+
+.imageLoaded {
+  opacity: 1;
 }
 
 .carousel img:last-child {
@@ -62,4 +71,3 @@
     width: 50vw;
   }
 }
-  

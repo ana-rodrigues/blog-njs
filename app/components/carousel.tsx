@@ -2,7 +2,11 @@ import React from 'react'
 import styles from './carousel.module.css'
 import Image from 'next/image'
 
-class Carousel extends React.Component {
+interface CarouselState {
+  loadedImages: Record<number, boolean>;
+}
+
+class Carousel extends React.Component<{}, CarouselState> {
 
   images = [
     '/media/thumb-offwhite1.png',
@@ -23,6 +27,11 @@ class Carousel extends React.Component {
   isScrollDirectionDetermined = false;
   isHorizontalScroll = false;
   initialDragDistance = 0;
+  
+  // Initialize state with proper typing
+  state: CarouselState = {
+    loadedImages: {}
+  };
 
   componentDidMount() {
     const carousel = this.carouselRef.current;
@@ -49,6 +58,16 @@ class Carousel extends React.Component {
       clearInterval(this.scrollInterval);
       this.scrollInterval = null;
     }
+  };
+
+  // Add handler for image load events
+  handleImageLoad = (index: number) => {
+    this.setState(prevState => ({
+      loadedImages: {
+        ...prevState.loadedImages,
+        [index]: true
+      }
+    }));
   };
 
   handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -252,18 +271,19 @@ class Carousel extends React.Component {
                 src={src} 
                 alt={`Sample of previous work ${(index % this.images.length) + 1}`}
                 fill
-                sizes="75vh"
+                sizes="85vw"
                 priority={index < this.images.length}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEtAI8V7yQCgAAAABJRU5ErkJggg=="
-                quality={85}
-                className={styles.carouselImage}
+                quality={80}
+                className={`${styles.carouselImage} ${this.state.loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}
                 draggable="false"
                 style={{objectFit: 'cover'}}
-                
+                onLoad={() => this.handleImageLoad(index)}
                 onError={(e) => {
                   console.error(`Failed to load image: ${src}`);
                   (e.target as HTMLImageElement).src = '/media/placeholder.png';
+                  this.handleImageLoad(index); // Mark as loaded even if there's an error
                 }}
               />
             </div>
