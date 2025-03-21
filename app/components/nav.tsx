@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from './nav.module.css';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { TbBrandLinkedin, TbBrandGithub, TbMail } from 'react-icons/tb';
 
 export function Nav() {
   const pathname = usePathname();
@@ -25,19 +25,19 @@ export function Nav() {
     {
       href: "https://www.linkedin.com/in/ana-fernandes-rodrigues/",
       label: "LinkedIn",
-      icon: FaLinkedin,
+      icon: TbBrandLinkedin,
       ariaLabel: "Visit my LinkedIn profile"
     },
     {
       href: "https://github.com/ana-rodrigues",
       label: "GitHub",
-      icon: FaGithub,
+      icon: TbBrandGithub,
       ariaLabel: "Visit my GitHub profile"
     },
     {
       href: "mailto:hello@anarodrigues.design",
       label: "Email",
-      icon: FaEnvelope,
+      icon: TbMail,
       ariaLabel: "Send me an email"
     }
   ];
