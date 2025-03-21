@@ -26,7 +26,7 @@
   backface-visibility: hidden;
   transform: translateZ(0);
   perspective: 1000;
-  transition: all 0.2s ease-out;
+  transition: opacity 250ms ease-in-out;
 }
 
 .carousel:active {
@@ -35,8 +35,8 @@
 
 .imageWrapper {
   position: relative;
-  width: 70vw;
-  aspect-ratio: 1.19/1;
+  width: 85vw;
+  aspect-ratio: 1/1;
   margin-right: var(--spacer-xsm);
 }
 
@@ -51,6 +51,15 @@
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  transition: opacity 250ms ease-in-out;
+}
+
+.imageLoading {
+  opacity: 0;
+}
+
+.imageLoaded {
+  opacity: 1;
 }
 
 .carousel img:last-child {
@@ -61,5 +70,4 @@
   .imageWrapper {
     width: 50vw;
   }
-}
-  
+}  
