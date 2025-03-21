@@ -35,8 +35,8 @@
 
 .imageWrapper {
   position: relative;
-  height: 50vh;
-  width:50vw;
+  width: 70vw;
+  aspect-ratio: 1.19/1;
   margin-right: var(--spacer-xsm);
 }
 
@@ -57,15 +57,9 @@
   margin-right: 0;
 }
 
-
 @media screen and (min-width: 600px) {
   .imageWrapper {
-    height: 50vh;
+    width: 50vw;
   }
 }
-
-@media screen and (min-width: 800px) {
-  .imageWrapper {
-    height: 75vh;
-  }
-}
+  
