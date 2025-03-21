@@ -14,7 +14,6 @@ class Carousel extends React.Component {
     '/media/thumb-browns.png', 
   ];
 
-  // Class properties instead of useState
   isDragging = false;
   startX = 0;
   startY = 0;
@@ -103,7 +102,7 @@ class Carousel extends React.Component {
     const xDiff = Math.abs(x - this.startX);
     const yDiff = Math.abs(y - this.startY);
     
-    // Determine scroll direction if not already determined
+    // Determines scroll direction
     if (!this.isScrollDirectionDetermined) {
       if (xDiff > 10 || yDiff > 10) {
         this.isHorizontalScroll = xDiff > yDiff;
@@ -155,7 +154,7 @@ class Carousel extends React.Component {
     const xDiff = Math.abs(touchX - this.startX);
     const yDiff = Math.abs(touchY - this.startY);
     
-    // Determine scroll direction if not already determined
+    // Determine scroll direction
     if (!this.isScrollDirectionDetermined) {
       if (xDiff > 5 || yDiff > 5) {
         this.isHorizontalScroll = xDiff > yDiff;
@@ -246,12 +245,12 @@ class Carousel extends React.Component {
         ref={this.carouselRef}
       >
         <div className={styles.carousel}>
-          {/* Triple the images for smoother infinite scrolling */}
+          {/* Triples the images for smoother infinite scrolling */}
           {[...this.images, ...this.images, ...this.images].map((src, index) => (
             <div key={index} className={styles.imageWrapper}>
               <Image 
                 src={src} 
-                alt={`Carousel image ${(index % this.images.length) + 1}`}
+                alt={`Sample of previous work ${(index % this.images.length) + 1}`}
                 fill
                 sizes="75vh"
                 priority={index < this.images.length}
@@ -264,7 +263,7 @@ class Carousel extends React.Component {
                 
                 onError={(e) => {
                   console.error(`Failed to load image: ${src}`);
-                  (e.target as HTMLImageElement).src = '/media/fallback-image.png';
+                  (e.target as HTMLImageElement).src = '/media/placeholder.png';
                 }}
               />
             </div>
