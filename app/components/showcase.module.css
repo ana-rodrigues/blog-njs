@@ -1,0 +1,57 @@
+.showcaseContainer {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacer-md);
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 100%;
+  position: relative;
+  margin-right: var(--spacer-xsm);
+}
+
+.imageWrapper {
+  position: relative;
+  width: auto;
+  overflow: hidden;
+}
+
+.showcaseImage {
+  height: 80vh;
+  width: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .showcaseImage {
+    height: 50vh;
+    transition: opacity 250ms ease-in-out;
+  }
+}
+
+.imageLoading {
+  opacity: 0;
+}
+
+.imageLoaded {
+  opacity: 1;
+}

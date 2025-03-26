@@ -1,10 +1,8 @@
-"use client"
-
 import Preheader from './components/preheader';
 import Hero from './components/hero';
 import Experience from './components/experience';
 import About from './components/about';
-import Carousel from './components/carousel';
+import { Showcase } from './components/showcase';
 import AnimatedWrapper from './components/animatedwrapper';
 
 export default function Page() {
@@ -12,7 +10,7 @@ export default function Page() {
     <AnimatedWrapper>
       <Preheader />
       <Hero />
-      <Carousel />
+      <Showcase />
       <Experience />
       <About />
     </AnimatedWrapper>
