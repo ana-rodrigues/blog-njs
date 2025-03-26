@@ -78,7 +78,7 @@ export function Showcase() {
                   className={styles.showcaseImage}
                   draggable="false"
                   unoptimized={false}
-                />
+                /> 
               </div>
             </div>
           ))}
