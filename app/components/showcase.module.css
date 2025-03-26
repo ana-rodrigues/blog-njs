@@ -10,12 +10,20 @@
 .viewport {
   overflow: hidden;
   width: 100%;
+  cursor: grab;
+}
+
+.dragging,
+.dragging .container,
+.dragging .slide {
+  cursor: grabbing !important;
 }
 
 .container {
   display: flex;
   will-change: transform;
   backface-visibility: hidden;
+  cursor: grab;
 }
 
 .slide {
@@ -38,7 +46,14 @@
   object-fit: cover;
   border-radius: 8px;
   user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
   pointer-events: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 @media (max-width: 800px) {

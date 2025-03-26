@@ -1,50 +1,20 @@
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import Link from 'next/link'
-import Image from 'next/image'
+import { serialize } from 'next-mdx-remote/serialize'
+import React from 'react'
 import styles from './mdx.module.css'
+import { MDXClientRenderer } from './mdx-client'
 
-const components = {
-  h1: ({ children }) => <h1 className={styles.h1}>{children}</h1>,
-  h2: ({ children }) => <h2 className={styles.h2}>{children}</h2>,
-  h3: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
-  p: ({ children }) => <p className={styles.p}>{children}</p>,
-  a: ({ href, children }) => (
-    <Link href={href} className={styles.a}>
-      {children}
-    </Link>
-  ),
-  ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
-  ol: ({ children }) => <ol className={styles.ol}>{children}</ol>,
-  li: ({ children }) => <li className={styles.li}>{children}</li>,
+// Server component to process MDX content
+export async function CustomMDX({ source }) {
+  // Process the MDX content on the server
+  const mdxSource = await serialize(source)
   
-  blockquote: ({ children }) => (
-    <blockquote className={styles.blockquote}>
-      {children}
-    </blockquote>
-  ),
-  code: ({ className, children }) => (
-    <code className={`${styles.code} ${className}`}>
-      {children}
-    </code>
-  ),
-  pre: ({ children }) => (
-    <pre className={styles.pre}>
-      {children}
-    </pre>
-  ),
-
-  img: ({ src, alt }) => (
-    <div className={styles.imgWrapper}>
-      <Image 
-          src={src} 
-          alt={alt || ''} 
-          fill
-          style={{ objectFit: 'cover' }} 
-      />
+  // Convert the processed content to a string that can be safely passed to the client
+  const contentHtml = JSON.stringify(mdxSource)
+  
+  // Return the client component with the processed content
+  return (
+    <div className={styles.mdxWrapper}>
+      <MDXClientRenderer content={contentHtml} />
     </div>
-  ),
-}
-
-export function CustomMDX({ source }) {
-  return <MDXRemote source={source} components={components} />
+  )
 }
