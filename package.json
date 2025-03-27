@@ -7,34 +7,30 @@
     "optimize-images": "node optimize-images.js"
   },
   "dependencies": {
-    "@react-spring/web": "^9.7.5",
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "20.11.17",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
-    "@use-gesture/react": "^10.3.1",
     "@vercel/analytics": "^1.1.3",
     "@vercel/speed-insights": "^1.0.9",
+    "embla-carousel-auto-scroll": "^8.5.2",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "framer-motion": "^12.4.7",
     "geist": "1.2.2",
     "lucide": "^0.473.0",
     "lucide-react": "^0.473.0",
-    "next": "canary",
+    "next": "^15.3.0-canary.23",
     "next-mdx-remote": "^4.4.1",
     "postcss": "^8.4.35",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^5.5.0",
-    "react-material-ui-carousel": "^3.4.2",
-    "react-responsive-carousel": "^3.2.23",
     "react-simple-typewriter": "^5.0.1",
     "sharp": "^0.33.5",
     "sugar-high": "^0.6.0",
     "tailwindcss": "4.0.0-alpha.13",
     "typescript": "5.3.3"
-  },
-  "devDependencies": {
-    "@types/swiper": "^5.4.3"
   }
 }

@@ -89,6 +89,22 @@ body {
    }
 }
 
+.headingXxl {
+  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-weight: 300;
+  letter-spacing: 1%;
+  font-size: 3.2rem;
+  line-height: 130%;
+  color: var(--primary-text-color);
+}
+
+@media screen and (min-width: 800px) {
+
+  .headingXxl {
+    font-size: 4rem;
+  }
+}
+
 .headingXl {
     font-family: 'PPEditorialOld-Ultralight', Times, serif;
     font-weight: 300;
