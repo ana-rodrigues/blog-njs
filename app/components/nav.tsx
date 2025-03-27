@@ -67,6 +67,7 @@ export function Nav() {
                 rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
               >
                 <Icon aria-hidden="true" />
+                <span className={`monoSm ${styles.tooltip}`}>{social.label}</span>
                 <span className={styles.srOnly}>{social.label}</span>
               </a>
             );
