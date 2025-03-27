@@ -41,7 +41,7 @@
 }
 
 .showcaseImage {
-  height: 80vh;
+  height: 75vh;
   width: auto;
   object-fit: cover;
   border-radius: 8px;
@@ -54,12 +54,13 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @media (max-width: 800px) {
   .showcaseImage {
-    height: 50vh;
-    transition: opacity 250ms ease-in-out;
+    height: 30vh;
   }
 }
 
@@ -69,4 +70,5 @@
 
 .imageLoaded {
   opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
