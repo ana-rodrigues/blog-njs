@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://anarodrigues.design/sitemap.xml
+
+# Crawl-delay for all bots
+Crawl-delay: 10

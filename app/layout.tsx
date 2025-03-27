@@ -10,17 +10,35 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Ana Fernandes Rodrigues | Full-stack experience designer | Discover my work portfolio',
+    template: '%s | Ana Fernandes Rodrigues',
   },
-  description: 'This is my portfolio.',
+  description: 'Full-stack experience designer with 8+ years of experience in crafting intuitive digital experiences, through roles in Product Design, Design Leadership and Product Management. A builder at heart, she excels at crafting products from 0 → 1, while establishing high-performing design teams.',
+  keywords: ['UI/UX Design', 'Product Experience Design','Design Leadership', 'Fintech', 'Ecommerce', 'Frontend', 'Next.js', 'React'],
+  authors: [{ name: 'Ana Fernandes Rodrigues' }],
+  creator: 'Ana Fernandes Rodrigues',
+  publisher: 'Ana Fernandes Rodrigues',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Ana Fernandes Rodrigues | Full-stack experience designer | Discover my work portfolio',
+    description: 'Full-stack experience designer with 8+ years of experience in crafting intuitive digital experiences, through roles in Product Design, Design Leadership and Product Management. A builder at heart, she excels at crafting products from 0 → 1, while establishing high-performing design teams.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Ana Fernandes Rodrigues | Full-stack experience designer | Discover my work portfolio',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${baseUrl}/media/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Ana Fernandes Rodrigues | Full-stack experience designer | Discover my work portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ana Fernandes Rodrigues | Full-stack experience designer | Discover my work portfolio',
+    description: 'Full-stack experience designer with 8+ years of experience in crafting intuitive digital experiences, through roles in Product Design, Design Leadership and Product Management. A builder at heart, she excels at crafting products from 0 → 1, while establishing high-performing design teams.',
+    images: [`${baseUrl}/media/og-image.jpg`],
   },
   robots: {
     index: true,
@@ -32,6 +50,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  alternates: {
+    canonical: baseUrl,
   },
 }
 
