@@ -78,7 +78,7 @@ export function Showcase() {
                     alt={`Showcase image ${index + 1}`}
                     width={2000}
                     height={2000}
-                    sizes="(max-width: 800px) 30vw, 75vw"
+                    sizes="(max-width: 800px) 40vw, 75vw"
                     priority={index < 5}
                     quality={90}
                     className={`${styles.showcaseImage} ${isLoaded ? styles.imageLoaded : styles.imageLoading}`}
