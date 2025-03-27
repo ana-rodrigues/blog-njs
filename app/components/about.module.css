@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(1fr);
     padding-top: var(--spacer-lg);
-    gap: var(--spacer-sm);
+    gap: var(--spacer-lg);
   }
   
   .aboutCol {

@@ -16,10 +16,11 @@ export function Showcase() {
       inViewThreshold: 0.7,
       skipSnaps: false,
       slidesToScroll: 1,
-      duration: 90
+      duration: 25,
+      containScroll: false
     },
     [AutoScroll({ 
-      speed: 0.8, 
+      speed: 0.5,
       direction: 'forward',
       stopOnInteraction: false,
       startDelay: 0
@@ -35,6 +36,8 @@ export function Showcase() {
     '/media/thumb-swell.png',
     '/media/thumb-browns.png', 
   ];
+  
+
 
   // Set up event handlers for drag interactions
   React.useEffect(() => {
@@ -64,24 +67,29 @@ export function Showcase() {
         className={`${styles.viewport} ${isDragging ? styles.dragging : ''}`} 
         ref={emblaRef}>
         <div className={styles.container}>
-          {images.map((src, index) => (
-            <div key={index} className={styles.slide}>
-              <div className={styles.imageWrapper}>
-                <Image 
-                  src={src}
-                  alt={`Showcase image ${index + 1}`}
-                  width={2000}
-                  height={2000}
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  priority={index < 5}
-                  quality={90}
-                  className={styles.showcaseImage}
-                  draggable="false"
-                  unoptimized={false}
-                /> 
+          {images.map((src, index) => {
+            const [isLoaded, setIsLoaded] = React.useState(false);
+            
+            return (
+              <div key={index} className={styles.slide}>
+                <div className={styles.imageWrapper}>
+                  <Image 
+                    src={src}
+                    alt={`Showcase image ${index + 1}`}
+                    width={2000}
+                    height={2000}
+                    sizes="(max-width: 800px) 30vw, 75vw"
+                    priority={index < 5}
+                    quality={90}
+                    className={`${styles.showcaseImage} ${isLoaded ? styles.imageLoaded : styles.imageLoading}`}
+                    draggable="false"
+                    unoptimized={false}
+                    onLoad={() => setIsLoaded(true)}
+                  /> 
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
