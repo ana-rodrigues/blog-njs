@@ -91,8 +91,8 @@ body {
 
 .headingXxl {
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  letter-spacing: 1%;
   font-size: 3.2rem;
   line-height: 130%;
   color: var(--primary-text-color);
@@ -101,14 +101,14 @@ body {
 @media screen and (min-width: 800px) {
 
   .headingXxl {
-    font-size: 4.6rem;
+    font-size: 5rem;
   }
 }
 
 .headingXl {
     font-family: 'PPEditorialOld-Ultralight', Times, serif;
+    font-variant-ligatures: common-ligatures historical-ligatures contextual;
     font-weight: 300;
-    letter-spacing: 1%;
     font-size: 2.4rem;
     line-height: 130%;
     color: var(--primary-text-color);
@@ -124,8 +124,8 @@ body {
 
 .headingLg {
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  letter-spacing: 2%;
   font-size: 2rem;
   line-height: 140%;
   color: var(--primary-text-color);
@@ -133,8 +133,8 @@ body {
 
 .headingMd {
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  letter-spacing: 2%;
   font-size: 1.6rem;
   line-height: 140%;
   color: var(--primary-text-color);
@@ -142,8 +142,8 @@ body {
 
 .headingSm {
   font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  letter-spacing: 2%;
   font-size: 1.2rem;
   line-height: 130%;
   color: var(--primary-text-color);
@@ -152,9 +152,6 @@ body {
 .italics {
   font-family: 'PPEditorialOld-UltralightItalic', Times, serif;
   font-weight: 300;
-  letter-spacing: 3%;
-  font-size: 1.2rem;
-  line-height: 120%;
 }
 
 .monoMd {

@@ -5,11 +5,11 @@ const Hero: React.FC = () => {
   return (
     <section className={`container ${styles.hero}`}>
       <div className={styles.introTop}>
-        <h1 className={`headingXxl ${styles.introHeading}`}>{'Design with purpose. Build with vision.'}</h1>
+        <h1 className={`headingXxl ${styles.introHeading}`}>{'Design with purpose, build with vision.'}</h1>
       </div>
 
       <div className={styles.introBottom}>
-        <p className='paragraphMd'>{`I am a full-stack experience designer with 8+ years of experience in crafting intuitive digital experiences, through roles in Product Design, Design Leadership and Product Management. A builder at heart, I excel at crafting products from 0 → 1, while establishing high-performing design teams.`}</p>
+        <p className='paragraphMd'>{`I’m a full-stack experience designer specialising in e-commerce and fintech, with a track record of roles in Product Design, Product Management, and Team Leadership. A builder at heart, I thrive when I'm crafting complex products from 0→1, while establishing and driving high-performing design teams.`}</p>
       </div>
     </section>
   );

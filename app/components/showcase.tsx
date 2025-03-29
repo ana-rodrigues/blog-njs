@@ -28,13 +28,12 @@ export function Showcase() {
   );
   
   const images = [
-    '/media/thumb-offwhite1.png',
+    '/media/thumb-55.png',
     '/media/thumb-pour.png',
     '/media/thumb-navro.png',
     '/media/thumb-defiance.png',
-    '/media/thumb-offwhite2.png',
-    '/media/thumb-swell.png',
-    '/media/thumb-browns.png', 
+    '/media/thumb-offwhite.png',
+    '/media/thumb-swell.png', 
   ];
   
 
