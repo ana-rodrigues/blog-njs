@@ -1,13 +1,16 @@
 import './global.css'
 import Nav from './components/nav'
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Analytics } from '@vercel/analytics/react'
+import { Inter, Source_Code_Pro } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
 
-export const metadata: Metadata = {
+// Initialize fonts
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
+const sourceCodePro = Source_Code_Pro({ subsets: ['latin'], display: 'swap', variable: '--font-source-code-pro' })
+
+export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: 'Ana Fernandes Rodrigues | Full-stack experience designer',
@@ -68,8 +71,8 @@ export default function RootLayout({
       lang="en"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
-        GeistSans.variable,
-        GeistMono.variable
+        inter.variable,
+        sourceCodePro.variable
       )}
     >
       <body>
