@@ -30,7 +30,7 @@ export function BlogPosts() {
   allBlogs.sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime())
 
   return (
-    <div className='container'>
+    <div className={`container ${styles.blogList}`}>
       <HighlightedPost post={allBlogs[0]} />
       {allBlogs.slice(1).map((post) => (
         <Post key={post.slug} post={post} />
