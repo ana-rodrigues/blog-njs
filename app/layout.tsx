@@ -13,8 +13,8 @@ const sourceCodePro = Source_Code_Pro({ subsets: ['latin'], display: 'swap', var
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Ana Fernandes Rodrigues | Full-stack experience designer',
-    template: '%s | Ana Fernandes Rodrigues',
+    default: 'The digital bureau of Ana Fernandes Rodrigues',
+    template: '%s | The digital bureau of Ana Fernandes Rodrigues',
   },
   description: 'I’m a full-stack experience designer specialising in e-commerce and fintech, with a track record of roles in Product Design, Product Management, and Team Leadership.',
   keywords: ['UI/UX Design', 'Product Experience Design','Design Leadership', 'Fintech', 'E-commerce', 'Frontend', 'Next.js', 'React'],
@@ -22,10 +22,10 @@ export const metadata = {
   creator: 'Ana Fernandes Rodrigues',
   publisher: 'Ana Fernandes Rodrigues',
   openGraph: {
-    title: 'Ana Fernandes Rodrigues | Full-stack experience designer',
+    title: 'The digital bureau of Ana Fernandes Rodrigues',
     description: 'I’m a full-stack experience designer specialising in e-commerce and fintech, with a track record of roles in Product Design, Product Management, and Team Leadership.',
     url: baseUrl,
-    siteName: 'Ana Fernandes Rodrigues | Full-stack experience designer',
+    siteName: 'The digital bureau of Ana Fernandes Rodrigues',
     locale: 'en_US',
     type: 'website',
     images: [
