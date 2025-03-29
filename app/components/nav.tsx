@@ -44,6 +44,7 @@ export function Nav() {
 
   return (
     <nav id="nav" className={`${styles.navwrapper}`}>
+      <a href="#main-content" className={styles.skipLink}>Skip to content</a>
       <div className={`${styles.navbar}`}>
         {routes.map((route) => (
           <Link
@@ -56,7 +57,7 @@ export function Nav() {
         ))}
         <div className={styles.socialLinks}>
           {socialLinks.map((social) => {
-            const Icon = social.icon;
+            const Icon = social.icon || (() => null);
             return (
               <a
                 key={social.label}

@@ -90,16 +90,19 @@ export default function Blog({ params }) {
           />
           <Breadcrumb title={post.metadata.title} />
 
-          {post.metadata.image ? (
-          <div className={styles.imgWrapper}>
-            <Image 
-              src={post.metadata.image}
-              alt={post.metadata.title} 
-              fill
-              style={{ objectFit: 'cover' }} 
-            />
-          </div>
-        ) : null}
+          <div className={styles.postHero}>         
+            {post.metadata.image ? (
+            <div className={styles.imgWrapper}>
+              <Image 
+                src={post.metadata.image}
+                alt={post.metadata.alt || post.metadata.title} 
+                fill
+                style={{ objectFit: 'cover' }} 
+              />
+            </div>
+          ) : null}
+          <caption className='paragraphSM'>{post.metadata.alt || post.metadata.title}</caption>
+          </div> 
 
           <div>
           <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
