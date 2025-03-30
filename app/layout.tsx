@@ -82,7 +82,7 @@ const departureMono = localFont({
   fallback: ['monospace']
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: 'The digital bureau of Ana Fernandes Rodrigues',
@@ -129,6 +129,25 @@ export const metadata = {
   alternates: {
     canonical: baseUrl,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
 }
 
 const cx = (...classes) => classes.filter(Boolean).join(' ')
@@ -152,6 +171,13 @@ export default function RootLayout({
       )}
     >
       <head>
+        {/* Safari-specific favicons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="mask-icon" href="/favicon.svg" color="#000000" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+        
         {/* Add preconnect for external resources */}
         <link rel="preconnect" href="https://vitals.vercel-insights.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
