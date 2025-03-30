@@ -17,11 +17,11 @@ export function Showcase() {
       inViewThreshold: 0.7,
       skipSnaps: false,
       slidesToScroll: 1,
-      duration: 25,
-      containScroll: false
+      duration: 30,
+      containScroll: 'trimSnaps' 
     },
     [AutoScroll({ 
-      speed: 0.5,
+      speed: 0.7,
       direction: 'forward',
       stopOnInteraction: false,
       startDelay: 0
