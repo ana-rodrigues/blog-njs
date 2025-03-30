@@ -14,7 +14,13 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-sm);
-  margin-bottom: var(--spacer-lg);
+  margin-bottom: var(--spacer-sm);
+}
+
+@media (min-width: 800px) {
+  .introBottom {
+    margin-bottom: var(--spacer-lg);
+  }
 }
 
 .introDescription {
