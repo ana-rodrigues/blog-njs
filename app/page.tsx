@@ -4,6 +4,7 @@ import Experience from './components/experience';
 import About from './components/about';
 import { Showcase } from './components/showcase';
 import AnimatedWrapper from './components/animatedwrapper';
+import Footer from './components/footer';
 
 export default function Page() {
   return (
@@ -22,6 +23,7 @@ export default function Page() {
         <h2 id="about-heading" className="visuallyHidden">About Me</h2>
         <About />
       </section>
+      <Footer/>
     </AnimatedWrapper>
   );
 }

@@ -1,6 +1,5 @@
 import './global.css'
 import Nav from './components/nav'
-import type { Metadata } from 'next'
 import { Inter, Source_Code_Pro } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -131,7 +130,8 @@ export const metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
+// Utility function to combine class names with proper typing
+const cx = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ')
 
 export default function RootLayout({
   children,
@@ -186,7 +186,7 @@ export default function RootLayout({
               }
             `}
           </Script>
-        </main>
+        </main> 
       </body>
     </html>
   )

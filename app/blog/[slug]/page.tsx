@@ -16,8 +16,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }) {
-  const { slug } = params;
+// Define the params type for the metadata function
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const slug = await params.slug;
   let post = getBlogPosts().find((post) => post.slug === slug)
   if (!post) {
     return
@@ -57,8 +58,9 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function Blog({ params }) {
-  const { slug } = params;
+// Define the params type for the Blog component
+export default async function Blog({ params }: { params: { slug: string } }) {
+  const slug = await params.slug;
   let post = getBlogPosts().find((post) => post.slug === slug)
 
   if (!post) {

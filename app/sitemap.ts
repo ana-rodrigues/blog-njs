@@ -1,11 +1,12 @@
 import { getBlogPosts } from 'app/blog/utils'
 
-let baseUrl;
+// Define baseUrl with proper type
+let baseUrl: string;
 
 if (process.env.NODE_ENV === 'production') {
-  baseUrl = process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION; // For production
+  baseUrl = process.env.NEXT_PUBLIC_BASE_URL_PRODUCTION || 'https://anarodrigues.design'; // For production
 } else {
-  baseUrl = process.env.NEXT_PUBLIC_BASE_URL_STAGING; // For staging or development
+  baseUrl = process.env.NEXT_PUBLIC_BASE_URL_STAGING || 'http://localhost:3000'; // For staging or development
 }
 
 export { baseUrl };

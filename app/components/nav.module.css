@@ -1,22 +1,3 @@
-.skipLink {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--primary-color);
-    color: var(--background-color);
-    padding: var(--spacer-xsm) var(--spacer-sm);
-    z-index: 100;
-    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
-    text-decoration: none;
-    border-radius: 0 0 4px 0;
-}
-
-.skipLink:focus {
-    top: 0;
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
 .navwrapper {
     position: fixed;
     bottom: 0;
@@ -52,6 +33,8 @@
     border: 1px solid var(--border-color-dark);
     pointer-events: auto;
 }
+
+
 
 .socialLinks {
     display: flex;
