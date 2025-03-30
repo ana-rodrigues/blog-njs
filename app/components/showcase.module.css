@@ -41,7 +41,7 @@
 }
 
 .showcaseImage {
-  height: 75vh;
+  height: 70vh;
   width: auto;
   object-fit: cover;
   border-radius: 8px;
@@ -58,9 +58,42 @@
   transition: opacity 0.5s ease-in-out;
 }
 
-@media (max-width: 800px) {
+/* Mobile and tablet adjustments */
+@media (max-width: 480px) {
   .showcaseImage {
     height: 40vh;
+    width: 100%;
+    object-position: center;
+  }
+  
+  .slide {
+    width: 90vw;
+  }
+  
+  .imageWrapper {
+    width: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .showcaseImage {
+    height: 40vh;
+    width: 100%;
+    object-position: center;
+  }
+  
+  .slide {
+    width: 70vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .showcaseImage {
+    height: 50vh;
+  }
+  
+  .slide {
+    width: 60vw;
   }
 }
 
