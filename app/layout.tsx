@@ -6,8 +6,9 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
 import Script from 'next/script'
+import localFont from 'next/font/local'
 
-// Initialize fonts with optimized loading
+// Google fonts with optimized loading
 const inter = Inter({ 
   subsets: ['latin'], 
   display: 'swap', 
@@ -21,6 +22,63 @@ const sourceCodePro = Source_Code_Pro({
   display: 'swap', 
   variable: '--font-source-code-pro',
   preload: true,
+  fallback: ['monospace']
+})
+
+// Local fonts with optimized loading
+const editorialUltralight = localFont({
+  src: [
+    {
+      path: '../public/fonts/PPEditorialOld-Ultralight.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-editorial-ultralight',
+  preload: true,
+  fallback: ['Times New Roman', 'serif']
+})
+
+const editorialUltralightItalic = localFont({
+  src: [
+    {
+      path: '../public/fonts/PPEditorialOld-UltralightItalic.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-editorial-ultralight-italic',
+  preload: false,
+  fallback: ['Times New Roman', 'serif']
+})
+
+const neueMontreal = localFont({
+  src: [
+    {
+      path: '../public/fonts/NeueMontreal-Regular.woff2',
+      weight: 'normal',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-neue-montreal',
+  preload: true,
+  fallback: ['Arial', 'sans-serif']
+})
+
+const departureMono = localFont({
+  src: [
+    {
+      path: '../public/fonts/DepartureMono-Regular.woff2',
+      weight: 'normal',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-departure-mono',
+  preload: false,
   fallback: ['monospace']
 })
 
@@ -86,27 +144,18 @@ export default function RootLayout({
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
         inter.variable,
-        sourceCodePro.variable
+        sourceCodePro.variable,
+        editorialUltralight.variable,
+        editorialUltralightItalic.variable,
+        neueMontreal.variable,
+        departureMono.variable
       )}
     >
       <head>
-        {/* Preload critical fonts */}
-        <link 
-          rel="preload" 
-          href="/fonts/PPEditorialOld-Ultralight.woff2" 
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
-        <link 
-          rel="preload" 
-          href="/fonts/NeueMontreal-Regular.woff2" 
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
         {/* Add preconnect for external resources */}
         <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
         <main id="main-content">

@@ -1,36 +1,4 @@
-/* Optimize font loading with font-display swap strategy */
-@font-face {
-  font-family: 'PPEditorialOld-Ultralight';
-  src: url('../public/fonts/PPEditorialOld-Ultralight.woff2') format('woff2'),
-       url('../public/fonts/PPEditorialOld-Ultralight.woff') format('woff');
-  font-display: swap;
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: 'PPEditorialOld-UltralightItalic';
-  src: url('../public/fonts/PPEditorialOld-UltralightItalic.woff2') format('woff2'),
-       url('../public/fonts/PPEditorialOld-UltralightItalic.woff') format('woff');
-  font-display: swap;
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'NeueMontreal-Regular';
-  src: url('../public/fonts/NeueMontreal-Regular.woff2') format('woff2'),
-       url('../public/fonts/NeueMontreal-Regular.woff') format('woff');
-  font-display: swap;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'DepartureMono-Regular';
-  src: url('../public/fonts/DepartureMono-Regular.woff2') format('woff2'),
-       url('../public/fonts/DepartureMono-Regular.woff') format('woff');
-  font-display: swap;
-  font-weight: normal;
-}
+/* Fonts are now loaded via next/font/local in layout.tsx */
 
 :root {
   --color-accent: #9977c9;
@@ -102,7 +70,7 @@ body {
 }
 
 .headingXxl {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
   font-size: 3.2rem;
@@ -118,7 +86,7 @@ body {
 }
 
 .headingXl {
-    font-family: 'PPEditorialOld-Ultralight', Times, serif;
+    font-family: var(--font-editorial-ultralight), Times, serif;
     font-variant-ligatures: common-ligatures historical-ligatures contextual;
     font-weight: 300;
     font-size: 2.4rem;
@@ -135,7 +103,7 @@ body {
 
 
 .headingLg {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
   font-size: 2rem;
@@ -144,7 +112,7 @@ body {
 }
 
 .headingMd {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
   font-size: 1.6rem;
@@ -153,7 +121,7 @@ body {
 }
 
 .headingSm {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
   font-size: 1.2rem;
@@ -162,12 +130,12 @@ body {
 }
 
 .italics {
-  font-family: 'PPEditorialOld-UltralightItalic', Times, serif;
+  font-family: var(--font-editorial-ultralight-italic), Times, serif;
   font-weight: 300;
 }
 
 .monoMd {
-  font-family: 'DepartureMono-Regular', monospace;
+  font-family: var(--font-departure-mono), monospace;
   line-height: 100%;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -175,7 +143,7 @@ body {
 }
 
 .monoSm {
-  font-family: 'DepartureMono-Regular', monospace;
+  font-family: var(--font-departure-mono), monospace;
   line-height: 180%;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -183,8 +151,10 @@ body {
   font-weight: normal;
 }
 
+/* Styles for medium-sized paragraphs with specified font, weight, 
+   letter spacing, line height, font size, and color */
 .paragraphMd {
-  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 170%;
