@@ -28,33 +28,35 @@ export function Showcase() {
     })]
   );
   
-  // Define image data with appropriate dimensions and formats
+  // Define image data with simplified format
   const showcaseImages = [
-    {
-      src: '/media/thumb-55.png',
-      blur: '/media/thumb-55-tiny.webp',
-    },
-    {
-      src: '/media/thumb-pour.png',
-      blur: '/media/thumb-pour-tiny.webp',
-    },
-    {
-      src: '/media/thumb-navro.png',
-      blur: '/media/thumb-navro-tiny.webp',
-    },
-    {
-      src: '/media/thumb-defiance.png',
-      blur: '/media/thumb-defiance-tiny.webp',
-    },
-    {
-      src: '/media/thumb-offwhite.png',
-      blur: '/media/thumb-offwhite-tiny.webp',
-    },
-    {
-      src: '/media/thumb-swell.png',
-      blur: '/media/thumb-swell-tiny.webp',
-    }
+    { src: '/media/thumb-55.png' },
+    { src: '/media/thumb-pour.png' },
+    { src: '/media/thumb-navro.png' },
+    { src: '/media/thumb-defiance.png' },
+    { src: '/media/thumb-offwhite.png' },
+    { src: '/media/thumb-swell.png' }
   ];
+  
+  // Preload the first two images for faster initial render
+  React.useEffect(() => {
+    const preloadImages = () => {
+      const imagesToPreload = [showcaseImages[0].src, showcaseImages[1].src];
+      imagesToPreload.forEach(src => {
+        const img = new window.Image();
+        img.src = src;
+      });
+    };
+    
+    // Use requestIdleCallback for better performance
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(preloadImages);
+      } else {
+        setTimeout(preloadImages, 200);
+      }
+    }
+  }, []);
   
   // Handle image load state in a more efficient way
   const handleImageLoad = (index: number) => {
@@ -102,17 +104,15 @@ export function Showcase() {
                 <Image 
                   src={image.src}
                   alt={`Showcase image ${index + 1}`}
-                  width={600}
-                  height={600}
+                  width={1000}
+                  height={1000}
                   sizes="(max-width: 800px) 40vw, 60vw"
-                  priority={index === 1}
-                  quality={75}
+                  priority={index === 0}
+                  quality={80}
                   className={`${styles.showcaseImage} ${loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}
                   draggable="false"
                   loading={index < 2 ? "eager" : "lazy"}
                   onLoad={() => handleImageLoad(index)}
-                  placeholder="blur"
-                  blurDataURL={image.blur}
                 /> 
               </div>
             </div>
