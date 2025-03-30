@@ -98,9 +98,19 @@
     transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
 }
 
-.socialLink:hover .tooltip {
-    max-width: 100px;
-    opacity: 1;
+/* Only show tooltips on devices that support hovering */
+@media (hover: hover) {
+    .socialLink:hover .tooltip {
+        max-width: 100px;
+        opacity: 1;
+    }
+}
+
+/* Hide tooltips completely on touch-only devices */
+@media (hover: none) {
+    .socialLink .tooltip {
+        display: none;
+    }
 }
 
 .socialLink:focus-visible {
