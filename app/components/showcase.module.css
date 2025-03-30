@@ -43,13 +43,13 @@
   min-width: 0;
   max-width: 100%;
   position: relative;
+  margin-right: var(--spacer-xsm); /* Add consistent spacing between slides */
 }
 
 .imageWrapper {
   position: relative;
   width: auto;
   overflow: hidden;
-  padding-right: var(--spacer-xsm);
 }
 
 .showcaseImage {
@@ -73,13 +73,14 @@
 /* Mobile and tablet adjustments */
 @media (max-width: 480px) {
   .showcaseImage {
-    height: 40vh;
+    height: 32vh;
     width: 100%;
     object-position: center;
   }
   
   .slide {
-    width: 90vw;
+    width: 85vw; /* Slightly reduced to ensure no overlap */
+    margin-right: var(--spacer-xsm); /* Smaller margin on mobile */
   }
   
   .imageWrapper {
@@ -95,13 +96,14 @@
   }
   
   .slide {
-    width: 90vw;
+    width: 85vw; /* Slightly reduced to ensure no overlap */
+    margin-right: var(--spacer-xsm); /* Smaller margin on mobile */
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .showcaseImage {
-    height: 50vh;
+    height: 60vh;
   }
   
   .slide {

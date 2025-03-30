@@ -159,7 +159,7 @@ export function Showcase() {
                   alt={`Showcase image ${index + 1}`}
                   width={1600}
                   height={1600}
-                  sizes="(max-width: 480px) 90vw, (max-width: 768px) 70vw, (max-width: 1024px) 70vw"
+                  sizes="(max-width: 480px) 85vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 100vw"
                   priority={index === 0}
                   quality={85}
                   className={`${styles.showcaseImage} ${loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}
