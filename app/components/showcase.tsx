@@ -29,16 +29,66 @@ export function Showcase() {
   );
   
   const showcaseImages = [
-    { src: '/media/thumb-pour.png' },
-    { src: '/media/thumb-navro.png' },
-    { src: '/media/thumb-defiance.png' },
-    { src: '/media/thumb-offwhite.png' },
-    { src: '/media/thumb-swell.png' }
+    { 
+      desktop: '/media/thumb-pour.png',
+      tablet: '/media/thumb-pour-tablet.png',
+      mobile: '/media/thumb-pour-mobile.png'
+    },
+    { 
+      desktop: '/media/thumb-navro.png',
+      tablet: '/media/thumb-navro-tablet.png',
+      mobile: '/media/thumb-navro-mobile.png'
+    },
+    { 
+      desktop: '/media/thumb-defiance.png',
+      tablet: '/media/thumb-defiance-tablet.png',
+      mobile: '/media/thumb-defiance-mobile.png'
+    },
+    { 
+      desktop: '/media/thumb-offwhite.png',
+      tablet: '/media/thumb-offwhite-tablet.png',
+      mobile: '/media/thumb-offwhite-mobile.png'
+    },
+    { 
+      desktop: '/media/thumb-swell.png',
+      tablet: '/media/thumb-swell-tablet.png',
+      mobile: '/media/thumb-swell-mobile.png'
+    }
   ];
   
+  // Add a state to track the current screen size
+  const [screenSize, setScreenSize] = React.useState<'mobile' | 'tablet' | 'desktop'>('desktop');
+
+  React.useEffect(() => {
+    // Function to determine screen size
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setScreenSize('mobile');
+      } else if (window.innerWidth <= 768) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+
+    // Set initial screen size
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup function
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   React.useEffect(() => {
     const preloadImages = () => {
-      const imagesToPreload = [showcaseImages[0].src, showcaseImages[1].src];
+      // Preload the first two images based on current screen size
+      const imagesToPreload = [
+        showcaseImages[0][screenSize], 
+        showcaseImages[1][screenSize]
+      ];
+      
       imagesToPreload.forEach(src => {
         const img = new window.Image();
         img.src = src;
@@ -53,7 +103,7 @@ export function Showcase() {
         setTimeout(preloadImages, 200);
       }
     }
-  }, []);
+  }, [screenSize]);
   
   // Handle image load state in a more efficient way
   const handleImageLoad = (index: number) => {
@@ -99,13 +149,13 @@ export function Showcase() {
             <div key={index} className={styles.slide}>
               <div className={styles.imageWrapper}>
                 <Image 
-                  src={image.src}
+                  src={image[screenSize]}
                   alt={`Showcase image ${index + 1}`}
-                  width={1000}
-                  height={1000}
-                  sizes="(max-width: 480px) 90vw, (max-width: 768px) 70vw, (max-width: 1024px) 60vw, 50vw"
+                  width={1600}
+                  height={1600}
+                  sizes="(max-width: 480px) 90vw, (max-width: 768px) 70vw, (max-width: 1024px) 70vw"
                   priority={index === 0}
-                  quality={index === 0 ? 85 : 60}
+                  quality={85}
                   className={`${styles.showcaseImage} ${loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}
                   draggable="false"
                   loading={index < 2 ? "eager" : "lazy"}

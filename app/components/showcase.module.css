@@ -61,7 +61,7 @@
 /* Mobile and tablet adjustments */
 @media (max-width: 480px) {
   .showcaseImage {
-    height: 40vh;
+    height: 32vh;
     width: 100%;
     object-position: center;
   }
