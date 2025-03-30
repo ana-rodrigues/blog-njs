@@ -1,13 +1,9 @@
 .breadcrumb {
     display: flex;
+    flex-direction: row;
     align-items: center;
     margin-right: var(--spacer-md);
     margin-top: var(--spacer-md);
-}
-
-.breadcrumbList {
-    display: flex;
-    padding: 0;
 }
 
 .breadcrumbLink {
@@ -17,13 +13,5 @@
     text-transform: uppercase;
     color: var(--primary-text-color);
     font-weight: normal;
-    }
-
-.breadcrumbList li {
-    list-style: none;
-    margin-right: var(--spacer-xsm);
-}
-
-.separator {
-    margin-right: var(--spacer-xxsm);
+    margin-left: var(--spacer-xsm);
 }

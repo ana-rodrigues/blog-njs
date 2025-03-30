@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './breadcrumb.module.css';
+import { TbArrowBackUp } from 'react-icons/tb';
 
 interface BreadcrumbProps {
     title: string;
@@ -8,13 +9,8 @@ interface BreadcrumbProps {
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
     return (
         <nav className={styles.breadcrumb} aria-label="breadcrumb">
-            <ul className={styles.breadcrumbList}>
-                <li><Link className={styles.breadcrumbLink} href="/blog">Blog</Link></li>
-                <li aria-current="page" className={`${styles.currentPage} monoSm`}>
-                <span className={styles.separator}> / </span>
-                {title}
-                </li>
-            </ul>
+            <TbArrowBackUp aria-hidden="true" />
+            <Link className={styles.breadcrumbLink} href="/blog">Return to blog</Link>
         </nav>
     );
 };

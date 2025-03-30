@@ -16,8 +16,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  let post = getBlogPosts().find((post) => post.slug === slug)
   if (!post) {
     return
   }
@@ -56,8 +57,9 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Blog({ params }) {
+  const { slug } = params;
+  let post = getBlogPosts().find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
@@ -90,21 +92,25 @@ export default function Blog({ params }) {
           />
           <Breadcrumb title={post.metadata.title} />
 
-          {post.metadata.image ? (
-          <div className={styles.imgWrapper}>
-            <Image 
-              src={post.metadata.image}
-              alt={post.metadata.title} 
-              fill
-              style={{ objectFit: 'cover' }} 
-            />
-          </div>
-        ) : null}
+          <h1 className={styles.h1}>{post.metadata.title}</h1>
+          <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
+
+
+          <div className={styles.postHero}>         
+            {post.metadata.image ? (
+            <figure className={styles.imgWrapper}>
+              <Image 
+                src={post.metadata.image}
+                alt={post.metadata.alt || post.metadata.title} 
+                fill
+                style={{ objectFit: 'cover' }} 
+              />
+            </figure>
+          ) : null}
+          <figcaption className={`paragraphSm ${styles.figcaption}`}>{post.metadata.alt || post.metadata.title}</figcaption>
+          </div> 
 
           <div>
-          <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
-          <h1 className={styles.h1}>{post.metadata.title}</h1>
-
           <CustomMDX source={post.content} />
           </div>
         </section>

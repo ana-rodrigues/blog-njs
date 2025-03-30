@@ -6,7 +6,7 @@
     color: var(--background-color);
     padding: var(--spacer-xsm) var(--spacer-sm);
     z-index: 100;
-    transition: top 0.2s ease;
+    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
     text-decoration: none;
     border-radius: 0 0 4px 0;
 }
@@ -66,12 +66,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
+    min-width: 32px;
     height: 32px;
     border-radius: 8px;
     color: var(--secondary-text-color);
-    transition: color 250ms ease;
+    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
     position: relative;
+    padding: 0 var(--spacer-xxsm);
+    overflow: hidden;
 }
 
 .socialLink:hover, 
@@ -86,29 +88,18 @@
 }
 
 .socialLink .tooltip {
-    visibility: hidden;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    display: inline-block;
     color: var(--primary-text-color);
-    background-color: var(--surface-color);
-    text-align: center;
-    padding: var(--spacer-xxsm) var(--spacer-sm);
-    border-radius: var(--border-md);
     white-space: nowrap;
+    max-width: 0;
     opacity: 0;
-    transition: opacity 0.3s, visibility 0.3s;
-    pointer-events: none;
-    margin-bottom: var(--spacer-sm);
-    border: 1px solid var(--border-color-dark);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 1;
+    overflow: hidden;
+    margin-left: var(--spacer-xsm);
+    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
 }
 
 .socialLink:hover .tooltip {
-    visibility: visible;
+    max-width: 100px;
     opacity: 1;
 }
 
@@ -151,4 +142,26 @@
 
 .navitem::after {
     display: none;
+}
+
+.skipLink {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.skipLink:focus {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    z-index: 100;
 }

@@ -1,25 +1,45 @@
 .footer {
-    display: grid;
-    grid-template-columns: repeat(1, max-content);
-    justify-content: center;
+    padding: var(--spacer-md);
     gap: var(--spacer-md);
-    align-items: center;
-  }
-
-.preFooter {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    justify-content: center;
-    gap: var(--spacer-md);
-    align-items: center;
 }
 
-.subFooter {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    justify-content: center;
-    gap: var(--spacer-xsm);
-    align-items: center;
-    padding-top: var(--spacer-md);
-    padding-bottom: var(--spacer-lg);
+.footerCredits {
+    border-top: 1px solid var(--border-color-light);
+    padding-top: var(--spacer-lg);
+    padding-bottom: var(--spacer-xsm);
+    display: block;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    margin-bottom: var(--spacer-xsm);
+    transition: color 250ms ease;
+}
+
+.footerCredits a {
+    text-decoration: none;
+    color: inherit;
+    text-decoration: dotted underline;
+    text-underline-offset: var(--spacer-xxsm);
+    text-decoration-thickness: 1px;
+}
+
+.footerCredits a:hover {
+    color: var(--primary-text-color);
+    transition: color 250ms ease;
+    text-decoration: underline;
+    text-underline-offset: var(--spacer-xxsm);
+    text-decoration-thickness: 1px;
+}
+
+.footerCredits a::after {
+    display: none;
+}
+
+.footerCredits span {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.footerCredits span a {
+    display: inline;
 }

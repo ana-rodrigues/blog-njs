@@ -1,32 +1,12 @@
-@font-face {
-  font-family: 'PPEditorialOld-Ultralight';
-  src: url('../public/fonts/PPEditorialOld-Ultralight.woff') format('woff'),
-      url('../public/fonts/PPEditorialOld-Ultralight.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'PPEditorialOld-UltralightItalic';
-  src: url('../public/fonts/PPEditorialOld-UltralightItalic.woff') format('woff'),
-  url('../public/fonts/PPEditorialOld-UltralightItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'NeueMontreal-Regular';
-  src: url('../public/fonts/NeueMontreal-Regular.woff') format('woff'),
-  url('../public/fonts/NeueMontreal-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'DepartureMono-Regular';
-  src: url('../public/fonts/DepartureMono-Regular.woff') format('woff'),
-  url('../public/fonts/DepartureMono-Regular.woff2') format('woff2');
-}
+/* Fonts are now loaded via next/font/local in layout.tsx */
 
 :root {
+  --color-accent: #9977c9;
   --background-color: #111111;
   --primary-text-color: white;
   --inverse-primary-color: #111111;
   --secondary-text-color: #cfcfcf;
+  --tertiary-text-color: #999999;
   --border-color-light: rgba(172, 172, 172, 0.25);
   --border-color-dark: rgba(119, 118, 118, 0.25);
   --surface-color: rgba(46, 46, 46, 0.75);
@@ -90,23 +70,24 @@ body {
 }
 
 .headingXxl {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
+  letter-spacing: 1px;
   font-size: 3.2rem;
-  line-height: 130%;
+  line-height: 120%;
   color: var(--primary-text-color);
 }
 
 @media screen and (min-width: 800px) {
 
   .headingXxl {
-    font-size: 5rem;
+    font-size: 4.8rem;
   }
 }
 
 .headingXl {
-    font-family: 'PPEditorialOld-Ultralight', Times, serif;
+    font-family: var(--font-editorial-ultralight), Times, serif;
     font-variant-ligatures: common-ligatures historical-ligatures contextual;
     font-weight: 300;
     font-size: 2.4rem;
@@ -123,25 +104,25 @@ body {
 
 
 .headingLg {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 140%;
   color: var(--primary-text-color);
 }
 
 .headingMd {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 140%;
   color: var(--primary-text-color);
 }
 
 .headingSm {
-  font-family: 'PPEditorialOld-Ultralight', Times, serif;
+  font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
   font-size: 1.2rem;
@@ -150,12 +131,12 @@ body {
 }
 
 .italics {
-  font-family: 'PPEditorialOld-UltralightItalic', Times, serif;
+  font-family: var(--font-editorial-ultralight-italic), Times, serif;
   font-weight: 300;
 }
 
 .monoMd {
-  font-family: 'DepartureMono-Regular', monospace;
+  font-family: var(--font-departure-mono), monospace;
   line-height: 100%;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -163,7 +144,7 @@ body {
 }
 
 .monoSm {
-  font-family: 'DepartureMono-Regular', monospace;
+  font-family: var(--font-departure-mono), monospace;
   line-height: 180%;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -171,8 +152,10 @@ body {
   font-weight: normal;
 }
 
+/* Styles for medium-sized paragraphs with specified font, weight, 
+   letter spacing, line height, font size, and color */
 .paragraphMd {
-  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 170%;
@@ -188,20 +171,20 @@ body {
 }
 
 .paragraphSm {
-  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
   font-weight: 300;
-  letter-spacing: 1%;
+  letter-spacing: 2%;
   line-height: 160%;
-  font-size: 0.75rem;
-  color: var(--secondary-text-color);
+  font-size: 0.85rem;
+  color: var(--tertiary-text-color);
 }
 
 a {
-  font-family: 'NeueMontreal-Regular', 'Arial', sans-serif;
+  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
   font-weight: 300;
   letter-spacing: 1%;
   line-height: 160%;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--primary-text-color);
   text-decoration: none;
   cursor: pointer;
@@ -238,7 +221,6 @@ a:hover::after {
 }
 
 /* Section header */
-
 .sectionHeader {
   color: var(--secondary-text-color);
   padding-top: var(--spacer-sm);
@@ -247,7 +229,6 @@ a:hover::after {
 }
 
 /* Utilities */
-
 .inline {
   width: auto;
   height: 24px;
@@ -258,6 +239,7 @@ a:hover::after {
   justify-content: end;
 }
 
+/* Accessibility */
 .visuallyHidden {
   border: 0;
   padding: 0;
@@ -270,4 +252,15 @@ a:hover::after {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%); 
   white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+a:focus-visible, 
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

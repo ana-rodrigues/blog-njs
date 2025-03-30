@@ -8,6 +8,7 @@ import styles from './showcase.module.css';
 
 export function Showcase() {
   const [isDragging, setIsDragging] = React.useState(false);
+  const [loadedImages, setLoadedImages] = React.useState<Record<number, boolean>>({});
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true,
@@ -27,15 +28,40 @@ export function Showcase() {
     })]
   );
   
-  const images = [
-    '/media/thumb-55.png',
-    '/media/thumb-pour.png',
-    '/media/thumb-navro.png',
-    '/media/thumb-defiance.png',
-    '/media/thumb-offwhite.png',
-    '/media/thumb-swell.png', 
+  const showcaseImages = [
+    { src: '/media/thumb-pour.png' },
+    { src: '/media/thumb-navro.png' },
+    { src: '/media/thumb-defiance.png' },
+    { src: '/media/thumb-offwhite.png' },
+    { src: '/media/thumb-swell.png' }
   ];
   
+  React.useEffect(() => {
+    const preloadImages = () => {
+      const imagesToPreload = [showcaseImages[0].src, showcaseImages[1].src];
+      imagesToPreload.forEach(src => {
+        const img = new window.Image();
+        img.src = src;
+      });
+    };
+    
+    // Use requestIdleCallback for better performance
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(preloadImages);
+      } else {
+        setTimeout(preloadImages, 200);
+      }
+    }
+  }, []);
+  
+  // Handle image load state in a more efficient way
+  const handleImageLoad = (index: number) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [index]: true
+    }));
+  };
 
 
   // Set up event handlers for drag interactions
@@ -64,31 +90,30 @@ export function Showcase() {
     <div className={styles.showcaseContainer}>
       <div 
         className={`${styles.viewport} ${isDragging ? styles.dragging : ''}`} 
-        ref={emblaRef}>
+        ref={emblaRef}
+        role="region"
+        aria-label="Image showcase carousel"
+        tabIndex={0}>
         <div className={styles.container}>
-          {images.map((src, index) => {
-            const [isLoaded, setIsLoaded] = React.useState(false);
-            
-            return (
-              <div key={index} className={styles.slide}>
-                <div className={styles.imageWrapper}>
-                  <Image 
-                    src={src}
-                    alt={`Showcase image ${index + 1}`}
-                    width={2000}
-                    height={2000}
-                    sizes="(max-width: 800px) 40vw, 75vw"
-                    priority={index < 5}
-                    quality={90}
-                    className={`${styles.showcaseImage} ${isLoaded ? styles.imageLoaded : styles.imageLoading}`}
-                    draggable="false"
-                    unoptimized={false}
-                    onLoad={() => setIsLoaded(true)}
-                  /> 
-                </div>
+          {showcaseImages.map((image, index) => (
+            <div key={index} className={styles.slide}>
+              <div className={styles.imageWrapper}>
+                <Image 
+                  src={image.src}
+                  alt={`Showcase image ${index + 1}`}
+                  width={1000}
+                  height={1000}
+                  sizes="(max-width: 800px) 40vw, 60vw"
+                  priority={index === 0}
+                  quality={80}
+                  className={`${styles.showcaseImage} ${loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}
+                  draggable="false"
+                  loading={index < 2 ? "eager" : "lazy"}
+                  onLoad={() => handleImageLoad(index)}
+                /> 
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </div>
