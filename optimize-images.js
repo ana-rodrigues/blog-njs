@@ -37,9 +37,14 @@ files.forEach(file => {
 
     
     // Create a png version to test sharpness of UI elements
-    exec(`magick "${inputPath}" -resize "1800>" -strip -define png:compression-filter=1 -define png:compression-level=9 -sharpen 0x0.7 "${pngOutput}"`, (error) => {
+    exec(`magick "${inputPath}" -resize "1800>" -strip -define png:compression-filter=1 -define png:compression-level=9 -define png:compression-strategy=1 -sharpen 0x0.7 "${pngOutput}"`, (error) => {
       if (error) console.error(`Error processing ${file} to PNG:`, error);
       else console.log(`Successfully converted ${file} to PNG`);
+    });
+
+    exec(`magick "${inputPath}" -resize "800>" -strip -define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -blur 0x4 "${tinyOutput}"`, (error) => {
+      if (error) console.error(`Error processing ${file} to WebP:`, error);
+      else console.log(`Successfully converted ${file} to WebP`);
     });
   }
 });

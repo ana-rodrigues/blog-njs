@@ -1,11 +1,13 @@
+import React from 'react';
 import styles from './experiencecard.module.css'
 import experienceData from '../content/experience.json'
 import Image from 'next/image'
-interface ExperienceCardProps {
-  index: number;
-} 
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
+type ExperienceCardProps = {
+  index: number;
+}
+
+const ExperienceCard = ({ index }: ExperienceCardProps) => {
   const experience = experienceData.experiences[index];
 
   return (
@@ -17,7 +19,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
         <Image 
             className={`${styles.logo} inline`} 
             src={experience.logo} 
-            alt='Company logotype'
+            alt={`${experience.company} logo`}
             width={80}
             height={80}
           />
@@ -25,7 +27,13 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ index }) => {
             <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>
                 <div className='link'>
                   <a href={experience.website}>{experience.websiteLabel}</a>
-                  <img className={`inline`} src='/media/url.png'/>
+                  <Image 
+                    className="inline" 
+                    src='/media/url.png' 
+                    alt="External link icon" 
+                    width={16} 
+                    height={16} 
+                  />
                 </div>
           </div>
         </div>

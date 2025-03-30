@@ -5,10 +5,24 @@ import { Inter, Source_Code_Pro } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
+import Script from 'next/script'
 
-// Initialize fonts
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
-const sourceCodePro = Source_Code_Pro({ subsets: ['latin'], display: 'swap', variable: '--font-source-code-pro' })
+// Initialize fonts with optimized loading
+const inter = Inter({ 
+  subsets: ['latin'], 
+  display: 'swap', 
+  variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', 'Arial']
+})
+
+const sourceCodePro = Source_Code_Pro({ 
+  subsets: ['latin'], 
+  display: 'swap', 
+  variable: '--font-source-code-pro',
+  preload: true,
+  fallback: ['monospace']
+})
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -75,14 +89,54 @@ export default function RootLayout({
         sourceCodePro.variable
       )}
     >
+      <head>
+        {/* Preload critical fonts */}
+        <link 
+          rel="preload" 
+          href="/fonts/PPEditorialOld-Ultralight.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous" 
+        />
+        <link 
+          rel="preload" 
+          href="/fonts/NeueMontreal-Regular.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous" 
+        />
+        {/* Add preconnect for external resources */}
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+      </head>
       <body>
         <main id="main-content">
           <header>
             <Nav/>
           </header>
           {children}
+          {/* Defer non-critical analytics */}
           <Analytics />
           <SpeedInsights />
+          {/* Add a script to preload images for the carousel */}
+          <Script id="preload-carousel-images" strategy="afterInteractive">
+            {`
+              const preloadImages = () => {
+                const imagesToPreload = [
+                  '/media/thumb-55.png',
+                  '/media/thumb-pour.png'
+                ];
+                imagesToPreload.forEach(src => {
+                  const img = new Image();
+                  img.src = src;
+                });
+              };
+              if (window.requestIdleCallback) {
+                requestIdleCallback(preloadImages);
+              } else {
+                setTimeout(preloadImages, 1000);
+              }
+            `}
+          </Script>
         </main>
       </body>
     </html>
