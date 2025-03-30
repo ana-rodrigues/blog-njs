@@ -17,6 +17,12 @@
   overflow: hidden;
   width: 100%;
   cursor: grab;
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.loading {
+  opacity: 0;
 }
 
 .dragging,
@@ -67,7 +73,7 @@
 /* Mobile and tablet adjustments */
 @media (max-width: 480px) {
   .showcaseImage {
-    height: 30vh;
+    height: 40vh;
     width: 100%;
     object-position: center;
   }
@@ -89,7 +95,7 @@
   }
   
   .slide {
-    width: 70vw;
+    width: 90vw;
   }
 }
 
@@ -99,7 +105,7 @@
   }
   
   .slide {
-    width: 60vw;
+    width: 80vw;
   }
 }
 
