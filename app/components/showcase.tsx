@@ -103,9 +103,9 @@ export function Showcase() {
                   alt={`Showcase image ${index + 1}`}
                   width={1000}
                   height={1000}
-                  sizes="(max-width: 800px) 40vw, 60vw"
+                  sizes="(max-width: 480px) 90vw, (max-width: 768px) 70vw, (max-width: 1024px) 60vw, 50vw"
                   priority={index === 0}
-                  quality={80}
+                  quality={index === 0 ? 85 : 60}
                   className={`${styles.showcaseImage} ${loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}
                   draggable="false"
                   loading={index < 2 ? "eager" : "lazy"}
