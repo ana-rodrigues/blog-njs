@@ -28,9 +28,7 @@ export function Showcase() {
     })]
   );
   
-  // Define image data with simplified format
   const showcaseImages = [
-    { src: '/media/thumb-55.png' },
     { src: '/media/thumb-pour.png' },
     { src: '/media/thumb-navro.png' },
     { src: '/media/thumb-defiance.png' },
@@ -38,7 +36,6 @@ export function Showcase() {
     { src: '/media/thumb-swell.png' }
   ];
   
-  // Preload the first two images for faster initial render
   React.useEffect(() => {
     const preloadImages = () => {
       const imagesToPreload = [showcaseImages[0].src, showcaseImages[1].src];
