@@ -6,7 +6,7 @@
 
 .footerCredits {
     border-top: 1px solid var(--border-color-light);
-    padding-top: var(--spacer-lg);
+    padding-top: calc(var(--spacer-md)*2);
     padding-bottom: var(--spacer-xsm);
     display: block;
     width: 100%;

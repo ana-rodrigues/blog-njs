@@ -1,5 +1,6 @@
 .about {
     display: grid;
+    padding-top: var(--spacer-lg);
     grid-template-columns: repeat(1fr);
     gap: var(--spacer-lg);
   }
