@@ -59,7 +59,7 @@
     flex-wrap: nowrap;
     gap: var(--spacer-xxsm);
     border-left: 1px solid var(--border-color-dark);
-    padding: 0 var(--spacer-sm);
+    padding: 0 var(--spacer-xsm) 0 var(--spacer-sm);
 }
 
 .socialLink {
