@@ -31,7 +31,7 @@
   min-width: 0;
   max-width: 100%;
   position: relative;
-  margin-right: var(--spacer-xsm);
+  margin-left: var(--spacer-xsm);
 }
 
 .imageWrapper {
