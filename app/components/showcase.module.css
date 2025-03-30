@@ -31,13 +31,13 @@
   min-width: 0;
   max-width: 100%;
   position: relative;
-  margin-left: var(--spacer-xsm);
 }
 
 .imageWrapper {
   position: relative;
   width: auto;
   overflow: hidden;
+  padding-right: var(--spacer-xsm);
 }
 
 .showcaseImage {
@@ -61,7 +61,7 @@
 /* Mobile and tablet adjustments */
 @media (max-width: 480px) {
   .showcaseImage {
-    height: 32vh;
+    height: 30vh;
     width: 100%;
     object-position: center;
   }

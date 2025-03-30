@@ -19,7 +19,7 @@ const Footer = () => {
         <span>
           <a href="https://www.embla-carousel.com/" target="_blank" rel="noopener noreferrer">Embla Carousel</a>
         </span>. {' '}
-        Fonts used are{' '}
+        Fonts are{' '}
         <span>
           <a href="https://pangrampangram.com/products/editorial-old" target="_blank" rel="noopener noreferrer">Editorial Old New</a>
         </span>, {' '}
@@ -40,7 +40,7 @@ const Footer = () => {
         </span>.
       </p>
       <p className='paragraphSm'>
-        &copy;{currentYear} Ana Fernandes Rodrigues. All rights reserved.
+        &copy;{currentYear} Ana Fernandes Rodrigues
       </p>
     </footer>
   )

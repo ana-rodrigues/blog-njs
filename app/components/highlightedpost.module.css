@@ -25,7 +25,7 @@
 .postImageContainer {
     position: relative;
     display: inline-block;
-    border-radius: var(--border-lg);
+    border-radius: var(--border-md);
     overflow: hidden;
 }
 
@@ -34,7 +34,7 @@
     max-height: 50vh;
     object-fit: cover;
     transition: opacity 150ms ease-in;
-    border-radius: var(--border-lg);
+    border-radius: var(--border-md);
     overflow: hidden;
 }
 
