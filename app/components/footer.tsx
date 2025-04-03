@@ -10,11 +10,7 @@ const Footer = () => {
         All pixels carefully crafted using{' '}
         <span>
           <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Next.js</a>
-        </span>{' '}
-        and{' '}
-        <span>
-          <a href="https://framer.com/motion" target="_blank" rel="noopener noreferrer">Framer Motion</a>
-        </span>. {' '}
+        </span>.{' '}
         The carousel uses{' '}
         <span>
           <a href="https://www.embla-carousel.com/" target="_blank" rel="noopener noreferrer">Embla Carousel</a>

@@ -10,7 +10,7 @@ const About = () => {
 
             <div className={`${styles.aboutCol}`}>
             <h3 className='headingMd'>Where it started</h3>
-                <p className='paragraphMd'>{'My first contact with digital experiences was an old Olivetti machine, where I quickly learned to run my favourite games as a kid, through obsessive trial and error (mostly error, to be fair). It was the entry point to becoming passionately interested about technology, culture and design.'}</p>
+                <p className='paragraphMd'>{'My first contact with digital experiences was an old Olivetti computer, where I quickly learned to run my favourite games as a kid, through obsessive trial and error (mostly error, to be fair). It was the entry point to becoming passionately interested about technology, culture and design.'}</p>
             </div>
 
             <div className={`${styles.aboutCol}`}>
