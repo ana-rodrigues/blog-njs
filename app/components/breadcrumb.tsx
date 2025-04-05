@@ -10,7 +10,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
     return (
         <nav className={styles.breadcrumb} aria-label="breadcrumb">
             <TbArrowBackUp aria-hidden="true" />
-            <Link className={styles.breadcrumbLink} href="/blog">Return to blog</Link>
+            <Link className={styles.breadcrumbLink} href="/feed">Return to feed</Link>
         </nav>
     );
 };

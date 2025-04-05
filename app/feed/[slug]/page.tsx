@@ -16,8 +16,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }) {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
   let post = getBlogPosts().find((post) => post.slug === slug)
   if (!post) {
     return

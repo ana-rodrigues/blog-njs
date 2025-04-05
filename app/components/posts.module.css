@@ -1,3 +1,5 @@
 .blogList {
+    display: grid;
+    gap: var(--spacer-sm);
     padding-bottom: var(--spacer-lg);
   }
