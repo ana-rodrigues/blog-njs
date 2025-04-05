@@ -9,8 +9,14 @@ import styles from './showcase.module.css';
 export function Showcase() {
   const [isDragging, setIsDragging] = React.useState(false);
   const [loadedImages, setLoadedImages] = React.useState<Record<number, boolean>>({});
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
+    isMounted ? { 
       loop: true,
       align: 'center',
       dragFree: false,
@@ -19,13 +25,13 @@ export function Showcase() {
       slidesToScroll: 1,
       duration: 30,
       containScroll: 'trimSnaps' 
-    },
-    [AutoScroll({ 
+    } : {},
+    isMounted ? [AutoScroll({ 
       speed: 0.7,
       direction: 'forward',
       stopOnInteraction: false,
       startDelay: 0
-    })]
+    })] : []
   );
   
   const showcaseImages = [
@@ -139,7 +145,7 @@ export function Showcase() {
   return (
     <div className={styles.showcaseContainer}>
       <div 
-        className={`${styles.viewport} ${isDragging ? styles.dragging : ''}`} 
+        className={`${styles.viewport} ${isDragging ? styles.dragging : ''} ${!isMounted ? styles.loading : ''}`} 
         ref={emblaRef}
         role="region"
         aria-label="Image showcase carousel"
@@ -153,7 +159,7 @@ export function Showcase() {
                   alt={`Showcase image ${index + 1}`}
                   width={1600}
                   height={1600}
-                  sizes="(max-width: 480px) 90vw, (max-width: 768px) 70vw, (max-width: 1024px) 70vw"
+                  sizes="(max-width: 480px) 85vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 100vw"
                   priority={index === 0}
                   quality={85}
                   className={`${styles.showcaseImage} ${loadedImages[index] ? styles.imageLoaded : styles.imageLoading}`}

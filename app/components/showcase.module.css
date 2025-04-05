@@ -4,13 +4,25 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--spacer-md);
+  margin-bottom: var(--spacer-sm);
+}
+
+@media (min-width: 800px) {
+  .showcaseContainer {
+    margin-bottom: var(--spacer-md);
+  }
 }
 
 .viewport {
   overflow: hidden;
   width: 100%;
   cursor: grab;
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.loading {
+  opacity: 0;
 }
 
 .dragging,
@@ -31,13 +43,13 @@
   min-width: 0;
   max-width: 100%;
   position: relative;
+  margin-right: var(--spacer-xsm); /* Add consistent spacing between slides */
 }
 
 .imageWrapper {
   position: relative;
   width: auto;
   overflow: hidden;
-  padding-right: var(--spacer-xsm);
 }
 
 .showcaseImage {
@@ -61,13 +73,14 @@
 /* Mobile and tablet adjustments */
 @media (max-width: 480px) {
   .showcaseImage {
-    height: 30vh;
+    height: 38vh;
     width: 100%;
     object-position: center;
   }
   
   .slide {
-    width: 90vw;
+    width: 90vw; /* Slightly reduced to ensure no overlap */
+    margin-right: var(--spacer-xsm); /* Smaller margin on mobile */
   }
   
   .imageWrapper {
@@ -77,23 +90,25 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
   .showcaseImage {
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     object-position: center;
   }
   
   .slide {
-    width: 70vw;
+    width: 65vw; /* Slightly reduced to ensure no overlap */
+    margin-right: var(--spacer-xsm); /* Smaller margin on mobile */
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .showcaseImage {
-    height: 50vh;
+    height: 70vh;
+    width: 100%;
   }
   
   .slide {
-    width: 60vw;
+    width: 65vw;
   }
 }
 

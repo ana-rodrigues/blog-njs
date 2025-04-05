@@ -16,7 +16,14 @@ const Preheader = () => {
       </div>
 
       <div className={styles.preheaderRight}>
-        <p className='monoSm'>Lisbon UTC+0</p>
+        <p className='monoSm'>Europe/Lisbon,</p>
+        <p className='monoSm'>
+          {new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Europe/Lisbon',
+            timeZoneName: 'shortOffset'
+          }).formatToParts(new Date())
+            .find(part => part.type === 'timeZoneName')?.value} 
+        </p>
         <img className='inline' src='/media/world.png' alt='Globe pixel art icon'></img>
         <Clock/>
       </div>

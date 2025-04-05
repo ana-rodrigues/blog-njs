@@ -6,7 +6,7 @@
     color: var(--background-color);
     padding: var(--spacer-xsm) var(--spacer-sm);
     z-index: 100;
-    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
+    transition: max-width 500ms ease-out, opacity 250ms ease-out;
     text-decoration: none;
     border-radius: 0 0 4px 0;
 }
@@ -70,7 +70,7 @@
     height: 32px;
     border-radius: 8px;
     color: var(--secondary-text-color);
-    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
+    transition: max-width 50ms ease-out, opacity 50ms ease-out;
     position: relative;
     padding: 0 var(--spacer-xxsm);
     overflow: hidden;
@@ -95,7 +95,7 @@
     opacity: 0;
     overflow: hidden;
     margin-left: var(--spacer-xsm);
-    transition: max-width 750ms ease-out, opacity 250ms ease-out, margin-left 250ms ease-out;
+    transition: max-width 600ms ease-out, opacity 250ms ease-out;
 }
 
 /* Only show tooltips on devices that support hovering */
@@ -132,8 +132,8 @@
 
 .navitem {
     padding: var(--spacer-xsm) var(--spacer-sm);
-    border-radius: 8px;
-    transition: background-color 250ms linear, color 250ms linear;
+    border-radius: 9px;
+    transition: background-color 150ms linear, color 150ms linear;
     white-space: nowrap;
 }
 
@@ -141,13 +141,13 @@
     text-decoration: none;
     background-color: var(--surface-color);
     color: var(--primary-text-color);
-    transition: background-color 250ms linear, color 250ms linear;
+    transition: background-color 150ms linear, color 150ms linear;
 }
 
 .navitem.active {
     background-color: var(--inverse-primary-color);
     color: var(--primary-text-color);
-    transition: background-color 250ms linear, color 250ms linear;
+    transition: background-color 150ms linear, color 150ms linear;
 }
 
 .navitem::after {

@@ -14,7 +14,7 @@ align-items: center;
   justify-content: start;
   align-items: center;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   gap: var(--spacer-xxsm);
   margin-top: 2px;
 }
