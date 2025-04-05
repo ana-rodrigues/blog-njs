@@ -73,13 +73,13 @@
 /* Mobile and tablet adjustments */
 @media (max-width: 480px) {
   .showcaseImage {
-    height: 32vh;
+    height: 38vh;
     width: 100%;
     object-position: center;
   }
   
   .slide {
-    width: 85vw; /* Slightly reduced to ensure no overlap */
+    width: 90vw; /* Slightly reduced to ensure no overlap */
     margin-right: var(--spacer-xsm); /* Smaller margin on mobile */
   }
   
@@ -90,24 +90,25 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
   .showcaseImage {
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     object-position: center;
   }
   
   .slide {
-    width: 85vw; /* Slightly reduced to ensure no overlap */
+    width: 65vw; /* Slightly reduced to ensure no overlap */
     margin-right: var(--spacer-xsm); /* Smaller margin on mobile */
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .showcaseImage {
-    height: 60vh;
+    height: 70vh;
+    width: 100%;
   }
   
   .slide {
-    width: 80vw;
+    width: 65vw;
   }
 }
 

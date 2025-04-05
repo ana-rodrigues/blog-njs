@@ -15,7 +15,7 @@ const About = () => {
 
             <div className={`${styles.aboutCol}`}>
                 <h3 className='headingMd'>As a designer</h3>
-                <p className='paragraphMd'>{`I am a builder at heart, combining usability expertise, visual culture, strategic and technical skills. With hands-on familiarity with the complexities of B2B and API-first products, I thrive in collaborative, high-impact roles where holistic, well-crafted product experiences drive real business value.`}</p>
+                <p className='paragraphMd'>{`I am a builder at heart, combining usability expertise, visual culture, strategic and technical skills. With hands-on familiarity with the complexities of B2B and API-first products, I thrive in collaborative, high-impact roles where end-to-end, well-crafted product experiences drive real business value.`}</p>
             </div>
 
         </div>
