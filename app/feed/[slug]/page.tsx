@@ -8,17 +8,18 @@ import styles from 'app/components/mdx.module.css'
 import Breadcrumb from 'app/components/breadcrumb'
 
 
-export async function generateStaticParams() {
-  let posts = getBlogPosts()
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const posts = await getBlogPosts()
 
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  let post = getBlogPosts().find((post) => post.slug === slug)
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const posts = await getBlogPosts();
+  const post = posts.find((post) => post.slug === slug)
   if (!post) {
     return
   }
@@ -57,9 +58,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function Blog({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  let post = getBlogPosts().find((post) => post.slug === slug)
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
+
+export default async function Blog({ params }: PageProps) {
+  const { slug } = await params;
+  const posts = await getBlogPosts();
+  const post = posts.find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
