@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { formatDate, getBlogPosts } from 'app/feed/utils'
 import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
 import Image from 'next/image'
@@ -8,17 +8,18 @@ import styles from 'app/components/mdx.module.css'
 import Breadcrumb from 'app/components/breadcrumb'
 
 
-export async function generateStaticParams() {
-  let posts = getBlogPosts()
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const posts = await getBlogPosts()
 
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export async function generateMetadata({ params }) {
-  const { slug } = params;
-  let post = getBlogPosts().find((post) => post.slug === slug)
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const posts = await getBlogPosts();
+  const post = posts.find((post) => post.slug === slug)
   if (!post) {
     return
   }
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }) {
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: `${baseUrl}/feed/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -57,9 +58,14 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function Blog({ params }) {
-  const { slug } = params;
-  let post = getBlogPosts().find((post) => post.slug === slug)
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
+
+export default async function Blog({ params }: PageProps) {
+  const { slug } = await params;
+  const posts = await getBlogPosts();
+  const post = posts.find((post) => post.slug === slug)
 
   if (!post) {
     notFound()
@@ -82,7 +88,7 @@ export default async function Blog({ params }) {
                 image: post.metadata.image
                   ? `${baseUrl}${post.metadata.image}`
                   : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-                url: `${baseUrl}/blog/${post.slug}`,
+                url: `${baseUrl}/feed/${post.slug}`,
                 author: {
                   '@type': 'Person',
                   name: 'Ana Fernandes Rodrigues',

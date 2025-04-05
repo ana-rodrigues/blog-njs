@@ -1,0 +1,41 @@
+.post::after {
+    display: none;
+}
+
+.postContent {
+    display: flex;
+    flex-direction: column;
+    align-content: baseline;
+    padding: var(--spacer-sm);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-md);
+}
+
+.postDate {
+    margin-bottom: var(--spacer-xxsm);
+    min-width: 120px;
+}
+
+.postImageContainer {
+    position: relative;
+    display: inline-block;
+    border-radius: var(--border-md);
+    overflow: hidden;
+}
+
+.postImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 150ms ease-in;
+    border-radius: var(--border-md);
+    overflow: hidden;
+    margin-bottom: var(--spacer-md);
+}
+
+.postMeta {
+    display: grid;
+    gap: var(--spacer-xxsm);
+    min-width: 120px;
+    margin-bottom: var(--spacer-md);
+}

@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-xs);
-  margin-top: var(--spacer-md);
 }
 
 .preheaderLeft {

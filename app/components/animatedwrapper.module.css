@@ -1,3 +1,4 @@
 .animatedwrapper {
     padding-bottom: var(--spacer-xxlg);
+    padding-top: var(--spacer-md);
 }

@@ -7,9 +7,11 @@
   --inverse-primary-color: #111111;
   --secondary-text-color: #cfcfcf;
   --tertiary-text-color: #999999;
+  --border-color-lighter: rgba(203, 201, 201, 0.25);
   --border-color-light: rgba(172, 172, 172, 0.25);
   --border-color-dark: rgba(119, 118, 118, 0.25);
   --surface-color: rgba(46, 46, 46, 0.75);
+  --background-hover-color: rgb(29, 28, 28);
 
   --spacer-xxlg: 80px;
   --spacer-xlg: 64px;

@@ -15,9 +15,9 @@ export function Nav() {
       active: pathname === "/",
     },
     {
-      href: "/blog",
-      label: "Blog",
-      active: pathname.startsWith("/blog"),
+      href: "/feed",
+      label: "Feed",
+      active: pathname.startsWith("/feed"),
     },
   ];
 

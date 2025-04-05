@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { getBlogPosts } from 'app/feed/utils'
 import styles from './posts.module.css'
-import HighlightedPost from './highlightedpost'
+import HighlightedPost from './mediapost'
 import Post from './post'
 
 // Type definition
 interface BlogPost {
   slug: string;
   metadata: {
-    publishedAt: string; // or Date?
+    publishedAt: string;
     title: string;
+    image: string;
+    alt?: string;
+    category: string;
+    summary: string;
   };
 }
 
@@ -31,10 +34,16 @@ export function BlogPosts() {
 
   return (
     <div className={`container ${styles.blogList}`}>
-      <HighlightedPost post={allBlogs[0]} />
-      {allBlogs.slice(1).map((post) => (
-        <Post key={post.slug} post={post} />
-      ))}
+      {allBlogs.map((post) => {
+        switch (post.metadata.category) {
+          case 'articles':
+            return <Post key={post.slug} post={post} />
+          case 'experiments':
+            return <HighlightedPost key={post.slug} post={post} />
+          default:
+            return <Post key={post.slug} post={post} /> // Fallback to Post component
+        }
+      })}
     </div>
   )
 }

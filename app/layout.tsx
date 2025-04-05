@@ -192,26 +192,6 @@ export default function RootLayout({
           {/* Defer non-critical analytics */}
           <Analytics />
           <SpeedInsights />
-          {/* Add a script to preload images for the carousel */}
-          <Script id="preload-carousel-images" strategy="afterInteractive">
-            {`
-              const preloadImages = () => {
-                const imagesToPreload = [
-                  '/media/thumb-55.png',
-                  '/media/thumb-pour.png'
-                ];
-                imagesToPreload.forEach(src => {
-                  const img = new Image();
-                  img.src = src;
-                });
-              };
-              if (window.requestIdleCallback) {
-                requestIdleCallback(preloadImages);
-              } else {
-                setTimeout(preloadImages, 1000);
-              }
-            `}
-          </Script>
         </main>
       </body>
     </html>

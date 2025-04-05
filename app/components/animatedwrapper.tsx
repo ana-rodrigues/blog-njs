@@ -13,7 +13,7 @@ export default function AnimatedWrapper({ children }: AnimatedWrapperProps) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
       style={{ overflow: 'hidden' }}
       className={`${styles.animatedwrapper}`}
     >
