@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { formatDate } from 'app/blog/utils'
+import { formatDate } from 'app/feed/utils'
 import styles from './post.module.css'
 
 export default function Post({ post }) {
@@ -7,7 +7,7 @@ export default function Post({ post }) {
     <Link
       key={post.slug}
       className={`${styles.post}`}
-      href={`/blog/${post.slug}`}
+      href={`/feed/${post.slug}`}
     >
       <div className={`${styles.postContent}`}>
         <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt, false)}</p>

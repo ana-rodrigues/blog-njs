@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { formatDate } from 'app/blog/utils'
+import { formatDate } from 'app/feed/utils'
 import styles from './highlightedpost.module.css'
 import ClientSideTypewriter from './clientsidetypewriter'
 
@@ -11,7 +11,7 @@ export default function HighlightedPost({ post }) {
     <Link
       key={post.slug}
       className={`${styles.post}`}
-      href={`/blog/${post.slug}`}
+      href={`/feed/${post.slug}`}
     >
       <article className={`${styles.postContent}`}>
         <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt, false)}</p>

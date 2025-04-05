@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { formatDate, getBlogPosts } from 'app/feed/utils'
 import styles from './posts.module.css'
 import HighlightedPost from './highlightedpost'
 import Post from './post'
