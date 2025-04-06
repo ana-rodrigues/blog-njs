@@ -1,4 +1,4 @@
-import { getBlogPosts } from 'app/feed/utils'
+import { getBlogPosts } from './feed/utils.server'
 
 let baseUrl;
 
@@ -12,7 +12,7 @@ export { baseUrl };
 
 export default async function sitemap() {
   // Blog posts with higher priority for fresh content
-  let blogs = getBlogPosts().map((post) => ({
+  let blogs = (await getBlogPosts()).map((post) => ({
     url: `${baseUrl}/feed/${post.slug}`,
     lastModified: post.metadata.publishedAt,
     changeFrequency: 'monthly',

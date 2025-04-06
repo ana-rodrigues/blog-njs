@@ -45,7 +45,11 @@
   line-height: 180%;
   font-size: 0.9rem;
   color: var(--secondary-text-color);
-  margin-bottom: var(--spacer-md);
+  margin-bottom: var(--spacer-sm);
+}
+
+.p:last-child {
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 600px) {
@@ -133,6 +137,7 @@
   border-radius: var(--border-md);
   margin-top: var(--spacer-md);
   overflow: hidden;
+  background-color: var(--background-color-hover);
 }
 
 .postDate {

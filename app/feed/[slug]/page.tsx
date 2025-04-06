@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/feed/utils'
+import { formatDate } from 'app/feed/utils'
 import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
 import Breadcrumb from 'app/components/breadcrumb'
+import { getBlogPosts } from '../utils.server'
 
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -109,6 +110,9 @@ export default async function Blog({ params }: PageProps) {
                 src={post.metadata.image}
                 alt={post.metadata.alt || post.metadata.title} 
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={true}
+                quality={80}
                 style={{ objectFit: 'cover' }} 
               />
             </figure>
