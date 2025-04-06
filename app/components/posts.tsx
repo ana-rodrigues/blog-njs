@@ -12,6 +12,7 @@ export function BlogPosts() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   // Extract unique categories from blog posts
   const categories = useMemo(() => {
@@ -39,10 +40,20 @@ export function BlogPosts() {
     );
   }, [allBlogs, activeCategory]);
 
-  // Handle category change
+  // Handle category change with animation
   const handleCategoryChange = useCallback((category: string | null) => {
-    setActiveCategory(category);
-  }, []);
+    if (category !== activeCategory) {
+      setIsTransitioning(true);
+      // Short delay to allow animation to complete
+      setTimeout(() => {
+        setActiveCategory(category);
+        // Small delay to trigger the fade-in animation after category change
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 50);
+      }, 300); // Match the fadeOut transition duration
+    }
+  }, [activeCategory]);
 
   useEffect(() => {
     let isMounted = true;
@@ -61,14 +72,6 @@ export function BlogPosts() {
         const data = await response.json();
         
         if (isMounted) {
-          // Preload poster images for faster rendering
-          data.forEach((post: BlogPost) => {
-            if (post.metadata.poster) {
-              const img = new window.Image();
-              img.src = post.metadata.poster;
-            }
-          });
-          
           setAllBlogs(data);
         }
       } catch (err) {
@@ -120,22 +123,24 @@ export function BlogPosts() {
         onCategoryChange={handleCategoryChange} 
       />
       
-      {filteredAndSortedBlogs.length === 0 ? (
-        <p className={styles.noResults}>No posts found for this category</p>
-      ) : (
-        <div className={styles.blogList}>
-          {filteredAndSortedBlogs.map((post) => {
-            switch (post.metadata.category) {
-              case 'notes':
-                return <Post key={post.slug} post={post} />
-              case 'experiments':
-                return <HighlightedPost key={post.slug} post={post} />
-              default:
-                return <Post key={post.slug} post={post} />
-            }
-          })}
-        </div>
-      )}
+      <div className={isTransitioning ? styles.fadeExit : styles.fadeEnterActive}>
+        {filteredAndSortedBlogs.length === 0 ? (
+          <p className={styles.noResults}>No posts found for this category</p>
+        ) : (
+          <div className={styles.blogList}>
+            {filteredAndSortedBlogs.map((post) => {
+              switch (post.metadata.category) {
+                case 'notes':
+                  return <Post key={post.slug} post={post} />
+                case 'experiments':
+                  return <HighlightedPost key={post.slug} post={post} />
+                default:
+                  return <Post key={post.slug} post={post} />
+              }
+            })}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

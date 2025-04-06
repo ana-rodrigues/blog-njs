@@ -20,8 +20,6 @@
     background-color: transparent;
 }
 
-
-
 .postDate {
     margin-bottom: var(--spacer-xxsm);
     min-width: 120px;
@@ -59,6 +57,12 @@ video.postImage.loaded {
     overflow: hidden;
     border-radius: var(--border-md);
     background-color: var(--background-color);
+    transition: background-color 250ms ease-in-out;
+}
+
+.videoWrapper.loading {
+    background-color: var(--background-color-hover);
+    transition: background-color 250ms ease-in-out;
 }
 
 .videoWrapper video {
@@ -70,27 +74,6 @@ video.postImage.loaded {
     object-fit: cover;
     z-index: 1;
 }
-
-.posterContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    transition: opacity 300ms ease-out;
-}
-
-.posterImage {
-    object-fit: cover;
-}
-
-.hidden {
-    opacity: 0;
-    z-index: 0;
-}
-
-
 
 .postMeta {
     display: grid;

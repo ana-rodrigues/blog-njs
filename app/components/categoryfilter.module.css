@@ -8,7 +8,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacer-xsm);
+  gap: var(--spacer-xxsm);
 }
 
 .filterButton {

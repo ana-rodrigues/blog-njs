@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { formatDate, BlogPost } from 'app/feed/utils'
 import styles from './mediapost.module.css'
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 type MediaPostProps = {
   post: BlogPost
@@ -18,30 +18,10 @@ const getMediaType = (url: string | undefined): 'image' | 'video' => {
 export default function HighlightedPost({ post }: MediaPostProps) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
-  const [isPosterLoaded, setIsPosterLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
   const mediaType = getMediaType(post.metadata.image);
-  
-  // Determine the image source to display - use poster for videos if available
-  const displayImageSrc = useMemo(() => {
-    if (mediaType === 'video') {
-      return post.metadata.poster || post.metadata.image;
-    }
-    return post.metadata.image;
-  }, [mediaType, post.metadata.image, post.metadata.poster]);
-  
-  // Preload poster image for videos to improve performance
-  useEffect(() => {
-    if (mediaType === 'video' && post.metadata.poster) {
-      const img = new window.Image();
-      img.src = post.metadata.poster;
-      img.onload = () => setIsPosterLoaded(true);
-    } else {
-      setIsPosterLoaded(true); // No poster needed for non-video content
-    }
-  }, [mediaType, post.metadata.poster]);
 
   // Intersection Observer to detect when video is in viewport
   useEffect(() => {
@@ -108,19 +88,7 @@ export default function HighlightedPost({ post }: MediaPostProps) {
           className={`${styles.mediaContainer}`}
         >
           {mediaType === 'video' ? (
-            <div className={styles.videoWrapper}>
-              {post.metadata.poster && (
-                <div className={`${styles.posterContainer} ${isVideoLoaded ? styles.hidden : ''}`}>
-                  <Image
-                    src={post.metadata.poster}
-                    alt={post.metadata.alt || post.metadata.title}
-                    className={styles.posterImage}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={true}
-                  />
-                </div>
-              )}
+            <div className={`${styles.videoWrapper} ${!isVideoLoaded ? styles.loading : ''}`}>
               <video
                 ref={videoRef}
                 className={`${styles.postImage} ${isVideoLoaded ? styles.loaded : ''}`}
@@ -130,7 +98,6 @@ export default function HighlightedPost({ post }: MediaPostProps) {
                 muted
                 preload="metadata"
                 onLoadedData={handleVideoLoaded}
-                poster={post.metadata.poster || undefined}
               >
                 <source src={post.metadata.image} type="video/mp4" />
               </video>
