@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { formatDate, BlogPost } from 'app/feed/utils'
 import styles from './mediapost.module.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, memo } from 'react'
 
 type MediaPostProps = {
   post: BlogPost
@@ -15,7 +15,7 @@ const getMediaType = (url: string | undefined): 'image' | 'video' => {
   return extension === 'mp4' ? 'video' : 'image'
 }
 
-export default function MediaPost({ post }: MediaPostProps) {
+function MediaPost({ post }: MediaPostProps) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -120,3 +120,6 @@ export default function MediaPost({ post }: MediaPostProps) {
     </article>
   )
 }
+
+// Memoize the MediaPost component to prevent unnecessary re-renders
+export default memo(MediaPost)

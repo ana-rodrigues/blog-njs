@@ -148,3 +148,18 @@
 .figcaption {
   margin: var(--spacer-sm) 0;
 }
+
+.error {
+  color: var(--error-color, #e53e3e);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: var(--error-bg, rgba(229, 62, 62, 0.1));
+  margin: 1rem 0;
+}
+
+.loading {
+  color: var(--text-secondary, #718096);
+  padding: 1rem;
+  text-align: center;
+  font-style: italic;
+}

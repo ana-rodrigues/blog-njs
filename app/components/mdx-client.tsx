@@ -14,7 +14,7 @@ interface MDXContent {
 }
 
 // Define the components to be used in MDX
-export const MDXComponents = {
+const components = {
   h1: ({ children }) => <h1 className={styles.h1}>{children}</h1>,
   h2: ({ children }) => <h2 className={styles.h2}>{children}</h2>,
   h3: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
@@ -78,19 +78,37 @@ interface MDXClientRendererProps {
 
 export function MDXClientRenderer({ content }: MDXClientRendererProps) {
   const [mdxContent, setMdxContent] = useState<MDXContent | null>(null);
+  const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
+    if (!content) {
+      setError('No content provided');
+      return;
+    }
+    
     try {
       // Parse the serialized MDX content
       const parsedContent = JSON.parse(content);
+      
+      // Validate that the parsed content has the required properties
+      if (!parsedContent.compiledSource) {
+        setError('Invalid MDX content structure');
+        return;
+      }
+      
       setMdxContent(parsedContent);
     } catch (error) {
       console.error('Error parsing MDX content:', error);
+      setError('Failed to parse content');
     }
   }, [content]);
 
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+  
   if (!mdxContent) {
-    return <div>Loading content...</div>;
+    return <div className={`monoSm ${styles.loading}`}>Loading content...</div>;
   }
 
   // Render the MDX content with the client-side MDXRemote
@@ -98,6 +116,6 @@ export function MDXClientRenderer({ content }: MDXClientRendererProps) {
     compiledSource={mdxContent.compiledSource}
     frontmatter={mdxContent.frontmatter}
     scope={mdxContent.scope}
-    components={MDXComponents} 
+    components={components} 
   />;
 }

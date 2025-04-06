@@ -56,7 +56,7 @@ video.postImage.loaded {
     padding-bottom: 80%;
     overflow: hidden;
     border-radius: var(--border-md);
-    background-color: var(--background-color);
+    background-color: var(--background-color-hover);
     transition: background-color 250ms ease-in-out;
 }
 
@@ -73,6 +73,7 @@ video.postImage.loaded {
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    background-color: var(--background-color-hover);
 }
 
 .postMeta {

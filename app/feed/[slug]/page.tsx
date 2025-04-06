@@ -121,7 +121,11 @@ export default async function Blog({ params }: PageProps) {
           </div> 
 
           <div>
-          <CustomMDX source={post.content} />
+            {post.content ? (
+              <CustomMDX source={post.content} />
+            ) : (
+              <div className="error">No content available for this post</div>
+            )}
           </div>
         </section>
       </AnimatedWrapper>

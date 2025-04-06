@@ -41,18 +41,16 @@ export function BlogPosts() {
     );
   }, [allBlogs, activeCategory]);
 
-  // Handle category change with animation
+  // Handle category change with animation - optimized for responsiveness
   const handleCategoryChange = useCallback((category: string | null) => {
     if (category !== activeCategory) {
       setIsTransitioning(true);
-      // Short delay to allow animation to complete
-      setTimeout(() => {
-        setActiveCategory(category);
-        // Small delay to trigger the fade-in animation after category change
+      setActiveCategory(category);
+      requestAnimationFrame(() => {
         setTimeout(() => {
           setIsTransitioning(false);
-        }, 50);
-      }, 300); // Match the fadeOut transition duration
+        }, 150);
+      });
     }
   }, [activeCategory]);
 
@@ -63,7 +61,6 @@ export function BlogPosts() {
       try {
         const response = await fetch('/api/posts', { 
           cache: 'no-store'
-          // Note: 'priority' is not a valid option in the RequestInit type
         });
         
         if (!response.ok) {
@@ -96,7 +93,7 @@ export function BlogPosts() {
 
   if (isLoading) {
     return <div className={styles.loadingContainer}>
-      <p>Loading posts...</p>
+      <p className='monoSm'>Loading posts...</p>
     </div>
   }
 
