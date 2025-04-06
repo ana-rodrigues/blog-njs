@@ -54,8 +54,8 @@ body {
   padding-bottom: var(--spacer-md);
   max-width: 680px;
   margin: auto;
-  padding-left: var(--spacer-md);
-  padding-right: var(--spacer-md);
+  padding-left: var(--spacer-sm);
+  padding-right: var(--spacer-sm);
 }
 
 .full {
