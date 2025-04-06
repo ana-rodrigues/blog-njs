@@ -1,1 +1,1 @@
-ffmpeg -i rawmedia/pour.mov -c:v libx265 -c:a copy -crf 28 public/media/pour.mp4
+ffmpeg -i rawmedia/pour.mov -c:v libx264 -c:a copy -crf 28 public/media/pour.mp4

@@ -36,12 +36,12 @@ export function BlogPosts() {
     <div className={`container ${styles.blogList}`}>
       {allBlogs.map((post) => {
         switch (post.metadata.category) {
-          case 'articles':
+          case 'notes':
             return <Post key={post.slug} post={post} />
           case 'experiments':
             return <HighlightedPost key={post.slug} post={post} />
           default:
-            return <Post key={post.slug} post={post} /> // Fallback to Post component
+            return <Post key={post.slug} post={post} />
         }
       })}
     </div>

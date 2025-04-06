@@ -15,11 +15,11 @@ export default function Post({ post }) {
           <p className="monoSm">{formatDate(post.metadata.publishedAt, false)}</p>
           <p className="monoSm">{post.metadata.category}</p>
         </div>
-        <h2 className={`headingLg ${styles.postTitle}`}>{post.metadata.title}</h2>
+        <h2 className={`headingMd ${styles.postTitle}`}>{post.metadata.title}</h2>
         <p className={`paragraphMd ${styles.postDate}`}>{post.metadata.summary}</p>
 
         <div className={styles.postAction} aria-label={`Read ${post.metadata.title}`}>
-            <p className="monoSm">Read the article</p>
+            <p className="monoSm">Read the full text</p>
             <TbArrowRight aria-hidden="true" />
         </div>
       </div>
