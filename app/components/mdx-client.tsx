@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './mdx.module.css';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote';
 
 // Define interface for the MDX content
 interface MDXContent {
@@ -44,16 +44,31 @@ const components = {
     </pre>
   ),
 
-  img: ({ src, alt }) => (
-    <div className={styles.imgWrapper}>
-      <Image 
-          src={src} 
-          alt={alt || ''} 
-          fill
-          style={{ objectFit: 'cover' }} 
-      />
-    </div>
-  ),
+  img: ({ src, alt }) => {
+    // Handle image paths that might be relative
+    const imageSrc = src.startsWith('/') || src.startsWith('http') ? src : `/${src}`;
+    const [imageError, setImageError] = useState(false);
+    
+    return (
+      <div className={styles.imgWrapper} style={imageError ? { backgroundColor: 'red', aspectRatio: '16/9' } : {}}>
+        {!imageError && (
+          <Image 
+              src={imageSrc} 
+              alt={alt || ''} 
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading="lazy"
+              quality={80}
+              style={{ objectFit: 'cover' }} 
+              onError={() => {
+                console.error(`Failed to load image: ${imageSrc}`);
+                setImageError(true);
+              }}
+          />
+        )}
+      </div>
+    );
+  },
 };
 
 // Client component to render the MDX content

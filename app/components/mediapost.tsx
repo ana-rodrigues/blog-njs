@@ -15,7 +15,7 @@ const getMediaType = (url: string | undefined): 'image' | 'video' => {
   return extension === 'mp4' ? 'video' : 'image'
 }
 
-export default function HighlightedPost({ post }: MediaPostProps) {
+export default function MediaPost({ post }: MediaPostProps) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);

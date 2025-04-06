@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { formatDate, BlogPost } from 'app/feed/utils'
 import styles from './post.module.css'
-import { TbArrowRight } from 'react-icons/tb'
+import { TbClick } from 'react-icons/tb'
 
 type PostProps = {
   post: BlogPost
@@ -24,7 +24,7 @@ export default function Post({ post }: PostProps) {
 
         <div className={styles.postAction} aria-label={`Read ${post.metadata.title}`}>
             <p className="monoSm">Read the full text</p>
-            <TbArrowRight aria-hidden="true" />
+            <TbClick aria-hidden="true" />
         </div>
       </div>
     </Link>

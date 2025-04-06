@@ -3,9 +3,10 @@
 import { useEffect, useState, useMemo, useCallback } from 'react'
 import { BlogPost } from 'app/feed/utils'
 import styles from './posts.module.css'
-import HighlightedPost from './mediapost'
-import Post from './post'
 import CategoryFilter from './categoryfilter'
+import MediaPost from './mediapost'
+import Post from './post'
+import Note from './notepost'
 
 export function BlogPosts() {
   const [allBlogs, setAllBlogs] = useState<BlogPost[]>([])
@@ -131,9 +132,11 @@ export function BlogPosts() {
             {filteredAndSortedBlogs.map((post) => {
               switch (post.metadata.category) {
                 case 'notes':
-                  return <Post key={post.slug} post={post} />
+                  return <Note key={post.slug} post={post} />
                 case 'experiments':
-                  return <HighlightedPost key={post.slug} post={post} />
+                  return <MediaPost key={post.slug} post={post} />
+                case 'articles':
+                  return <Post key={post.slug} post={post} />
                 default:
                   return <Post key={post.slug} post={post} />
               }

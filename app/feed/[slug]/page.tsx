@@ -6,8 +6,6 @@ import AnimatedWrapper from 'app/components/animatedwrapper'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
 import Breadcrumb from 'app/components/breadcrumb'
-
-// Import the server-side utility
 import { getBlogPosts } from '../utils.server'
 
 
@@ -112,6 +110,9 @@ export default async function Blog({ params }: PageProps) {
                 src={post.metadata.image}
                 alt={post.metadata.alt || post.metadata.title} 
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={true}
+                quality={80}
                 style={{ objectFit: 'cover' }} 
               />
             </figure>
