@@ -14,7 +14,7 @@ interface MDXContent {
 }
 
 // Define the components to be used in MDX
-const components = {
+export const MDXComponents = {
   h1: ({ children }) => <h1 className={styles.h1}>{children}</h1>,
   h2: ({ children }) => <h2 className={styles.h2}>{children}</h2>,
   h3: ({ children }) => <h3 className={styles.h3}>{children}</h3>,
@@ -98,6 +98,6 @@ export function MDXClientRenderer({ content }: MDXClientRendererProps) {
     compiledSource={mdxContent.compiledSource}
     frontmatter={mdxContent.frontmatter}
     scope={mdxContent.scope}
-    components={components} 
+    components={MDXComponents} 
   />;
 }

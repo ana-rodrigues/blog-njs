@@ -62,8 +62,8 @@ export function BlogPosts() {
     async function fetchPosts() {
       try {
         const response = await fetch('/api/posts', { 
-          cache: 'no-store',
-          priority: 'high' // Prioritize this fetch request
+          cache: 'no-store'
+          // Note: 'priority' is not a valid option in the RequestInit type
         });
         
         if (!response.ok) {

@@ -1,14 +1,15 @@
 import { getBlogPosts } from '../../../feed/utils.server'
 import { NextResponse } from 'next/server'
 
+// Next.js 15 route handler with correct Promise-based params type signature
 export async function GET(
-  request: Request,
-  context: { params: { slug: string } }
+  _request: Request,
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { params } = context;
+  const { slug } = await params;
   try {
     const posts = await getBlogPosts()
-    const post = posts.find((post) => post.slug === params.slug)
+    const post = posts.find((post) => post.slug === slug)
 
     if (!post) {
       return NextResponse.json(
