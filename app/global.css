@@ -118,7 +118,7 @@ body {
   font-family: var(--font-editorial-ultralight), Times, serif;
   font-variant-ligatures: common-ligatures historical-ligatures contextual;
   font-weight: 300;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 140%;
   color: var(--primary-text-color);
 }
