@@ -3,8 +3,9 @@ import { NextResponse } from 'next/server'
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
+  const { params } = context;
   try {
     const posts = await getBlogPosts()
     const post = posts.find((post) => post.slug === params.slug)
