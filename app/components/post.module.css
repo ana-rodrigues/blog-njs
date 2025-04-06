@@ -8,6 +8,7 @@
     border: 1px solid var(--border-color-light);
     border-radius: var(--border-md);
     background-color: var(--background-color);
+    padding: var(--spacer-sm);
 }
 
 .post:hover {
