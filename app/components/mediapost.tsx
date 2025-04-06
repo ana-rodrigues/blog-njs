@@ -1,62 +1,153 @@
+'use client';
+
 import Image from 'next/image'
-import { formatDate } from 'app/feed/utils'
+import { formatDate, BlogPost } from 'app/feed/utils'
 import styles from './mediapost.module.css'
+import { useState, useRef, useEffect, useMemo } from 'react'
 
 type MediaPostProps = {
-  post: {
-    slug: string
-    metadata: {
-      publishedAt: string
-      title: string
-      image: string
-      alt?: string
-      category: string
-      summary: string
-    }
-  }
+  post: BlogPost
 }
 
-const getMediaType = (url: string): 'image' | 'video' => {
+const getMediaType = (url: string | undefined): 'image' | 'video' => {
+  if (!url) return 'image'
   const extension = url.split('.').pop()?.toLowerCase()
   return extension === 'mp4' ? 'video' : 'image'
 }
 
-
-
 export default function HighlightedPost({ post }: MediaPostProps) {
-  const formattedDate = formatDate(post.metadata.publishedAt, false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [isPosterLoaded, setIsPosterLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
   const mediaType = getMediaType(post.metadata.image);
+  
+  // Determine the image source to display - use poster for videos if available
+  const displayImageSrc = useMemo(() => {
+    if (mediaType === 'video') {
+      return post.metadata.poster || post.metadata.image;
+    }
+    return post.metadata.image;
+  }, [mediaType, post.metadata.image, post.metadata.poster]);
+  
+  // Preload poster image for videos to improve performance
+  useEffect(() => {
+    if (mediaType === 'video' && post.metadata.poster) {
+      const img = new window.Image();
+      img.src = post.metadata.poster;
+      img.onload = () => setIsPosterLoaded(true);
+    } else {
+      setIsPosterLoaded(true); // No poster needed for non-video content
+    }
+  }, [mediaType, post.metadata.poster]);
+
+  // Intersection Observer to detect when video is in viewport
+  useEffect(() => {
+    if (!videoRef.current || mediaType !== 'video') return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsInView(entry.isIntersecting);
+        
+        // Play video when in view, pause when out of view
+        if (entry.isIntersecting && videoRef.current) {
+          videoRef.current.play().catch(err => console.log('Auto-play prevented:', err));
+        } else if (videoRef.current) {
+          videoRef.current.pause();
+        }
+      },
+      { threshold: 0.1 } // Trigger when at least 10% of the video is visible
+    );
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [mediaType]);
+  
+  // Handle video load events
+  const handleVideoLoaded = () => {
+    setIsVideoLoaded(true);
+  };
+  
+  if (!post.metadata.image) {
+    return (
+      <article
+        key={post.slug}
+        className={`${styles.post}`}>
+        <div className={`${styles.postContent}`}>
+          <div className={`${styles.postMeta}`}>
+            <p className="monoSm">{formatDate(post.metadata.publishedAt, false)}</p>
+            <p className="monoSm">{post.metadata.category}</p>
+          </div>
+          <div className='paragraphMd'>{post.metadata.title}</div>
+        </div>
+      </article>
+    )
+  }
 
   return (
     <article
       key={post.slug}
       className={`${styles.post}`}>
       <div className={`${styles.postContent}`}>
-      <div className={`${styles.postMeta}`}>
+        <div className={`${styles.postMeta}`}>
           <p className="monoSm">{formatDate(post.metadata.publishedAt, false)}</p>
           <p className="monoSm">{post.metadata.category}</p>
-      </div>
-        {mediaType === 'video' ? (
-          <video
-            src={post.metadata.image}
-            controls={false}
-            className={`${styles.postImage}`}
-            playsInline
-            autoPlay
-            loop
-            muted
-          />
-        ) : (
-          <Image
-            src={post.metadata.image}
-            alt={post.metadata.alt || post.metadata.title}
-            className={`${styles.postImage}`}
-            width={800}
-            height={450}
-            quality={85}
-            priority
-          />
-        )}
+        </div>
+        <div 
+          ref={containerRef}
+          className={`${styles.mediaContainer}`}
+        >
+          {mediaType === 'video' ? (
+            <div className={styles.videoWrapper}>
+              {post.metadata.poster && (
+                <div className={`${styles.posterContainer} ${isVideoLoaded ? styles.hidden : ''}`}>
+                  <Image
+                    src={post.metadata.poster}
+                    alt={post.metadata.alt || post.metadata.title}
+                    className={styles.posterImage}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={true}
+                  />
+                </div>
+              )}
+              <video
+                ref={videoRef}
+                className={`${styles.postImage} ${isVideoLoaded ? styles.loaded : ''}`}
+                playsInline
+                autoPlay={isInView}
+                loop
+                muted
+                preload="metadata"
+                onLoadedData={handleVideoLoaded}
+                poster={post.metadata.poster || undefined}
+              >
+                <source src={post.metadata.image} type="video/mp4" />
+              </video>
+            </div>
+          ) : (
+            <Image
+              src={post.metadata.image}
+              alt={post.metadata.alt || post.metadata.title}
+              className={`${styles.postImage}`}
+              width={800}
+              height={450}
+              quality={85}
+              loading="eager"
+              priority={true}
+            />
+          )}
+        </div>
         <div className='paragraphMd'>{post.metadata.title}</div>
       </div>
     </article>

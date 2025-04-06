@@ -1,9 +1,13 @@
 import Link from 'next/link'
-import { formatDate } from 'app/feed/utils'
+import { formatDate, BlogPost } from 'app/feed/utils'
 import styles from './post.module.css'
 import { TbArrowRight } from 'react-icons/tb'
 
-export default function Post({ post }) {
+type PostProps = {
+  post: BlogPost
+}
+
+export default function Post({ post }: PostProps) {
   return (
     <Link
       key={post.slug}

@@ -1,0 +1,35 @@
+.filterContainer {
+  display: flex;
+  margin-bottom: var(--spacer-sm);
+  width: 100%;
+}
+
+.filterWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacer-xsm);
+}
+
+.filterButton {
+  background-color: var(--background-color);
+  color: var(--secondary-text-color);
+  border: 1px solid var(--background-color);
+  border-radius: var(--border-md);
+  padding: var(--spacer-xsm) var(--spacer-sm);
+  cursor: pointer;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+}
+
+.filterButton.hover {
+  color: var(--primary-text-color);
+  transition: color 150ms ease-out;
+}
+
+.filterButton.active {
+  background-color: var(--background-hover-color);
+  border-color: var(--border-color-lighter);
+  color: var(--primary-text-color);
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+
+}

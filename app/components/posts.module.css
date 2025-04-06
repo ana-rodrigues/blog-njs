@@ -2,4 +2,24 @@
     display: grid;
     gap: var(--spacer-sm);
     padding-bottom: var(--spacer-lg);
-  }
+}
+
+.noResults {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-color-secondary);
+    font-style: italic;
+}
+
+.categoryHeading {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+    color: var(--text-color-secondary);
+}
+
+.categoryName {
+    color: var(--accent-color);
+    font-weight: bold;
+}

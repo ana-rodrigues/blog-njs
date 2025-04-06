@@ -1,11 +1,14 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/feed/utils'
+import { formatDate } from 'app/feed/utils'
 import { baseUrl } from 'app/sitemap'
 import AnimatedWrapper from 'app/components/animatedwrapper'
 import Image from 'next/image'
 import styles from 'app/components/mdx.module.css'
 import Breadcrumb from 'app/components/breadcrumb'
+
+// Import the server-side utility
+import { getBlogPosts } from '../utils.server'
 
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
