@@ -2,7 +2,8 @@
     display: grid;
     gap: var(--spacer-sm);
     padding-bottom: var(--spacer-lg);
-    animation: fadeIn 250ms ease-in;
+    animation: fadeIn 150ms ease-in;
+    will-change: opacity;
 }
 
 @keyframes fadeIn {
@@ -44,7 +45,8 @@
 
 .fadeEnterActive {
     opacity: 1;
-    transition: opacity 250ms ease-in;
+    transition: opacity 150ms ease-in;
+    will-change: opacity;
 }
 
 .fadeExit {
@@ -53,5 +55,6 @@
 
 .fadeExitActive {
     opacity: 0;
-    transition: opacity 250ms ease-out;
+    transition: opacity 150ms ease-out;
+    will-change: opacity;
 }

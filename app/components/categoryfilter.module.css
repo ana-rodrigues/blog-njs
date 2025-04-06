@@ -8,12 +8,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacer-xxsm);
+  gap: 0px;
 }
 
 .filterButton {
   background-color: var(--background-color);
-  color: var(--secondary-text-color);
   border: 1px solid var(--background-color);
   border-radius: var(--border-md);
   padding: var(--spacer-xsm) var(--spacer-sm);
@@ -22,7 +21,7 @@
 }
 
 .filterButton.hover {
-  color: var(--primary-text-color);
+  background-color: var(--background-hover-color);
   transition: color 150ms ease-out;
 }
 
