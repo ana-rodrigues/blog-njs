@@ -41,9 +41,9 @@ export function Showcase() {
       mobile: '/media/thumb-pour-mobile.png'
     },
     { 
-      desktop: '/media/thumb-navro.png',
-      tablet: '/media/thumb-navro-tablet.png',
-      mobile: '/media/thumb-navro-mobile.png'
+      desktop: '/media/thumb-55.png',
+      tablet: '/media/thumb-55-tablet.png',
+      mobile: '/media/thumb-55-mobile.png'
     },
     { 
       desktop: '/media/thumb-defiance.png',

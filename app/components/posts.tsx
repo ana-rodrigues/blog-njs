@@ -14,6 +14,7 @@ export function BlogPosts() {
   const [error, setError] = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [loadingDelayExpired, setLoadingDelayExpired] = useState(false)
 
   // Extract unique categories from blog posts
   const categories = useMemo(() => {
@@ -55,6 +56,14 @@ export function BlogPosts() {
   }, [activeCategory]);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadingDelayExpired(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     let isMounted = true;
     
     async function fetchPosts() {
@@ -90,6 +99,11 @@ export function BlogPosts() {
       isMounted = false;
     };
   }, [])
+
+  if (isLoading && !loadingDelayExpired) {
+    // Don't show loading state if delay hasn't expired yet
+    return null;
+  }
 
   if (isLoading) {
     return <div className={styles.loadingContainer}>
@@ -144,4 +158,3 @@ export function BlogPosts() {
     </div>
   )
 }
- 

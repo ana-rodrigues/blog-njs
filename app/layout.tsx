@@ -1,29 +1,17 @@
 import './global.css'
 import Nav from './components/nav'
 import type { Metadata } from 'next'
-import { Inter, Source_Code_Pro } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { baseUrl } from './sitemap'
-import Script from 'next/script'
 import localFont from 'next/font/local'
 
-// Google fonts with optimized loading
-const inter = Inter({ 
-  subsets: ['latin'], 
-  display: 'swap', 
-  variable: '--font-inter',
-  preload: true,
-  fallback: ['system-ui', 'Arial']
-})
-
-const sourceCodePro = Source_Code_Pro({ 
-  subsets: ['latin'], 
-  display: 'swap', 
-  variable: '--font-source-code-pro',
-  preload: true,
-  fallback: ['monospace']
-})
+// Define system font variables directly
+const systemFonts = {
+  sans: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+  serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif'
+}
 
 // Local fonts with optimized loading
 const editorialUltralight = localFont({
@@ -36,8 +24,8 @@ const editorialUltralight = localFont({
   ],
   display: 'swap',
   variable: '--font-editorial-ultralight',
-  preload: true,
-  fallback: ['Times New Roman', 'serif']
+  preload: false,
+  fallback: ['serif']
 })
 
 const editorialUltralightItalic = localFont({
@@ -51,7 +39,7 @@ const editorialUltralightItalic = localFont({
   display: 'swap',
   variable: '--font-editorial-ultralight-italic',
   preload: false,
-  fallback: ['Times New Roman', 'serif']
+  fallback: ['serif']
 })
 
 const neueMontreal = localFont({
@@ -64,8 +52,8 @@ const neueMontreal = localFont({
   ],
   display: 'swap',
   variable: '--font-neue-montreal',
-  preload: true,
-  fallback: ['Arial', 'sans-serif']
+  preload: false,
+  fallback: ['sans-serif']
 })
 
 const departureMono = localFont({
@@ -162,13 +150,15 @@ export default function RootLayout({
       lang="en"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
-        inter.variable,
-        sourceCodePro.variable,
         editorialUltralight.variable,
         editorialUltralightItalic.variable,
         neueMontreal.variable,
         departureMono.variable
       )}
+      style={{
+        '--font-inter': systemFonts.sans,
+        '--font-source-code-pro': systemFonts.mono,
+      } as React.CSSProperties}
     >
       <head>
         {/* Safari-specific favicons */}
@@ -180,8 +170,6 @@ export default function RootLayout({
         
         {/* Add preconnect for external resources */}
         <link rel="preconnect" href="https://vitals.vercel-insights.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
         <main id="main-content">
