@@ -1,7 +1,7 @@
 .footer {
     padding: var(--spacer-md);
     gap: var(--spacer-md);
-    margin-bottom: var(--spacer-md);
+    margin-bottom: var(--spacer-lg);
 }
 
 .footerCredits {

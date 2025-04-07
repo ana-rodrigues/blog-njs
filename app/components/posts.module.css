@@ -15,7 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    min-height: 90vh;
     animation: fadeIn 250ms ease-in;
 }
 
@@ -37,24 +37,4 @@
 .categoryName {
     color: var(--accent-color);
     font-weight: bold;
-}
-
-.fadeEnter {
-    opacity: 0;
-}
-
-.fadeEnterActive {
-    opacity: 1;
-    transition: opacity 150ms ease-in;
-    will-change: opacity;
-}
-
-.fadeExit {
-    opacity: 1;
-}
-
-.fadeExitActive {
-    opacity: 0;
-    transition: opacity 150ms ease-out;
-    will-change: opacity;
 }
