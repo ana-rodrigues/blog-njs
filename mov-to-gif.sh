@@ -1,1 +1,0 @@
-ffmpeg -i rawmedia/navigation.mov -c:v libx264 -c:a copy -crf 28 public/media/navigation.mp4
