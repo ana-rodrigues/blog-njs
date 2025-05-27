@@ -97,7 +97,11 @@ export default async function Blog({ params }: PageProps) {
               }),
             }}
           />
-          <Breadcrumb title={post.metadata.title} />
+          <Breadcrumb 
+            title={post.metadata.title} 
+            href="/feed" 
+            linkText="Return to feed" 
+          />
 
           <h1 className={styles.h1}>{post.metadata.title}</h1>
           <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
