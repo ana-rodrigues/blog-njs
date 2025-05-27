@@ -1,1 +1,1 @@
-ffmpeg -i rawmedia/writer-auth.mov -c:v libx264 -c:a copy -crf 28 public/media/writer-auth.mp4
+ffmpeg -i rawmedia/writer-auth-loop.mov -c:v libx264 -c:a copy -crf 28 public/media/writer-auth-loop.mp4
