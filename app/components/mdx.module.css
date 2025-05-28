@@ -1,50 +1,23 @@
 .h1 {
-  font-family: var(--font-editorial-ultralight), Times, serif;
-  font-variant-ligatures: common-ligatures historical-ligatures contextual;
-  font-weight: 300;
-  font-size: 2.4rem;
-  line-height: 130%;
-  color: var(--primary-text-color);
+  composes: headingLg from global;
+  margin-bottom: var(--spacer-sm);
   margin-top: var(--spacer-lg);
 }
 
-@media screen and (min-width: 800px) {
-
-  .h1 {
-    font-size: 3.1rem;
-  }
-}
-
-
 .h2 {
-  font-family: var(--font-editorial-ultralight), Times, serif;
-  font-variant-ligatures: common-ligatures historical-ligatures contextual;
-  font-weight: 300;
-  font-size: 2rem;
-  line-height: 140%;
-  color: var(--primary-text-color);
+  composes: headingMd from global;
   margin-bottom: var(--spacer-sm);
   margin-top: var(--spacer-lg);
 }
 
 .h3 {
-  font-family: var(--font-editorial-ultralight), Times, serif;
-  font-variant-ligatures: common-ligatures historical-ligatures contextual;
-  font-weight: 300;
-  font-size: 1.6rem;
-  line-height: 140%;
-  color: var(--primary-text-color);
+  composes: headingSm from global;
   margin-bottom: var(--spacer-sm);
   margin-top: var(--spacer-lg);
 }
 
 .p {
-  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
-  font-variant-ligatures: common-ligatures historical-ligatures contextual;
-  font-weight: 300;
-  line-height: 180%;
-  font-size: 0.9rem;
-  color: var(--secondary-text-color);
+  composes: paragraphMd from global;
   margin-bottom: var(--spacer-sm);
 }
 
@@ -52,62 +25,18 @@
   margin-bottom: 0;
 }
 
-@media screen and (min-width: 600px) {
-
-  .p {
-    font-size: 1rem;
-   }
-}
-
 .a {
-  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
-  font-weight: 300;
-  letter-spacing: 1%;
-  line-height: 160%;
-  font-size: 0.9rem;
-  color: var(--primary-text-color);
-  text-decoration: none;
-  cursor: pointer;
+  composes: link from global;
+  position: relative;
 }
 
-.a::after {
-  content: '';
-  width: 0;
-  height: 1px;
-  display: block;
-  right: 0;
-  background: var(--primary-text-color);
-  transition: width 0.5s ease, right 0.5s ease;
-}
-
-.a:hover::after {
-  width: 100%;
-  right: 0;
-}
-
-.ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
-  font-weight: 300;
-  letter-spacing: 1%;
-  line-height: 180%;
-  font-size: 0.95rem;
-}
-
-.ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
-  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
-  font-weight: 300;
-  letter-spacing: 1%;
-  line-height: 180%;
-  font-size: 0.95rem;
-  color: var(--secondary-text-color);
+.ul, .ol {
+  composes: list paragraphMd from global;
+  margin-bottom: var(--spacer-sm);
 }
 
 .li {
-  margin-bottom: var(--spacer-sm);
+  margin-bottom: var(--spacer-xxsm);
 }
 
 .blockquote {

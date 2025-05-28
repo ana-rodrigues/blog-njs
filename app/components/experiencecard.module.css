@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-md);
-  padding-bottom: var(--spacer-md);
 }
 
 .experienceCard .logo {
@@ -27,11 +26,11 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-sm);
-  margin-bottom: var(--spacer-md);
+  margin-bottom: var(--spacer-sm);
 }
 
 .experienceCard .info {
-  margin-top: var(--spacer-xxsm);
+  margin-top: var(--spacer-xsm);
   
 }
 
@@ -39,58 +38,9 @@
   color: var(--primary-text-color);
 }
 
-/* Case Studies Styles */
-.caseStudies {
-  margin-top: var(--spacer-md);
-  border-top: 1px solid var(--border-color);
-  padding-top: var(--spacer-md);
-}
-
-.caseStudiesHeading {
-  margin-bottom: var(--spacer-sm);
-  color: var(--secondary-text-color);
-}
-
-.caseStudyList {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacer-sm);
-}
-
-.caseStudyItem {
-  transition: transform 0.2s ease-in-out;
-}
-
-.caseStudyItem:hover {
-  transform: translateX(4px);
-}
-
-.caseStudyLink {
-  display: block;
-  text-decoration: none;
-  padding: var(--spacer-sm);
-  border-radius: var(--border-md);
-  background-color: var(--card-bg-color);
-  transition: background-color 0.2s ease;
-}
-
-.caseStudyLink:hover {
-  background-color: var(--card-hover-bg-color);
-}
-
-.caseStudyTitle {
-  display: block;
-  font-weight: 600;
-  margin-bottom: var(--spacer-xxsm);
-  color: var(--primary-text-color);
-}
-
-.caseStudySummary {
-  font-size: 0.9rem;
-  color: var(--secondary-text-color);
-  margin: 0;
+/* Main content styles */
+.main {
+  margin-top: var(--spacer-sm);
 }
 
 @media screen and (min-width: 600px) {
@@ -103,14 +53,4 @@
 .experienceCard .info {
   text-align: end;
 }
-
-.caseStudyList {
-  grid-template-columns: repeat(2, 1fr);
-}
-}
-
-@media screen and (min-width: 900px) {
-  .caseStudyList {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }

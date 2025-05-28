@@ -2,16 +2,10 @@ import React from 'react';
 import styles from './experiencecard.module.css'
 import experienceData from '../content/experience.json'
 import Image from 'next/image'
-import Link from 'next/link';
+import CaseStudySection from './casestudysection';
 
 type ExperienceCardProps = {
   index: number;
-}
-
-type CaseStudy = {
-  title: string;
-  slug: string;
-  summary: string;
 }
 
 const ExperienceCard = ({ index }: ExperienceCardProps) => {
@@ -60,28 +54,10 @@ const ExperienceCard = ({ index }: ExperienceCardProps) => {
           </div>
 
           {/* Case Studies Section */}
-          {experience.caseStudies && experience.caseStudies.length > 0 && (
-            <div className={styles.caseStudies}>
-              <h4 className={`${styles.caseStudiesHeading} monoSm`}>Case Studies</h4>
-              <ul className={styles.caseStudyList}>
-                {experience.caseStudies.map((caseStudy: CaseStudy) => {
-                  // Convert company name to slug format
-                  const companySlug = experience.company.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                  return (
-                    <li key={caseStudy.slug} className={styles.caseStudyItem}>
-                      <Link 
-                        href={`/case-studies/${companySlug}/${caseStudy.slug}`} 
-                        className={styles.caseStudyLink}
-                      >
-                        <span className={styles.caseStudyTitle}>{caseStudy.title}</span>
-                        <p className={styles.caseStudySummary}>{caseStudy.summary}</p>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
+          <CaseStudySection 
+            caseStudies={experience.caseStudies || []} 
+            companyName={experience.company} 
+          />
 
       </div>
 

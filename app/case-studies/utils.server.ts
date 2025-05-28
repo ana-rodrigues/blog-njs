@@ -11,25 +11,27 @@ export type CaseStudyMetadata = {
   duration?: string
   technologies?: string[]
   role?: string
+  company?: string
+  year?: string
+  goal?: string
 }
 
 export type CaseStudy = {
   slug: string
   metadata: CaseStudyMetadata
   content: string
-  companySlug: string
 }
 
 function parseFrontmatter(fileContent: string) {
-  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
-  let match = frontmatterRegex.exec(fileContent)
-  let frontMatterBlock = match![1]
-  let content = fileContent.replace(frontmatterRegex, '').trim()
-  let frontMatterLines = frontMatterBlock.trim().split('\n')
-  let metadata: Partial<CaseStudyMetadata> = {}
+  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+  const match = frontmatterRegex.exec(fileContent)
+  const frontMatterBlock = match![1]
+  const content = fileContent.replace(frontmatterRegex, '').trim()
+  const frontMatterLines = frontMatterBlock.trim().split('\n')
+  const metadata: Partial<CaseStudyMetadata> = {}
 
   frontMatterLines.forEach((line) => {
-    let [key, ...valueArr] = line.split(': ')
+    const [key, ...valueArr] = line.split(': ')
     let value = valueArr.join(': ').trim()
     value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
     
@@ -59,52 +61,39 @@ function getMDXFiles(dir: string) {
 }
 
 function readMDXFile(filePath: string) {
-  let rawContent = fs.readFileSync(filePath, 'utf-8')
+  const rawContent = fs.readFileSync(filePath, 'utf-8')
   return parseFrontmatter(rawContent)
 }
 
-function getMDXData(dir: string, companySlug: string): CaseStudy[] {
-  let mdxFiles = getMDXFiles(dir)
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(path.join(dir, file))
-    let slug = path.basename(file, path.extname(file))
-
+function getMDXData(dir: string): CaseStudy[] {
+  const files = getMDXFiles(dir)
+  return files.map(file => {
+    const filePath = path.join(dir, file)
+    const { metadata, content } = readMDXFile(filePath)
+    const slug = file.replace(/\.mdx$/, '')
+    
     return {
-      metadata,
       slug,
-      content,
-      companySlug
+      metadata,
+      content
     }
   })
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
   const caseStudiesDir = path.join(process.cwd(), 'app', 'case-studies', 'posts')
-  const companyDirs = fs.readdirSync(caseStudiesDir)
-  
-  let allCaseStudies: CaseStudy[] = []
-  
-  for (const companyDir of companyDirs) {
-    const companyPath = path.join(caseStudiesDir, companyDir)
-    if (fs.statSync(companyPath).isDirectory()) {
-      const caseStudies = getMDXData(companyPath, companyDir)
-      allCaseStudies = [...allCaseStudies, ...caseStudies]
-    }
-  }
-  
-  return allCaseStudies
+  return getMDXData(caseStudiesDir)
 }
 
 export async function getCaseStudiesByCompany(company: string): Promise<CaseStudy[]> {
-  const companyPath = path.join(process.cwd(), 'app', 'case-studies', 'posts', company)
-  if (!fs.existsSync(companyPath)) {
-    return []
-  }
-  
-  return getMDXData(companyPath, company)
+  const allCaseStudies = await getCaseStudies()
+  return allCaseStudies.filter(study => 
+    study.metadata.company && 
+    study.metadata.company.toLowerCase() === company.toLowerCase()
+  )
 }
 
-export async function getCaseStudyBySlug(company: string, slug: string): Promise<CaseStudy | null> {
-  const companyStudies = await getCaseStudiesByCompany(company)
-  return companyStudies.find(study => study.slug === slug) || null
+export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
+  const allCaseStudies = await getCaseStudies()
+  return allCaseStudies.find(study => study.slug === slug) || null
 }

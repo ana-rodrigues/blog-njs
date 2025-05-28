@@ -9,19 +9,7 @@
         "websiteLabel": "navro.com",
         "roleDescription": "Joined as the first in-house designer and transitioned the design function from a consultancy model to permanent staff, establishing the foundations, building the team, and influencing the organisation to adopt a user-centric design culture. By working in close collaboration with Product and Engineering leadership, I helped crafting a full payments suite that complies with regulatory requirements across various regions, contributing to the company's growth from pre-seed to securing Series A investment.",
         "role": "Product Designer",
-        "date": "2023 - today",
-        "caseStudies": [
-          {
-            "title": "Global Payment UI Redesign",
-            "slug": "payment-ui-redesign",
-            "summary": "Redesigning the payment interface to support multiple currencies and payment methods"
-          },
-          {
-            "title": "Compliance Workflow",
-            "slug": "compliance-workflow",
-            "summary": "Creating a seamless compliance experience that meets regulatory requirements"
-          }
-        ]
+        "date": "2023 - today"
       },
       {
         "company": "Swell Commerce",
@@ -31,14 +19,7 @@
         "websiteLabel": "swell.is",
         "roleDescription": "I embraced a new challenge as a Product Manager, applying my e-commerce and product design expertise to develop a hosted storefronts solution featuring a no-code builder - a product aiming to unlock the full potential of the SMB customer segment for the business. I also contributed to increased conversions through the optimisation of the product onboarding. During my time at Swell, the company successfully moved from seed stage to closing their Series A round. ",
         "role": "Product Manager",
-        "date": "2022",
-        "caseStudies": [
-          {
-            "title": "No-Code Storefront Builder",
-            "slug": "storefront-builder",
-            "summary": "Developing a no-code solution for SMBs to quickly build e-commerce storefronts"
-          }
-        ]
+        "date": "2022"
       },
       {
         "company": "Gaspard+Bruno",
@@ -51,19 +32,11 @@
         "date": "2017 - 2022",
         "caseStudies": [
           {
-            "title": "Public.com Trading Platform",
-            "slug": "public-trading-platform",
-            "summary": "Designing an intuitive trading experience for new investors"
-          },
-          {
-            "title": "Off-White E-commerce",
-            "slug": "off-white-ecommerce",
-            "summary": "Creating a unique shopping experience that reflects the Off-White brand"
-          },
-          {
-            "title": "Browns Fashion Mobile App",
-            "slug": "browns-fashion-app",
-            "summary": "Developing a mobile shopping experience for luxury fashion customers"
+            "title": "Fostering a new generation of investors",
+            "client": "Undisclosed client",
+            "slug": "undisclosed-investing-app",
+            "image": "/media/case-studies/defiance-cover.png",
+            "alt": ""
           }
         ]
       }
