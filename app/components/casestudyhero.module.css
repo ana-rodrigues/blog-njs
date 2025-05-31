@@ -1,6 +1,5 @@
 .caseStudyHero {
   margin-top: var(--spacer-md);
-  margin-bottom: var(--spacer-md);
   width: 100%;
 }
 
@@ -28,7 +27,6 @@
 }
 
 .featuredImageContainer {
-  margin-top: var(--spacer-md);
   margin-bottom: var(--spacer-lg);
   width: 100%;
 }

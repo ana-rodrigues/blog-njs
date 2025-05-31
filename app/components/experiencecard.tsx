@@ -21,8 +21,9 @@ const ExperienceCard = ({ index }: ExperienceCardProps) => {
             className={`${styles.logo} inline`} 
             src={experience.logo} 
             alt={`${experience.company} logo`}
-            width={80}
-            height={80}
+            width={420}
+            height={420}
+            quality={100}
           />
           <div className={styles.detail}>
             <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>

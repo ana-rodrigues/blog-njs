@@ -121,7 +121,7 @@ export default async function Blog({ params }: PageProps) {
               />
             </figure>
           ) : null}
-          <figcaption className={`paragraphSm ${styles.figcaption}`}>{post.metadata.alt || post.metadata.title}</figcaption>
+          <figcaption className={`paragraphSm ${styles.figcaption}`}>{post.metadata.alt}</figcaption>
           </div> 
 
           <div>

@@ -199,6 +199,14 @@ body {
    }
 }
 
+.paragraphXs {
+  font-family: var(--font-neue-montreal), 'Arial', sans-serif;
+  font-weight: 300;
+  letter-spacing: 4%;
+  line-height: 140%;
+  font-size: 0.75rem;
+}
+
 a {
   font-family: var(--font-neue-montreal), 'Arial', sans-serif;
   font-weight: 300;

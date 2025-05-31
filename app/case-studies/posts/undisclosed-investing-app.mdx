@@ -2,7 +2,7 @@
 title: Fostering a new generation of investors
 publishedAt: 2024-03-15
 summary: Designing an intuitive trading experience for new investors
-image: /media/case-studies/defiance-cover.png
+image: /media/case-studies/unnamed-cover.png
 alt: App interface displaying the stock information for Analog Devices. Beyond key company details, the user can toggle between a line and a candle chart to browse the stock's price history. 
 company: Gaspard+Bruno
 client: Undisclosed client
@@ -12,68 +12,145 @@ year: 2021
 
 ## Context
 
-The client wanted to enter the retail investment app market with a dedicated product. Post-pandemic, the space observed significant growth, with increasing accessibility to financial markets and a surge in retail investor interest.
+The client, an issuer specialised in thematic and leveraged ETFs, wanted to enter the retail investment app market with a dedicated product. Post-pandemic, the space observed significant growth, with increasing accessibility to financial markets and a surge in retail investor interest.
 
-They challenged us to create an experience that would attract new investors and help them evolve their investing strategy from buying the casual individual stock into building a long-term, diversified portfolio.
+They challenged us to create an experience that would attract new investors and help them evolve their investing strategy from buying the casual individual stock into building a long-term, diversified portfolio. 
 
 ## Business impact
 
-Our market research insights led us to explore investing as a concept to attract and educate users toward portfolio diversification - bridging this product with Defiance’s own ETF offering. 
-
-In close collaboration with our client, we created a product that would reduce the barrier to entry for new investors and foster users with long-term objectives, aiming for a high customer lifetime value.
+In close collaboration with our client, we shaped a product that would reduce the barrier to entry for new investors and foster users with long-term objectives, aiming for a high customer lifetime value.
 
 ## Role and team
 
 This project was developed within a cross-functional team of two designers (including myself), three frontend developers, a backend developer and a QA engineer. As the lead product designer, I was responsible for:
 
 - Conducting market research
-- Determining the product scope and features for the initial releases
 - Creating proofs-of-concept and wireframes
 - Collaborating with engineering on technical feasibility
 - Researching and collaborating with third-party providers for integrations (e.g., know your customer and identity verification)
-- Supporting the client in the development of a testing and launch plan
+- Partnering with the client in the validation of the initial scope and alpha launch plan
 
-## The Process
+## Discovery
 
-### Research Phase
+### Business opportunity
 
-Add findings from market research
+Post-pandemic, the retail investment app market observed significant growth, with a significant share coming through mobile apps, driven by improved accessibility and user experience, zero-comission management offers, ease of payment and the option to buy fractional shares. 
 
-### Design Exploration
+It is also worthwhile to note the growing popularity of thematic funds and ETFs during this bull market period, as - historically - new investing trends are often introduced during periods of high market performance. Funds and ETF's with a tech focus are particularly favoured during this period, as the global rush to digitise services unravels on the back of the Covid-19 pandemic.
 
-Based on the research, I created several design concepts focusing on:
+{
+<div className="tableContainer">
+  <table className="table">
+    <thead className="thead">
+      <tr className="tr">
+        <th className="th">Opportunities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="tr">
+        <td className="td">Retail investors accounting for approximately a third of the US stock market trading in 2021. The number of app users increased from 35.6 million in 2017 to over 150 million in 2021.</td>
+      </tr>
+      <tr className="tr">
+        <td className="td">Around 60% of users don’t complete app onboarding, due to the length and complexity of the due diligence process, unclear instructions and excessive documentation requirements of financial apps.</td>
+      </tr>
+      <tr className="tr">
+        <td className="td">Interesting in thematic ETFs spiked post-pandemic, accounting for 33% of actively managed strategies.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+}
 
-1. **Clear fee structure** - Making exchange rates and fees transparent
-2. **Simplified flow** - Reducing the number of steps to complete a payment
-3. **Visual feedback** - Providing clear status updates throughout the process
-4. **Compliance integration** - Seamlessly incorporating necessary compliance steps
+### Known challenges
 
-## The Solution
+The opportunity to go to market with a new retail investment app was significant, but so were the challenges. The client was entering a competitive space - especially in the US - with players like Robinhood and Webull leading the way.
 
-The final design included:
+{
+<div className="tableContainer">
+  <table className="table">
+    <thead className="thead">
+      <tr className="tr">
+        <th className="th">Challenges</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="tr">
+        <td className="td">Highly competitive market with Robinhood and Webull dominating the app space.</td>
+      </tr>
+      <tr className="tr">
+        <td className="td">User acquisition was expensive, with a day 1 retention rate of 22% and a 30-day retention rate of 5.8% according to available benchmarks. Achieving a favourable ratio between acquisiton costs and lifetime value was key.</td>
+      </tr>
+      <tr className="tr">
+        <td className="td">Around 60% of users don’t complete app onboarding, due to the length and complexity of the due diligence process, unclear instructions and excessive documentation requirements of financial apps.</td>
+      </tr>
+      <tr className="tr">
+        <td className="td">Top investing apps in the US had seen significant fluctuations in downloads and revenue, with online trends playing a meaningful role.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+}
 
-- A redesigned payment dashboard with clear visibility of all currencies
-- A streamlined payment flow reducing steps by 40%
-- Real-time exchange rate information with fee transparency
-- Integrated compliance checks that don't disrupt the user experience
-- Responsive design that works across all devices
+### Competitive landscape
+
+We performed market research to identify how the different products addressed different investor profiles - from newcomers to seasoned investors. Our goal was to understand how we could shape an appealing user learning curve.
+
+{
+<CustomImage src="/media/case-studies/unnamed-1.png" alt="Competitive landscape overview" />
+}
+
+## Solution
+
+Based on the research above, we created several design concepts focusing on:
+
+1. Removing barriers to exploring the app
+2. Creating engagement opportunities with stock themes
+3. Simplified investing account application flow
+
+### Removing barriers to exploring the app
+
+We shaped opportunities for users to explore the app without an account, relying on the bare minimum information collected for perosnalisation purposes. So, instead of leading with the account creation journey, we focused on capturing user interests to personalise their discovery experience.
+
+{
+<CustomImage src="/media/case-studies/unnamed-5.png" alt="User journey when creating an account." />
+}
+
+Pages like the stock detail view are rendered differently based on whether the user is authenticated or not.
+
+- Without an account, users can only access a limited amount of data.
+- With an account, users can access all historical stock performance information.
+
+{
+<CustomImage src="/media/case-studies/unnamed-4.png" alt="The amount of data and the calls to action are shaped differently depending on whether the user has an account or not." />
+}
+
+
+### Creating engagement opportunities with stock themes
+
+Newcomers were highly motivated to start investing by soaring interest in specific industries, often discussed in online communities at Reddit, Twitter and other online forums. 
+
+Our hypothesis was that nurturing this motivation would translate into a higher likelihood of completing the full onboarding process and remaining active for longer, so we aimed to increase signup intent by displaying thematic collections of stocks matching the user's interests. 
+
+Themes are made available as ready-made baskets or portfolios, enabling investors to gain diversified exposure to a chosen theme with a single investment.
+
+{
+<CustomImage src="/media/case-studies/unnamed-2.png" alt="Capturing preferences - users are only asked for highly-valuable information used to personalise their experience before they land the homepage of the app."/>
+}
+
+{
+<CustomImage src="/media/case-studies/unnamed-3.png" alt="The user lands on a personalised homepage, suggesting stocks and themes that are the most likely to capture their interest." />
+}
+
+### Simplified verification flow
+
+New users unnacostumed to the complex requirements of financial apps might be discouraged by a lengthy identity verification flow. We aimed to reduce the number of steps in the know-your-customer process as much as possible.
+
+{
+<CustomImage src="/media/case-studies/unnamed-6.png" alt="User journey when applying for an investing account." />
+}
 
 ## Results
 
-After implementing the redesigned payment UI:
-
-- Payment completion rates increased by 28%
-- Customer support inquiries related to payments decreased by 35%
-- User satisfaction scores improved from 6.8 to 8.9 (out of 10)
-- The system successfully scaled to support 15 new currencies
-
-## Lessons Learned
-
-This project reinforced the importance of:
-
-- Starting with thorough user research
-- Balancing regulatory requirements with usability
-- Collaborating closely with engineering throughout the process
-- Testing with real users at multiple stages
-
-The redesigned payment UI played a key role in Navro's expansion to new markets and contributed to the company's growth from pre-seed to securing Series A investment.
+{
+<CustomImage src="/media/case-studies/unnamed-7.png" alt="" />
+}

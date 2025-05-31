@@ -3,7 +3,6 @@ import styles from './casestudyhero.module.css'
 
 interface CaseStudyHeroProps {
   title: string
-  summary: string
   company: string
   client?: string
   role?: string
@@ -14,7 +13,6 @@ interface CaseStudyHeroProps {
 
 const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({
   title,
-  summary,
   company,
   client,
   role,
