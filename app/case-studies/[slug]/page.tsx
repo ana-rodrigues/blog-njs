@@ -6,7 +6,11 @@ import { CustomMDX } from 'app/components/mdx'
 import { baseUrl } from 'app/sitemap'
 import CaseStudyHero from 'app/components/casestudyhero'
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params
   const caseStudy = await getCaseStudyBySlug(slug)
   
@@ -47,7 +51,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function CaseStudyPage({ params }: { params: { slug: string } }) {
+export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params
   const caseStudy = await getCaseStudyBySlug(slug)
   
