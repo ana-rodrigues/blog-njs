@@ -4,13 +4,19 @@ import { TbArrowBackUp } from 'react-icons/tb';
 
 interface BreadcrumbProps {
     title: string;
+    href?: string;
+    linkText?: string;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ 
+    title, 
+    href = '/feed', 
+    linkText = 'Return to feed' 
+}) => {
     return (
         <nav className={styles.breadcrumb} aria-label="breadcrumb">
             <TbArrowBackUp aria-hidden="true" />
-            <Link className={styles.breadcrumbLink} href="/feed">Return to feed</Link>
+            <Link className={styles.breadcrumbLink} href={href}>{linkText}</Link>
         </nav>
     );
 };

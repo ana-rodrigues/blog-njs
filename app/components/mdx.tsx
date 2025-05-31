@@ -3,8 +3,13 @@ import React from 'react'
 import styles from './mdx.module.css'
 import { MDXClientRenderer } from './mdx-client'
 
+// Define props for the CustomMDX component
+interface CustomMDXProps {
+  source: string;
+}
+
 // Server component to process MDX content
-export async function CustomMDX({ source }) {
+export async function CustomMDX({ source }: CustomMDXProps) {
   // Add proper error handling for the source
   if (!source) {
     console.warn('No MDX source provided to CustomMDX');
@@ -26,7 +31,7 @@ export async function CustomMDX({ source }) {
     const mdxSource = await serialize(source, {
       parseFrontmatter: true,
       mdxOptions: {
-        development: process.env.NODE_ENV === 'development',
+        development: process.env.NODE_ENV === 'development'
       }
     })
     

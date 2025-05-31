@@ -1,0 +1,78 @@
+.caseStudies {
+  margin-top: var(--spacer-lg);
+}
+
+.caseStudyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.caseStudyItem {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  text-decoration: none;
+  background-color: var(--background-color);
+  border-radius: var(--border-md);
+  border: 1px solid var(--border-color-light);
+  overflow: hidden;
+  transition: transform 500ms ease, box-shadow 500ms ease;
+}
+
+.caseStudyItem:hover {
+  transform: translateY(-2px);
+  border: 1px solid var(--border-color-lighter);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 500ms ease, box-shadow 500ms ease;
+  background-color: var(--background-hover-color);
+}
+
+.caseStudyItem:hover::after {
+  content: none;
+}
+
+.caseStudyContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacer-sm);
+}
+
+.caseStudyInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-xsm);
+}
+
+.caseStudyTitle {
+  composes: headingSm from global;
+}
+
+.caseStudyClient {
+  composes: paragraphSm from global;
+  color: var(--secondary-text-color);
+}
+
+.imgWrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  background-color: var(--background-color-light);
+  border-radius: var(--border-sm) 0 0 var(--border-sm);
+  flex-shrink: 0;
+}
+
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--surface-color);
+  border-radius: inherit;
+}

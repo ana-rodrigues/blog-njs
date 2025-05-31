@@ -5,13 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './mdx.module.css';
 import { MDXRemote } from 'next-mdx-remote';
+import { MDXClientRendererProps, MDXComponentProps, MDXLinkProps, MDXCodeProps, MDXImageProps, MDXContent } from './mdx-types';
 
-// Define interface for the MDX content
-interface MDXContent {
-  compiledSource: string;
-  frontmatter?: Record<string, any>;
-  scope?: Record<string, any>;
-}
+// Use types from mdx-types.ts
 
 // Define the components to be used in MDX
 const components = {
@@ -27,12 +23,20 @@ const components = {
   ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
   ol: ({ children }) => <ol className={styles.ol}>{children}</ol>,
   li: ({ children }) => <li className={styles.li}>{children}</li>,
-  
+  strong: ({ children }) => <strong className={styles.strong}>{children}</strong>,
+  em: ({ children }) => <em className={styles.em}>{children}</em>,
   blockquote: ({ children }) => (
     <blockquote className={styles.blockquote}>
       {children}
     </blockquote>
   ),
+  // Table components
+  table: ({ children }) => <div className={styles.tableContainer}><table className={styles.table}>{children}</table></div>,
+  thead: ({ children }) => <thead className={styles.thead}>{children}</thead>,
+  tbody: ({ children }) => <tbody className={styles.tbody}>{children}</tbody>,
+  tr: ({ children }) => <tr className={styles.tr}>{children}</tr>,
+  th: ({ children }) => <th className={styles.th}>{children}</th>,
+  td: ({ children }) => <td className={styles.td}>{children}</td>,
   code: ({ className, children }) => (
     <code className={`${styles.code} ${className}`}>
       {children}
@@ -44,67 +48,63 @@ const components = {
     </pre>
   ),
 
-  img: ({ src, alt }) => {
+  CustomImage: ({ src, alt }) => {
     // Handle image paths that might be relative
     const imageSrc = src.startsWith('/') || src.startsWith('http') ? src : `/${src}`;
     const [imageError, setImageError] = useState(false);
     
     return (
-      <div className={styles.imgWrapper} style={imageError ? { backgroundColor: 'red', aspectRatio: '16/9' } : {}}>
-        {!imageError && (
+      <div className={styles.imgContainer}>
+        {!imageError ? (
           <Image 
               src={imageSrc} 
               alt={alt || ''} 
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              width={1200}
+              height={675} // 16:9 aspect ratio as a default
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+              className={styles.responsiveImage}
               loading="lazy"
-              quality={80}
-              style={{ objectFit: 'cover' }} 
+              quality={90}
               onError={() => {
                 console.error(`Failed to load image: ${imageSrc}`);
                 setImageError(true);
               }}
           />
+        ) : (
+          <div className={styles.errorPlaceholder} aria-label="Image failed to load" />
         )}
+        {alt && <div className={styles.imageCaption}>{alt}</div>}
       </div>
     );
   },
 };
 
+
+
 // Client component to render the MDX content
-interface MDXClientRendererProps {
-  content: string;
-}
+// Using MDXClientRendererProps from mdx-types.ts
 
 export function MDXClientRenderer({ content }: MDXClientRendererProps) {
   const [mdxContent, setMdxContent] = useState<MDXContent | null>(null);
   const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
-    if (!content) {
-      setError('No content provided');
-      return;
-    }
-    
     try {
-      // Parse the serialized MDX content
-      const parsedContent = JSON.parse(content);
-      
-      // Validate that the parsed content has the required properties
-      if (!parsedContent.compiledSource) {
-        setError('Invalid MDX content structure');
+      if (!content) {
+        setError('No content provided');
         return;
       }
       
+      const parsedContent = JSON.parse(content) as MDXContent;
       setMdxContent(parsedContent);
-    } catch (error) {
-      console.error('Error parsing MDX content:', error);
-      setError('Failed to parse content');
+    } catch (err) {
+      console.error('Error parsing MDX content:', err);
+      setError(err instanceof Error ? err.message : 'Unknown error');
     }
   }, [content]);
-
+  
   if (error) {
-    return <div className={styles.error}>{error}</div>;
+    return <div className={styles.error}>Error rendering content: {error}</div>;
   }
   
   if (!mdxContent) {

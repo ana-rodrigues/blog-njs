@@ -16,7 +16,7 @@ export default function Page() {
         <Showcase />
       </section>
       <section aria-labelledby="experience-heading">
-        <h2 id="experience-heading" className="visuallyHidden">Experience</h2>
+        <h2 id="experience-heading" className="visuallyHidden">Professional experience</h2>
         <Experience />
       </section>
       <section aria-labelledby="about-heading">

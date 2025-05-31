@@ -5,7 +5,7 @@ import styles from './experience.module.css';
 
 const Experience = () => {
   return (
-    <section className={`container ${styles.experience}`}>
+    <section id="experience" className={`container ${styles.experience}`}>
       <h2 className="sectionHeader monoMd">{experienceData.title}</h2>
       <div className={`${styles.experienceList}`}>
         {experienceData.experiences.map((_, index) => (

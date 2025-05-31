@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-md);
-  padding-bottom: var(--spacer-md);
 }
 
 .experienceCard .logo {
@@ -27,10 +26,11 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacer-sm);
+  margin-bottom: var(--spacer-sm);
 }
 
 .experienceCard .info {
-  margin-top: var(--spacer-xxsm);
+  margin-top: var(--spacer-xsm);
   
 }
 
@@ -38,7 +38,10 @@
   color: var(--primary-text-color);
 }
 
-
+/* Main content styles */
+.main {
+  margin-top: var(--spacer-sm);
+}
 
 @media screen and (min-width: 600px) {
 

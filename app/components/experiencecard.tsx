@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './experiencecard.module.css'
 import experienceData from '../content/experience.json'
 import Image from 'next/image'
+import CaseStudySection from './casestudysection';
 
 type ExperienceCardProps = {
   index: number;
@@ -20,8 +21,9 @@ const ExperienceCard = ({ index }: ExperienceCardProps) => {
             className={`${styles.logo} inline`} 
             src={experience.logo} 
             alt={`${experience.company} logo`}
-            width={80}
-            height={80}
+            width={420}
+            height={420}
+            quality={100}
           />
           <div className={styles.detail}>
             <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>
@@ -51,6 +53,12 @@ const ExperienceCard = ({ index }: ExperienceCardProps) => {
             <p className='paragraphMd'>{experience.description}</p>
             <p className='paragraphMd'>{experience.roleDescription}</p>
           </div>
+
+          {/* Case Studies Section */}
+          <CaseStudySection 
+            caseStudies={experience.caseStudies || []} 
+            companyName={experience.company} 
+          />
 
       </div>
 
