@@ -84,6 +84,23 @@
   display: block;
 }
 
+/* Video styling */
+
+.videoContainer {
+  width: 100%;
+  margin: var(--spacer-md) 0;
+  display: block;
+}
+
+.responsiveVideo {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-md);
+  display: block;
+  aspect-ratio: 16 / 9;
+  background-color: var(--background-color);
+}
+
 .errorPlaceholder {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -92,7 +109,7 @@
 }
 
 /* Caption styling */
-.imageCaption {
+.imageCaption, .videoCaption {
   composes: paragraphSm from global;
   color: var(--tertiary-text-color);
   margin-top: var(--spacer-sm);
@@ -108,15 +125,18 @@
 
 .tableContainer {
   width: 100%;
-  overflow-x: auto;
+  overflow-x: scroll;
   margin: var(--spacer-md) 0;
   border-radius: var(--border-md);
   background-color: var(--background-color);
   border: 1px solid var(--border-color-light);
+  scroll-behavior: smooth;
+  scrollbar-color: var(--border-color-light) transparent;
+  scrollbar-width: thin;
+  scroll-padding: var(--spacer-xsm);
 }
 
 .table {
-  width: 100%;
   border-collapse: collapse;
   font-size: inherit;
   line-height: inherit;
@@ -141,11 +161,18 @@
 
 .th {
   composes: paragraphSm from global;
+  word-break: none;
+  white-space: nowrap;
   text-align: left;
   padding: var(--spacer-sm);
   font-weight: 400;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--surface-color);
+  min-width: 140px;
+}
+
+.thlg {
+  min-width: 280px;
 }
 
 .td {

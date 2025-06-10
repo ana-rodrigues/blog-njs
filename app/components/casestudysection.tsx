@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './casestudysection.module.css';
 import Image from 'next/image';
+import { TbClick } from 'react-icons/tb';
 
 export type CaseStudy = {
   title: string;
@@ -39,9 +40,9 @@ const CaseStudySection = ({ caseStudies, companyName }: CaseStudySectionProps) =
                 <Image 
                   src={caseStudy.image}
                   alt={caseStudy.alt || caseStudy.title} 
-                  width={128}
-                  height={128}
-                  sizes="128px"
+                  width={560}
+                  height={560}
+                  sizes="560px"
                   priority={true}
                   quality={80}
                   style={{ 
@@ -59,7 +60,11 @@ const CaseStudySection = ({ caseStudies, companyName }: CaseStudySectionProps) =
                 <h5 className={styles.caseStudyTitle}>{caseStudy.title}</h5>
                 <p className={styles.caseStudyClient}>{caseStudy.client}</p>
                 </div>
-                <p className='monoSm'>Read the case study</p>
+
+                <div className={styles.postAction} aria-label={`Read ${caseStudy.title}`}>
+                  <p className="monoSm">Read the full text</p>
+                </div>  
+
               </div>
             </Link>
           </li>

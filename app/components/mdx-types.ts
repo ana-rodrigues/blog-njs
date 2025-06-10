@@ -34,3 +34,9 @@ export interface MDXImageProps {
   src: string;
   alt?: string;
 }
+
+// Video component props
+export interface MDXVideoProps {
+  src: string;
+  alt?: string;
+}

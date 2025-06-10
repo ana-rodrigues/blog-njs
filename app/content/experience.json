@@ -31,13 +31,8 @@
         "role": "Product Designer → Team Lead",
         "date": "2017 - 2022",
         "caseStudies": [
-          {
-            "title": "Fostering a new generation of investors",
-            "client": "Undisclosed client",
-            "slug": "undisclosed-investing-app",
-            "image": "/media/case-studies/unnamed-cover.png",
-            "alt": ""
-          }
+          { "slug": "undisclosed-investing-app" },
+          { "slug": "browns-augmented-retail" }
         ]
       }
     ]
