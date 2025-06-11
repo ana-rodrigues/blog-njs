@@ -97,7 +97,11 @@ export default async function Blog({ params }: PageProps) {
               }),
             }}
           />
-          <Breadcrumb title={post.metadata.title} />
+          <Breadcrumb 
+            title={post.metadata.title} 
+            href="/feed" 
+            linkText="Return to feed" 
+          />
 
           <h1 className={styles.h1}>{post.metadata.title}</h1>
           <p className={`monoSm ${styles.postDate}`}>{formatDate(post.metadata.publishedAt)}</p>
@@ -117,7 +121,7 @@ export default async function Blog({ params }: PageProps) {
               />
             </figure>
           ) : null}
-          <figcaption className={`paragraphSm ${styles.figcaption}`}>{post.metadata.alt || post.metadata.title}</figcaption>
+          <figcaption className={`paragraphSm ${styles.figcaption}`}>{post.metadata.alt}</figcaption>
           </div> 
 
           <div>

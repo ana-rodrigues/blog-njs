@@ -29,7 +29,11 @@
         "websiteLabel": "gaspardbruno.com",
         "roleDescription": "I helped shaping their product approach and played a key role in collaborations with high-profile clients such as Public.com, Off-White, and Browns Fashion (for Farfetch), helping transform the organisation from a small studio into the creative powerhouse it is today.",
         "role": "Product Designer → Team Lead",
-        "date": "2017 - 2022"
+        "date": "2017 - 2022",
+        "caseStudies": [
+          { "slug": "undisclosed-investing-app" },
+          { "slug": "browns-augmented-retail" }
+        ]
       }
     ]
   }

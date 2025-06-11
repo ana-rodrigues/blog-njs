@@ -1,14 +1,27 @@
 import React from 'react';
 import styles from './experiencecard.module.css'
-import experienceData from '../content/experience.json'
 import Image from 'next/image'
+import CaseStudySection from './casestudylist';
+import { CaseStudy } from '../case-studies/utils.server';
 
-type ExperienceCardProps = {
-  index: number;
+type ExperienceData = {
+  company: string;
+  role: string;
+  date: string;
+  description: string;
+  roleDescription?: string;
+  logo: string;
+  website?: string;
+  websiteLabel?: string;
+  caseStudies?: { slug: string }[];
+  fullCaseStudies?: CaseStudy[];
 }
 
-const ExperienceCard = ({ index }: ExperienceCardProps) => {
-  const experience = experienceData.experiences[index];
+type ExperienceCardProps = {
+  experience: ExperienceData;
+}
+
+const ExperienceCard = ({ experience }: ExperienceCardProps) => {
 
   return (
     <article className={styles.experienceCard}>
@@ -20,8 +33,9 @@ const ExperienceCard = ({ index }: ExperienceCardProps) => {
             className={`${styles.logo} inline`} 
             src={experience.logo} 
             alt={`${experience.company} logo`}
-            width={80}
-            height={80}
+            width={420}
+            height={420}
+            quality={100}
           />
           <div className={styles.detail}>
             <h3 className={`${styles.headingMd} headingMd`}>{experience.company}</h3>
@@ -51,6 +65,18 @@ const ExperienceCard = ({ index }: ExperienceCardProps) => {
             <p className='paragraphMd'>{experience.description}</p>
             <p className='paragraphMd'>{experience.roleDescription}</p>
           </div>
+
+          {/* Case Studies Section
+          <CaseStudySection 
+            caseStudies={experience.fullCaseStudies.map(study => ({
+              title: study.metadata.title,
+              slug: study.slug,
+              client: study.metadata.client,
+              image: study.metadata.image,
+              alt: study.metadata.alt
+            }))} 
+            companyName={experience.company} 
+          /> */}
 
       </div>
 

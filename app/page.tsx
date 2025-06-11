@@ -5,22 +5,23 @@ import About from './components/about';
 import { Showcase } from './components/showcase';
 import Footer from './components/footer';
 import AnimatedWrapper from './components/animatedwrapper';
+import CaseStudySection from './components/casestudysection';
 
 export default function Page() {
-  return (
+    return (
     <AnimatedWrapper>
       <Preheader />
       <Hero />
-      <section aria-labelledby="showcase-heading">
-        <h2 id="showcase-heading" className="visuallyHidden">Project Showcase</h2>
+      <section id="showcase-heading" aria-labelledby="showcase-heading">
         <Showcase />
       </section>
-      <section aria-labelledby="experience-heading">
-        <h2 id="experience-heading" className="visuallyHidden">Experience</h2>
+      <section id="experience-heading" aria-labelledby="experience-heading">
         <Experience />
       </section>
-      <section aria-labelledby="about-heading">
-        <h2 id="about-heading" className="visuallyHidden">About Me</h2>
+      <section id="casestudies-heading" aria-labelledby="casestudies-heading">
+        <CaseStudySection />
+      </section>
+      <section id="about-heading" aria-labelledby="about-heading">
         <About />
       </section>
       <Footer />

@@ -7,5 +7,5 @@
 .experienceList {
     display: grid;
     grid-template-columns: 1, max-content;
-    gap: var(--spacer-xlg);
+    gap: var(--spacer-lg);
 }

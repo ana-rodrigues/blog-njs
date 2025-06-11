@@ -56,6 +56,20 @@ const neueMontreal = localFont({
   fallback: ['sans-serif']
 })
 
+const neueMontrealBold = localFont({
+  src: [
+    {
+      path: '../public/fonts/PPNeueMontreal-Bold.woff2',
+      weight: 'bold',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-neue-montreal-bold',
+  preload: false,
+  fallback: ['sans-serif']
+})
+
 const departureMono = localFont({
   src: [
     {

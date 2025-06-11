@@ -1,17 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './mdx.module.css';
 import { MDXRemote } from 'next-mdx-remote';
+import { MDXClientRendererProps, MDXComponentProps, MDXLinkProps, MDXCodeProps, MDXImageProps, MDXVideoProps, MDXContent } from './mdx-types';
 
-// Define interface for the MDX content
-interface MDXContent {
-  compiledSource: string;
-  frontmatter?: Record<string, any>;
-  scope?: Record<string, any>;
-}
+// Use types from mdx-types.ts
 
 // Define the components to be used in MDX
 const components = {
@@ -27,12 +23,21 @@ const components = {
   ul: ({ children }) => <ul className={styles.ul}>{children}</ul>,
   ol: ({ children }) => <ol className={styles.ol}>{children}</ol>,
   li: ({ children }) => <li className={styles.li}>{children}</li>,
-  
+  strong: ({ children }) => <strong className={styles.strong}>{children}</strong>,
+  em: ({ children }) => <em className={styles.em}>{children}</em>,
   blockquote: ({ children }) => (
     <blockquote className={styles.blockquote}>
       {children}
     </blockquote>
   ),
+  // Table components
+  table: ({ children }) => <div className={styles.tableContainer}><table className={styles.table}>{children}</table></div>,
+  thead: ({ children }) => <thead className={styles.thead}>{children}</thead>,
+  tbody: ({ children }) => <tbody className={styles.tbody}>{children}</tbody>,
+  tr: ({ children }) => <tr className={styles.tr}>{children}</tr>,
+  th: ({ children }) => <th className={styles.th}>{children}</th>,
+  thlg: ({ children }) => <th className={`${styles.th} ${styles.thlg}`}>{children}</th>,
+  td: ({ children }) => <td className={styles.td}>{children}</td>,
   code: ({ className, children }) => (
     <code className={`${styles.code} ${className}`}>
       {children}
@@ -44,67 +49,147 @@ const components = {
     </pre>
   ),
 
-  img: ({ src, alt }) => {
-    // Handle image paths that might be relative
-    const imageSrc = src.startsWith('/') || src.startsWith('http') ? src : `/${src}`;
-    const [imageError, setImageError] = useState(false);
+  CustomImage: ({ src, alt }) => {
+    // Always declare all state variables regardless of which branch is taken
+    const [error, setError] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    
+    // Handle paths that might be relative
+    const mediaSrc = src.startsWith('/') || src.startsWith('http') ? src : `/${src}`;
+    
+    // Detect if the source is a video file by extension
+    const isVideo = /\.(mp4|mov|webm|avi|mkv)$/i.test(src);
+    
+    // For .mov files, we might need to handle them specially
+    const isMovFile = mediaSrc.toLowerCase().endsWith('.mov');
+    
+    // Use effect to handle video loading
+    useEffect(() => {
+      if (isVideo && !isLoaded) {
+        // For debugging purposes
+        console.log(`Attempting to load video: ${mediaSrc}`);
+      }
+    }, [isVideo, mediaSrc, isLoaded]);
     
     return (
-      <div className={styles.imgWrapper} style={imageError ? { backgroundColor: 'red', aspectRatio: '16/9' } : {}}>
-        {!imageError && (
-          <Image 
-              src={imageSrc} 
-              alt={alt || ''} 
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              loading="lazy"
-              quality={80}
-              style={{ objectFit: 'cover' }} 
-              onError={() => {
-                console.error(`Failed to load image: ${imageSrc}`);
-                setImageError(true);
+      <div className={styles.imgContainer}>
+        {!error ? (
+          isVideo ? (
+            // Video element with multiple sources for better browser compatibility
+            <video
+              className={styles.responsiveImage}
+              playsInline
+              autoPlay={true}
+              muted={true}
+              loop={true}
+              preload="metadata"
+              onLoadedData={() => setIsLoaded(true)}
+              onError={(e) => {
+                console.error(`Failed to load video: ${mediaSrc}`, e);
+                setError(true);
               }}
+            >
+              {/* Try multiple formats for better compatibility */}
+              {isMovFile ? (
+                <>
+                  <source src={mediaSrc} type="video/quicktime" />
+                  {/* If you have MP4 versions of the same videos, you could add them here */}
+                  {/* <source src={mediaSrc.replace('.mov', '.mp4')} type="video/mp4" /> */}
+                </>
+              ) : (
+                <source 
+                  src={mediaSrc} 
+                  type={`video/${mediaSrc.split('.').pop()?.toLowerCase()}`} 
+                />
+              )}
+              Your browser does not support the video tag or the video format.
+            </video>
+          ) : (
+            // Image element
+            <Image 
+              src={mediaSrc} 
+              alt={alt || ''} 
+              width={1200}
+              height={675} // 16:9 aspect ratio as a default
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+              className={styles.responsiveImage}
+              loading="lazy"
+              quality={90}
+              onError={() => {
+                console.error(`Failed to load image: ${mediaSrc}`);
+                setError(true);
+              }}
+            />
+          )
+        ) : (
+          <div 
+            className={styles.errorPlaceholder} 
+            aria-label={isVideo ? "Video failed to load" : "Image failed to load"} 
           />
         )}
+        {alt && <div className={styles.imageCaption}>{alt}</div>}
+      </div>
+    );
+  },
+  
+  CustomVideo: ({ src, alt }) => {
+    // Handle video paths that might be relative
+    const videoSrc = src.startsWith('/') || src.startsWith('http') ? src : `/${src}`;
+    const [videoError, setVideoError] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    
+    return (
+      <div className={styles.videoContainer}>
+        {!videoError ? (
+          <video
+            ref={videoRef}
+            className={styles.responsiveVideo}
+            controls
+            playsInline
+            preload="metadata"
+            onError={() => {
+              console.error(`Failed to load video: ${videoSrc}`);
+              setVideoError(true);
+            }}
+          >
+            <source src={videoSrc} type={videoSrc.endsWith('.mov') ? 'video/quicktime' : `video/${videoSrc.split('.').pop()}`} />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className={styles.errorPlaceholder} aria-label="Video failed to load" />
+        )}
+        {alt && <div className={styles.videoCaption}>{alt}</div>}
       </div>
     );
   },
 };
 
+
+
 // Client component to render the MDX content
-interface MDXClientRendererProps {
-  content: string;
-}
+// Using MDXClientRendererProps from mdx-types.ts
 
 export function MDXClientRenderer({ content }: MDXClientRendererProps) {
   const [mdxContent, setMdxContent] = useState<MDXContent | null>(null);
   const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
-    if (!content) {
-      setError('No content provided');
-      return;
-    }
-    
     try {
-      // Parse the serialized MDX content
-      const parsedContent = JSON.parse(content);
-      
-      // Validate that the parsed content has the required properties
-      if (!parsedContent.compiledSource) {
-        setError('Invalid MDX content structure');
+      if (!content) {
+        setError('No content provided');
         return;
       }
       
+      const parsedContent = JSON.parse(content) as MDXContent;
       setMdxContent(parsedContent);
-    } catch (error) {
-      console.error('Error parsing MDX content:', error);
-      setError('Failed to parse content');
+    } catch (err) {
+      console.error('Error parsing MDX content:', err);
+      setError(err instanceof Error ? err.message : 'Unknown error');
     }
   }, [content]);
-
+  
   if (error) {
-    return <div className={styles.error}>{error}</div>;
+    return <div className={styles.error}>Error rendering content: {error}</div>;
   }
   
   if (!mdxContent) {

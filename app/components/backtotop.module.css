@@ -1,0 +1,51 @@
+.backToTop {
+  composes: monoSm from global;
+  position: fixed;
+  bottom: var(--spacer-sm);
+  right: var(--spacer-md);
+  z-index: 10;
+  background-color: var(--surface-color);
+  color: var(--secondary-text-color);
+  border: 1px solid var(--border-color-dark);
+  border-radius: 12px;
+  width: fit-content;
+  height: 48px;
+  padding: var(--spacer-xxsm) var(--spacer-sm);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s, color 0.2s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-sm);
+  pointer-events: none;
+  transform: translateY(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.backToTop:focus, .backToTop:hover {
+  color: var(--primary-text-color);
+  outline: none;
+}
+
+.backToTop:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Ensure the button doesn't conflict with navbar on mobile */
+@media (max-width: 768px) {
+  .backToTop {
+    bottom: calc(var(--spacer-xlg) + var(--spacer-sm));
+    right: var(--spacer-sm);
+  }
+}
