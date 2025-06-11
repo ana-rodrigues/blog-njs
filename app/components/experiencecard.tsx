@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './experiencecard.module.css'
 import Image from 'next/image'
-import CaseStudySection from './casestudysection';
+import CaseStudySection from './casestudylist';
 import { CaseStudy } from '../case-studies/utils.server';
 
 type ExperienceData = {
@@ -14,7 +14,7 @@ type ExperienceData = {
   website?: string;
   websiteLabel?: string;
   caseStudies?: { slug: string }[];
-  fullCaseStudies: CaseStudy[];
+  fullCaseStudies?: CaseStudy[];
 }
 
 type ExperienceCardProps = {
@@ -66,7 +66,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
             <p className='paragraphMd'>{experience.roleDescription}</p>
           </div>
 
-          {/* Case Studies Section */}
+          {/* Case Studies Section
           <CaseStudySection 
             caseStudies={experience.fullCaseStudies.map(study => ({
               title: study.metadata.title,
@@ -76,7 +76,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
               alt: study.metadata.alt
             }))} 
             companyName={experience.company} 
-          />
+          /> */}
 
       </div>
 

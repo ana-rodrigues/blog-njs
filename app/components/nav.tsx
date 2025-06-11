@@ -11,14 +11,14 @@ export function Nav() {
   const routes = [
     {
       href: "/",
-      label: "Home",
-      active: pathname === "/",
+      label: "Work",
+      active: pathname === "/" || pathname.startsWith("/case-studies"),
     },
     {
       href: "/feed",
       label: "Feed",
       active: pathname.startsWith("/feed"),
-    },
+    }
   ];
 
   const socialLinks = [

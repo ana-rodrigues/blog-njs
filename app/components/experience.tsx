@@ -6,6 +6,8 @@ import { getCaseStudies } from '../case-studies/utils.server';
 import { CaseStudy } from '../case-studies/utils.server';
 
 const Experience = async () => {
+  // Commented out case studies to temporarily hide them
+  /*
   // Fetch all case studies from MDX files
   const allCaseStudies = await getCaseStudies();
   
@@ -14,27 +16,28 @@ const Experience = async () => {
   allCaseStudies.forEach(study => {
     caseStudyMap.set(study.slug, study);
   });
+  */
   return (
     <section id="experience" className={`container ${styles.experience}`}>
       <h2 className="sectionHeader monoMd">{experienceData.title}</h2>
       <div className={`${styles.experienceList}`}>
         {experienceData.experiences.map((experience, index) => {
-          // For each experience, find the associated case studies by slug
-          const fullCaseStudies = (experience.caseStudies || []).map(cs => {
+    
+          /*const fullCaseStudies = (experience.caseStudies || []).map(cs => {
             const fullStudy = caseStudyMap.get(cs.slug);
             if (!fullStudy) {
               console.warn(`Case study with slug ${cs.slug} not found`);
               return null;
             }
             return fullStudy;
-          }).filter(Boolean) as CaseStudy[];
+          }).filter(Boolean) as CaseStudy[];*/
           
           return (
             <ExperienceCard 
               key={index} 
               experience={{
                 ...experience,
-                fullCaseStudies
+                // fullCaseStudies
               }} 
             />
           );

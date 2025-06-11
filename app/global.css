@@ -63,7 +63,7 @@ body {
 
 .container {
   padding-top: var(--spacer-md);
-  padding-bottom: var(--spacer-xlg);
+  padding-bottom: var(--spacer-lg);
   max-width: 680px;
   margin: auto;
   padding-left: var(--spacer-sm);

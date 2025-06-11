@@ -1,33 +1,46 @@
+import React from 'react';
 import Link from 'next/link';
 import styles from './casestudies.module.css';
 import Image from 'next/image';
-import { getCaseStudies, type CaseStudy } from '../case-studies/utils.server';
+import BackToTop from './backtotop';
 
+export type CaseStudy = {
+  title: string;
+  slug: string;
+  client?: string;
+  image?: string;
+  alt?: string;
+}
 
+type CaseStudySectionProps = {
+  caseStudies: CaseStudy[];
+  companyName: string;
+}
 
-async function CaseStudySection() {
-  const caseStudies = await getCaseStudies();
+const CaseStudyList = ({ caseStudies, companyName }: CaseStudySectionProps) => {
 
   if (!caseStudies || caseStudies.length === 0) {
     return null;
   }
 
-  return (
-      <section id="casestudies" className={`container ${styles.caseStudies}`}>
-      <h2 className="sectionHeader monoMd">Selected Work</h2>
+  const companySlug = companyName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
+  return (
+    <>
+      <div className={styles.caseStudies}>
+        <h4 className='visuallyHidden'>Case studies from {companyName}</h4>
         <ul className={styles.caseStudyList}>
-          {caseStudies.map((caseStudy) => (
+          {caseStudies.map((caseStudy: CaseStudy) => (
             <li key={caseStudy.slug}>
               <Link 
                 href={`/case-studies/${caseStudy.slug}`} 
                 className={styles.caseStudyItem}
               >
                 <figure className={styles.imgWrapper}>
-                  {caseStudy.metadata.image ? (
+                  {caseStudy.image ? (
                   <Image 
-                    src={caseStudy.metadata.image}
-                    alt={caseStudy.metadata.alt || caseStudy.metadata.title} 
+                    src={caseStudy.image}
+                    alt={caseStudy.alt || caseStudy.title} 
                     width={560}
                     height={560}
                     sizes="560px"
@@ -45,11 +58,11 @@ async function CaseStudySection() {
                 </figure>
                 <div className={styles.caseStudyContent}>
                   <div className={styles.caseStudyInfo}>
-                  <h5 className={styles.caseStudyTitle}>{caseStudy.metadata.title}</h5>
-                  <p className={styles.caseStudyClient}>{caseStudy.metadata.client}</p>
+                  <h5 className={styles.caseStudyTitle}>{caseStudy.title}</h5>
+                  <p className={styles.caseStudyClient}>{caseStudy.client}</p>
                   </div>
 
-                  <div className={styles.postAction} aria-label={`Read ${caseStudy.metadata.title}`}>
+                  <div className={styles.postAction} aria-label={`Read ${caseStudy.title}`}>
                     <p className="monoSm">Read the full story</p>
                   </div>  
 
@@ -58,8 +71,10 @@ async function CaseStudySection() {
             </li>
           ))}
         </ul>
-      </section>
+      </div>
+      <BackToTop />
+    </>
   );
 };
 
-export default CaseStudySection;
+export default CaseStudyList;

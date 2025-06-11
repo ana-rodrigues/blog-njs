@@ -1,5 +1,7 @@
 .caseStudies {
-  margin-top: var(--spacer-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-lg);
 }
 
 .caseStudyList {

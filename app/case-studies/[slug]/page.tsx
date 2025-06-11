@@ -5,6 +5,7 @@ import Breadcrumb from 'app/components/breadcrumb'
 import { CustomMDX } from 'app/components/mdx'
 import { baseUrl } from 'app/sitemap'
 import CaseStudyHero from 'app/components/casestudyhero'
+import BackToTop from 'app/components/backtotop'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -59,15 +60,37 @@ export default async function CaseStudyPage({ params }: PageProps) {
     notFound()
   }
   
-  // Get company name from metadata
   const companyName = caseStudy.metadata.company || ''
   
   return (
     <AnimatedWrapper>
+            <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: caseStudy.metadata.title,
+                datePublished: caseStudy.metadata.publishedAt,
+                dateModified: caseStudy.metadata.publishedAt,
+                description: caseStudy.metadata.summary,
+                image: caseStudy.metadata.image
+                  ? `${baseUrl}${caseStudy.metadata.image}`
+                  : `/og?title=${encodeURIComponent(caseStudy.metadata.title)}`,
+                url: `${baseUrl}/feed/${caseStudy.slug}`,
+                author: {
+                  '@type': 'Person',
+                  name: 'Ana Fernandes Rodrigues',
+                },
+              }),
+            }}
+          />
+
       <section className="container">
         <Breadcrumb 
           title={caseStudy.metadata.title}
-          href="/#experience"
+          href="/#casestudies"
           linkText="Return to home"
         />
         
@@ -89,6 +112,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <div className="error">No content available for this case study</div>
           )}
         </div>
+        
+        <BackToTop threshold={300} />
       </section>
     </AnimatedWrapper>
   )
