@@ -6,6 +6,7 @@ import { Showcase } from './components/showcase';
 import Footer from './components/footer';
 import AnimatedWrapper from './components/animatedwrapper';
 import CaseStudySection from './components/casestudysection';
+import BackToTop from './components/backtotop';
 
 export default function Page() {
     return (
@@ -25,6 +26,7 @@ export default function Page() {
         <About />
       </section>
       <Footer />
+      <BackToTop threshold={500} />
     </AnimatedWrapper>
   );
 }

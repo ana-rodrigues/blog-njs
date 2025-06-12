@@ -9,7 +9,7 @@
   border: 1px solid var(--border-color-dark);
   border-radius: 12px;
   width: fit-content;
-  height: 48px;
+  height: 46px;
   padding: var(--spacer-xxsm) var(--spacer-sm);
   cursor: pointer;
   opacity: 0;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacer-sm);
+  gap: var(--spacer-xsm);
   pointer-events: none;
   transform: translateY(10px);
   backdrop-filter: blur(12px);
@@ -45,7 +45,9 @@
 /* Ensure the button doesn't conflict with navbar on mobile */
 @media (max-width: 768px) {
   .backToTop {
-    bottom: calc(var(--spacer-xlg) + var(--spacer-sm));
-    right: var(--spacer-sm);
+    top: 0;
+    margin: var(--spacer-sm) auto;
+    left: 0;
+    right: 0;
   }
 }
